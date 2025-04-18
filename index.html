@@ -25,6 +25,20 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&family=Saira+Stencil+One&display=swap"
     rel="stylesheet">
+<link rel="stylesheet" href="./assets/css/style.css">
+
+<style>
+[data-animate] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+[data-animate].animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+
 </head>
 
 <body id="top" class="dark_theme">
@@ -43,8 +57,8 @@
       <div class="navbar-actions">
 
         <select name="language" id="lang">
-          <option value="en">En</option>
-          <option value="ar">Ar</option>
+          <option value="id" selected>ID</option>
+          <option value="en">EN</option>
         </select>
 
         <button class="theme-btn" aria-label="Change Theme" title="Change Theme" data-theme-btn>
@@ -101,7 +115,7 @@
 
       <section class="hero" id="home">
 
-        <figure class="hero-banner">
+        <figure class="hero-banner" data-animate>
 
           <picture>
             <source srcset="./assets/images/hero-banner.png" media="(min-width: 768px)">
@@ -112,7 +126,7 @@
 
         </figure>
 
-        <div class="hero-content">
+        <div class="hero-content" data-animate>
 
           <h2 class="h2 hero-title">Picnic Jadi Makin Aesthetic</h2>
 
@@ -253,7 +267,7 @@
 
 
 <section class="skills" id="skills">
-  <div class="skills-content section-content">
+  <div class="skills-content section-content" data-animate>
     <p class="section-subtitle">Produk Kami</p>
     <h2 class="h3 section-title">Daftar Alat yang Tersedia</h2>
 
@@ -320,7 +334,7 @@
         - #PROJECTS
       -->
 
-      <section class="project" id="portfolio">
+      <section class="project" id="portfolio" data-animate>
 
         <ul class="project-list">
 
@@ -474,7 +488,7 @@
 
       <section class="contact" id="contact">
 
-        <div class="contact-content section-content">
+        <div class="contact-content section-content" data-animate>
 
           <p class="section-subtitle">Contact</p>
 
@@ -693,6 +707,30 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script src="./assets/js/script.js"></script>
+
+<script>
+  const translations = {
+    en: {
+      heroTitle: "Picnic Gets More Aesthetic",
+      aboutTitle: "Rent Lens & Outdoor Tools",
+      contactTitle: "Interested in renting with us?"
+    },
+    id: {
+      heroTitle: "Picnic Jadi Makin Aesthetic",
+      aboutTitle: "Sewa Lensa & Alat Outdoor",
+      contactTitle: "Berminat untuk sewa di tempat kami?"
+    }
+  };
+
+  document.getElementById("lang").addEventListener("change", function () {
+    const lang = this.value;
+    document.querySelector(".hero-title").textContent = translations[lang].heroTitle;
+    document.querySelector("#about .section-title").textContent = translations[lang].aboutTitle;
+    document.querySelector("#contact .section-title").textContent = translations[lang].contactTitle;
+  });
+</script>
 
 </body>
 

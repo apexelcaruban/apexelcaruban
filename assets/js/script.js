@@ -103,3 +103,17 @@ if (localStorage.getItem("theme") === "light_theme") {
   document.body.classList.remove("light_theme");
   document.body.classList.add("dark_theme");
 }
+
+// Scroll animation for [data-animate] elements
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("animate");
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+document.querySelectorAll("[data-animate]").forEach(el => observer.observe(el));
