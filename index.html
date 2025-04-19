@@ -25,20 +25,6 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&family=Saira+Stencil+One&display=swap"
     rel="stylesheet">
-<link rel="stylesheet" href="./assets/css/style.css">
-
-<style>
-[data-animate] {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
-}
-[data-animate].animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-</style>
-
 </head>
 
 <body id="top" class="dark_theme">
@@ -57,8 +43,8 @@
       <div class="navbar-actions">
 
         <select name="language" id="lang">
-          <option value="id" selected>ID</option>
-          <option value="en">EN</option>
+          <option value="en">En</option>
+          <option value="ar">Ar</option>
         </select>
 
         <button class="theme-btn" aria-label="Change Theme" title="Change Theme" data-theme-btn>
@@ -115,7 +101,7 @@
 
       <section class="hero" id="home">
 
-        <figure class="hero-banner" data-animate>
+        <figure class="hero-banner">
 
           <picture>
             <source srcset="./assets/images/hero-banner.png" media="(min-width: 768px)">
@@ -126,7 +112,7 @@
 
         </figure>
 
-        <div class="hero-content" data-animate>
+        <div class="hero-content">
 
           <h2 class="h2 hero-title">Picnic Jadi Makin Aesthetic</h2>
 
@@ -264,60 +250,23 @@
 
       </section>
 
-
-
 <section class="skills" id="skills">
-  <div class="skills-content section-content" data-animate>
+  <div class="skills-content section-content">
     <p class="section-subtitle">Produk Kami</p>
     <h2 class="h3 section-title">Daftar Alat yang Tersedia</h2>
-
-    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-      
-    <a href="https://wa.me/6289671172929?text=Hallo" style="flex: 1 1 120px; text-align: center; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px; text-decoration: none; color: inherit; background: #f9f9f9;">
-      <small>Lensa Apexel</small>
-    </a>
-    
-    <a href="https://wa.me/6289671172929?text=Hallo" style="flex: 1 1 120px; text-align: center; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px; text-decoration: none; color: inherit; background: #f9f9f9;">
-      <small>Remote Bluetooth</small>
-    </a>
-    
-    <a href="https://wa.me/6289671172929?text=Hallo" style="flex: 1 1 120px; text-align: center; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px; text-decoration: none; color: inherit; background: #f9f9f9;">
-      <small>Tripod</small>
-    </a>
-    
-    <a href="https://wa.me/6289671172929?text=Hallo" style="flex: 1 1 120px; text-align: center; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px; text-decoration: none; color: inherit; background: #f9f9f9;">
-      <small>Kursi Lipat</small>
-    </a>
-    
-    <a href="https://wa.me/6289671172929?text=Hallo" style="flex: 1 1 120px; text-align: center; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px; text-decoration: none; color: inherit; background: #f9f9f9;">
-      <small>Meja Lipat</small>
-    </a>
-    
-    <a href="https://wa.me/6289671172929?text=Hallo" style="flex: 1 1 120px; text-align: center; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px; text-decoration: none; color: inherit; background: #f9f9f9;">
-      <small>Tikar Piknik</small>
-    </a>
-    
-    <a href="https://wa.me/6289671172929?text=Hallo" style="flex: 1 1 120px; text-align: center; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px; text-decoration: none; color: inherit; background: #f9f9f9;">
-      <small>Kompor Portable</small>
-    </a>
-    
-    <a href="https://wa.me/6289671172929?text=Hallo" style="flex: 1 1 120px; text-align: center; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px; text-decoration: none; color: inherit; background: #f9f9f9;">
-      <small>Keranjang Piknik</small>
-    </a>
-    
-    <a href="https://wa.me/6289671172929?text=Hallo" style="flex: 1 1 120px; text-align: center; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px; text-decoration: none; color: inherit; background: #f9f9f9;">
-      <small>Topi & Kacamata</small>
-    </a>
-    
-    </div>
-
-    <div style="margin-top: 1rem;">
-      <a href="https://wa.me/c/6289671172929" class="btn btn-secondary">Selengkapnya</a>
-    </div>
+    <ul class="simple-product-list">
+      <li>Lensa Apexel</li>
+      <li>Remote Bluetooth</li>
+      <li>Tripod</li>
+      <li>Kursi Lipat</li>
+      <li>Meja Lipat</li>
+      <li>Tikar Piknik</li>
+      <li>Kompor Portable</li>
+      <li>Keranjang Piknik</li>
+      <li>Topi & Kacamata</li>
+    </ul>
   </div>
 </section>
-
-
 
 
       <!-- 
@@ -334,7 +283,7 @@
         - #PROJECTS
       -->
 
-      <section class="project" id="portfolio" data-animate>
+      <section class="project" id="portfolio">
 
         <ul class="project-list">
 
@@ -488,7 +437,7 @@
 
       <section class="contact" id="contact">
 
-        <div class="contact-content section-content" data-animate>
+        <div class="contact-content section-content">
 
           <p class="section-subtitle">Contact</p>
 
@@ -588,7 +537,7 @@
 
         </div>
 
-        <form action="mailto:cs@apexelcaruban.my.id" method="POST" enctype="text/plain" class="contact-form">
+        <form action="" class="contact-form">
 
           <div class="form-wrapper">
 
@@ -707,30 +656,6 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-<script src="./assets/js/script.js"></script>
-
-<script>
-  const translations = {
-    en: {
-      heroTitle: "Picnic Gets More Aesthetic",
-      aboutTitle: "Rent Lens & Outdoor Tools",
-      contactTitle: "Interested in renting with us?"
-    },
-    id: {
-      heroTitle: "Picnic Jadi Makin Aesthetic",
-      aboutTitle: "Sewa Lensa & Alat Outdoor",
-      contactTitle: "Berminat untuk sewa di tempat kami?"
-    }
-  };
-
-  document.getElementById("lang").addEventListener("change", function () {
-    const lang = this.value;
-    document.querySelector(".hero-title").textContent = translations[lang].heroTitle;
-    document.querySelector("#about .section-title").textContent = translations[lang].aboutTitle;
-    document.querySelector("#contact .section-title").textContent = translations[lang].contactTitle;
-  });
-</script>
 
 </body>
 
