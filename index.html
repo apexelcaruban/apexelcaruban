@@ -572,34 +572,7 @@
     </div>
   </div>
   <button type="submit" class="btn btn-primary">Kirim via WhatsApp</button>
-</form><div style="height: 100px;"></div>
-<script>
-  function sendToWA() {
-    const nama = document.getElementById('nama').value;
-    const alamat = document.getElementById('alamat').value;
-    const sewa = document.getElementById('sewa').value;
-    const text = `Halo, saya ingin menyewa alat.\nNama: ${nama}\nAlamat: ${alamat}\nPilihan Sewa: ${sewa}`;
-    const url = `https://wa.me/6289671172929?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank');
-    return false;
-  }
-</script>
-<style>
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
-  }
-  .product-item {
-    background: var(--bg-secondary);
-    padding: 15px;
-    border-radius: var(--radius-12);
-    text-align: center;
-    color: var(--color-primary);
-    box-shadow: var(--shadow-1);
-  }
-</style>
+</form>
 
 
       </section>
@@ -657,6 +630,42 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+<script>
+function sendToWA() {
+  const nama = document.getElementById('nama').value;
+  const alamat = document.getElementById('alamat').value;
+  const sewa = document.getElementById('sewa').value;
+  const text = `Halo! Saya ingin menyewa alat.\nNama: ${nama}\nAlamat: ${alamat}\nPilihan: ${sewa}`;
+  const url = `https://wa.me/6289671172929?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
+  return false;
+}
+</script>
+
+<style>
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+.product-item {
+  background: var(--bg-secondary);
+  padding: 15px;
+  border-radius: var(--radius-12);
+  text-align: center;
+  color: var(--color-primary);
+  box-shadow: var(--shadow-1);
+}
+.contac-social-list {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+</style>
 
 </body>
 
