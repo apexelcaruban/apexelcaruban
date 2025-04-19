@@ -72,12 +72,25 @@ themeToggleBtn.addEventListener("click", function () {
 /**
  * check & apply last time selected theme from localStorage
  */
-if (localStorage.getItem("theme") === "light_theme") {
-  themeToggleBtn.classList.add("active");
-  document.body.classList.remove("dark_theme");
-  document.body.classList.add("light_theme");
-} else {
+if (localStorage.getItem("theme") === "dark_theme") {
   themeToggleBtn.classList.remove("active");
   document.body.classList.remove("light_theme");
   document.body.classList.add("dark_theme");
+} else {
+  themeToggleBtn.classList.add("active");
+  document.body.classList.remove("dark_theme");
+  document.body.classList.add("light_theme");
+}
+
+/**
+ * send to WhatsApp from form
+ */
+function sendToWA() {
+  const nama = document.getElementById('nama').value;
+  const alamat = document.getElementById('alamat').value;
+  const sewa = document.getElementById('sewa').value;
+  const text = `Halo! Saya ingin menyewa alat.\nNama: ${nama}\nAlamat: ${alamat}\nPilihan: ${sewa}`;
+  const url = `https://wa.me/6289671172929?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
+  return false;
 }
