@@ -774,8 +774,9 @@ main { overflow-x: hidden; }
   padding: 20px;
   border-radius: var(--radius-12);
   box-shadow: var(--shadow-1);
-  display: block; /* Pastikan formulir selalu terlihat */
-  margin-top: 30px; /* Jarak dari contact-content di mobile */
+  display: block;
+  margin-top: 30px;
+  width: 100%;
 }
 
 .form-wrapper { margin-bottom: 25px; }
@@ -925,7 +926,7 @@ textarea.input-field {
   .contact-form {
     max-width: 450px;
     margin-inline: auto;
-    margin-top: 0; /* Reset margin-top di desktop */
+    margin-top: 0;
   }
 }
 
