@@ -916,6 +916,29 @@ textarea.input-field {
 \*-----------------------------------*/
 
 /**
+ * responsive for smaller than 550px screen
+ */
+@media (max-width: 550px) {
+  .stats-card .h2.card-title {
+    font-size: 1.5rem; /* Mengurangi ukuran font untuk angka di mobile */
+  }
+
+  .stats-card .card-title strong {
+    font-size: 0.9rem; /* Mengurangi ukuran teks di bawah angka (Years of Experience, dll) */
+  }
+
+  .stats-card {
+    padding: 15px; /* Mengurangi padding stats-card agar lebih kompak di mobile */
+    gap: 5px; /* Mengurangi jarak antara ikon dan teks */
+  }
+
+  .stats-card .card-icon {
+    width: 50px; /* Mengurangi ukuran ikon agar proporsional */
+    height: 50px;
+  }
+}
+
+/**
  * responsive for larger than 550px screen
  */
 @media (min-width: 550px) {
