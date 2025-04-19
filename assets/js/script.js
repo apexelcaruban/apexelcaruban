@@ -83,6 +83,48 @@ if (localStorage.getItem("theme") === "dark_theme") {
 }
 
 /**
+ * Counter animation for stats section
+ */
+const counters = document.querySelectorAll('.counter');
+const statsSection = document.querySelector('#stats');
+
+const animateCounter = (counter) => {
+  const target = +counter.getAttribute('data-target');
+  const duration = 1500; // Durasi animasi dalam milidetik (1.5 detik)
+  const increment = target / (duration / 16); // Kecepatan increment berdasarkan 60 FPS (16ms per frame)
+  let count = 0;
+
+  const updateCount = () => {
+    count += increment;
+    if (count < target) {
+      counter.textContent = Math.ceil(count);
+      requestAnimationFrame(updateCount);
+    } else {
+      counter.textContent = target;
+    }
+  };
+
+  updateCount();
+};
+
+// Menggunakan IntersectionObserver untuk memulai animasi saat elemen terlihat
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      counters.forEach(counter => {
+        if (!counter.classList.contains('animated')) {
+          animateCounter(counter);
+          counter.classList.add('animated'); // Tandai bahwa elemen sudah dianimasikan
+        }
+      });
+      observer.unobserve(entry.target); // Hentikan pengamatan setelah animasi dimulai
+    }
+  });
+}, { threshold: 0.5 });
+
+observer.observe(statsSection);
+
+/**
  * send to WhatsApp from form
  */
 function sendToWA() {
