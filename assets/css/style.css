@@ -551,10 +551,11 @@ main { overflow-x: hidden; }
   filter: invert(1);
 }
 
-.stats-card .card-title {
+.stats-card .h2.card-title {
   width: calc(100% - 95px);
   color: var(--raw-seinna);
   text-align: center;
+  white-space: nowrap; /* Mencegah teks membungkus ke baris baru */
 }
 
 .stats-card .card-title strong {
@@ -919,44 +920,51 @@ textarea.input-field {
  * responsive for smaller than 550px screen
  */
 @media (max-width: 550px) {
-  .stats-card .h2.card-title {
-    font-size: 1.2rem; /* Lebih kecil dari sebelumnya (1.5rem) */
-  }
-
-  .stats-card .card-title strong {
-    font-size: 0.8rem; /* Lebih kecil dari sebelumnya (0.9rem) */
+  .stats-list {
+    grid-template-columns: 1fr; /* Mengatur layout menjadi vertikal agar lebih rapi */
+    gap: 15px;
   }
 
   .stats-card {
-    padding: 10px; /* Lebih kecil dari sebelumnya (15px) */
+    padding: 10px;
     gap: 5px;
   }
 
+  .stats-card .h2.card-title {
+    font-size: 1.2rem;
+    width: auto; /* Mengatur ulang lebar agar fleksibel */
+    flex-grow: 1; /* Memastikan teks mengambil ruang yang cukup */
+  }
+
+  .stats-card .card-title strong {
+    font-size: 0.8rem;
+  }
+
   .stats-card .card-icon {
-    width: 40px; /* Lebih kecil dari sebelumnya (50px) */
+    width: 40px;
     height: 40px;
   }
 }
 
 /**
- * responsive for smaller than 375px screen (extra kecil seperti iPhone SE)
+ * responsive for smaller than 375px screen
  */
 @media (max-width: 375px) {
   .stats-card .h2.card-title {
-    font-size: 1rem; /* Lebih kecil lagi untuk layar sangat kecil */
+    font-size: 1rem;
   }
 
   .stats-card .card-title strong {
-    font-size: 0.75rem; /* Lebih kecil lagi */
+    font-size: 0.75rem;
   }
 
   .stats-card {
-    padding: 8px; /* Lebih kompak */
+    padding: 8px;
     gap: 3px;
   }
 
   .stats-card .card-icon {
-    width: 35px; /* Lebih kecil lagi */
+    width: 35px;
     height: 35px;
   }
 }
