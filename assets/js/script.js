@@ -81,16 +81,3 @@ if (localStorage.getItem("theme") === "light_theme") {
   document.body.classList.remove("light_theme");
   document.body.classList.add("dark_theme");
 }
-
-/**
- * send to WhatsApp from form
- */
-function sendToWA() {
-  const nama = document.getElementById('nama').value;
-  const alamat = document.getElementById('alamat').value;
-  const sewa = document.getElementById('sewa').value;
-  const text = `Halo! Saya ingin menyewa alat.\nNama: ${nama}\nAlamat: ${alamat}\nPilihan: ${sewa}`;
-  const url = `https://wa.me/6289671172929?text=${encodeURIComponent(text)}`;
-  window.open(url, '_blank');
-  return false;
-}
