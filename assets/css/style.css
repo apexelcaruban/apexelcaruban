@@ -920,21 +920,44 @@ textarea.input-field {
  */
 @media (max-width: 550px) {
   .stats-card .h2.card-title {
-    font-size: 1.5rem; /* Mengurangi ukuran font untuk angka di mobile */
+    font-size: 1.2rem; /* Lebih kecil dari sebelumnya (1.5rem) */
   }
 
   .stats-card .card-title strong {
-    font-size: 0.9rem; /* Mengurangi ukuran teks di bawah angka (Years of Experience, dll) */
+    font-size: 0.8rem; /* Lebih kecil dari sebelumnya (0.9rem) */
   }
 
   .stats-card {
-    padding: 15px; /* Mengurangi padding stats-card agar lebih kompak di mobile */
-    gap: 5px; /* Mengurangi jarak antara ikon dan teks */
+    padding: 10px; /* Lebih kecil dari sebelumnya (15px) */
+    gap: 5px;
   }
 
   .stats-card .card-icon {
-    width: 50px; /* Mengurangi ukuran ikon agar proporsional */
-    height: 50px;
+    width: 40px; /* Lebih kecil dari sebelumnya (50px) */
+    height: 40px;
+  }
+}
+
+/**
+ * responsive for smaller than 375px screen (extra kecil seperti iPhone SE)
+ */
+@media (max-width: 375px) {
+  .stats-card .h2.card-title {
+    font-size: 1rem; /* Lebih kecil lagi untuk layar sangat kecil */
+  }
+
+  .stats-card .card-title strong {
+    font-size: 0.75rem; /* Lebih kecil lagi */
+  }
+
+  .stats-card {
+    padding: 8px; /* Lebih kompak */
+    gap: 3px;
+  }
+
+  .stats-card .card-icon {
+    width: 35px; /* Lebih kecil lagi */
+    height: 35px;
   }
 }
 
