@@ -1237,8 +1237,3 @@ textarea.input-field {
   color: var(--color-primary);
   box-shadow: var(--shadow-1);
 }
-
-.btn-group .btn ion-icon {
-  font-size: 24px; /* Ukuran ikon */
-  vertical-align: middle;
-}
