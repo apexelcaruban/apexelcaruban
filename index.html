@@ -1,374 +1,249 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apexel Caruban</title>
-
-  <!-- favicon -->
-  <link rel="shortcut icon" href="./ikon.svg" type="image/svg+xml">
-
-  <!-- custom css link -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-
-  <!-- google font link -->
+  <meta name="description" content="Apexel Caruban - Sewa lensa dan alat outdoor berkualitas di Madiun. Pesan sekarang untuk petualanganmu!">
+  <meta name="keywords" content="Apexel Caruban, sewa alat outdoor, sewa lensa, Madiun, peralatan piknik">
+  <meta name="author" content="Apexel Caruban">
+  <title>Apexel Caruban - Sewa Lensa & Alat Outdoor</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&family=Saira+Stencil+One&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="./assets/images/favicon.svg" type="image/svg+xml">
 </head>
-
-<body id="top" class="light_theme">
-
-  <!-- #HEADER -->
+<body id="top">
+  <!-- Header -->
   <header class="header" data-header>
     <div class="container">
-      <h1 class="h1 logo">
-        <a href="#">Apexel<span>.</span></a>
+      <h1 class="logo">
+        <a href="#home">Apexel<span>.</span></a>
       </h1>
-
-      <div class="navbar-actions">
-        <select name="language" id="lang">
-          <option value="en">En</option>
-          <option value="ar">Ar</option>
-        </select>
-        <button class="theme-btn" aria-label="Change Theme" title="Change Theme" data-theme-btn>
-          <span class="icon"></span>
-        </button>
-      </div>
-
-      <button class="nav-toggle-btn" aria-label="Toggle Menu" title="Toggle Menu" data-nav-toggle-btn>
-        <span class="one"></span>
-        <span class="two"></span>
-        <span class="three"></span>
-      </button>
-
       <nav class="navbar" data-navbar>
         <ul class="navbar-list">
-          <li>
-            <a href="#home" class="navbar-link">Home.</a>
-          </li>
-          <li>
-            <a href="#about" class="navbar-link">About.</a>
-          </li>
-          <li>
-            <a href="#skills" class="navbar-link">Skills.</a>
-          </li>
-          <li>
-            <a href="#portfolio" class="navbar-link">Portfolio.</a>
-          </li>
-          <li>
-            <a href="#contact" class="navbar-link">Contact.</a>
-          </li>
+          <li><a href="#home" class="navbar-link">Beranda</a></li>
+          <li><a href="#products" class="navbar-link">Produk</a></li>
+          <li><a href="#gallery" class="navbar-link">Galeri</a></li>
+          <li><a href="#contact" class="navbar-link">Kontak</a></li>
         </ul>
       </nav>
+      <button class="nav-toggle-btn" aria-label="Toggle Menu" data-nav-toggle-btn>
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
+  <!-- Main Content -->
   <main>
-    <article class="container">
-
-      <!-- #HERO -->
-      <section class="hero" id="home">
-        <figure class="hero-banner">
-          <picture>
-            <source srcset="./assets/images/hero-banner.png" media="(min-width: 768px)">
-            <source srcset="./assets/images/hero-banner-md.png" media="(min-width: 500px)">
-            <img src="./assets/images/hero-banner-sm.png" alt="A man in a blue shirt with a happy expression" class="w-100">
-          </picture>
-        </figure>
-        <div class="hero-content">
-          <h2 class="h2 hero-title">Picnic Jadi Makin Aesthetic</h2>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content animate-on-scroll" data-animation="slide-up">
+          <h2 class="h2 hero-title">Picnik Jadi Makin Aesthetic</h2>
+          <p>Sewa lensa dan alat outdoor untuk petualangan tak terlupakan!</p>
           <a href="#contact" class="btn btn-primary">Sewa Sekarang</a>
         </div>
-<ul class="hero-social-list">
-  <li>
-    <a href="https://www.facebook.com/profile.php?id=61561300013679" class="hero-social-link" target="_blank">
-      <ion-icon name="logo-facebook"></ion-icon>
-      <div class="tooltip">Facebook</div>
-    </a>
-  </li>
-  <li>
-    <a href="https://wa.me/6289671172929?text=hallo" class="hero-social-link" target="_blank">
-      <ion-icon name="logo-whatsapp"></ion-icon>
-      <div class="tooltip">WhatsApp</div>
-    </a>
-  </li>
-  <li>
-    <a href="https://www.instagram.com/apexel.caruban" class="hero-social-link" target="_blank">
-      <ion-icon name="logo-instagram"></ion-icon>
-      <div class="tooltip">Instagram</div>
-    </a>
-  </li>
-  <li>
-    <a href="https://www.tiktok.com/@apexel.caruban" class="hero-social-link" target="_blank">
-      <ion-icon name="logo-tiktok"></ion-icon>
-      <div class="tooltip">TikTok</div>
-    </a>
-  </li>
-</ul>
-        <div class="scroll-indicator">
-          <div class="arrow-down"></div>
-        </div>
-      </section>
-
-      <!-- #ABOUT -->
-      <section class="about" id="about">
-        <div class="about-content section-content">
-          <p class="section-subtitle">Apexel Caruban</p>
-          <h2 class="h3 section-title">Sewa Lensa & Alat Outdoor</h2>
-          <p class="section-text">
-            Selamat datang di Apexel Caruban! Kami menyediakan penyewaan lensa Apexel dan alat outdoor berkualitas tinggi di Kabupaten Madiun untuk membantu Anda mengeksplorasi keindahan alam dengan perspektif baru, menjadikan setiap momen lebih indah dan tak terlupakan.
-          </p>
-      </section>
-
-      <!-- #SKILLS -->
-      <section class="skills" id="skills">
-        <div class="skills-content section-content">
-          <p class="section-subtitle">Produk Kami</p>
-          <h2 class="h3 section-title">Daftar Alat yang Tersedia</h2>
-          <div class="product-grid">
-            <div class="product-item">Lensa Apexel</div>
-            <div class="product-item">Remote Bluetooth</div>
-            <div class="product-item">Tripod</div>
-            <div class="product-item">Kursi Lipat</div>
-            <div class="product-item">Meja Lipat</div>
-            <div class="product-item">Tikar Piknik</div>
-            <div class="product-item">Kompor Portable</div>
-            <div class="product-item">Keranjang Piknik</div>
-            <div class="product-item">Topi & Kacamata</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- #PROJECTS -->
-      <section class="project" id="portfolio">
-        <ul class="project-list">
+        <ul class="hero-social-list">
           <li>
-            <div class="project-content section-content">
-              <p class="section-subtitle">Katalog</p>
-              <h2 class="h3 section-title">Detail produk Apexel Caruban!</h2>
-              <p class="section-text">
-                Kami berusaha memberikan kualitas produk yang baik serta pelayanan sewa yang profesional.
-                Dan tentunya dengan harga yang terjangkau!
-              </p>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="project-card">
-              <figure class="card-banner">
-                <img src="./assets/images/project-1.png" class="w-100" alt="A macintosh on a yellow background.">
-              </figure>
-              <div class="card-content">
-                <h3 class="h4 card-title">Lensa Apexel</h3>
-                <time class="publish-date" datetime="2025-04">April 2025</time>
-              </div>
+            <a href="https://www.facebook.com/profile.php?id=61561300013679" class="hero-social-link" target="_blank">
+              <ion-icon name="logo-facebook"></ion-icon>
+              <div class="tooltip">Facebook</div>
             </a>
           </li>
           <li>
-            <a href="#" class="project-card">
-              <figure class="card-banner">
-                <img src="./assets/images/project-2.png" class="w-100" alt="On a Blue background, a Wacom and a mouse.">
-              </figure>
-              <div class="card-content">
-                <h3 class="h4 card-title">Kursi Lipat</h3>
-                <time class="publish-date" datetime="2025-04">April 2025</time>
-              </div>
+            <a href="https://wa.me/6289671172929?text=Halo" class="hero-social-link" target="_blank">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+              <div class="tooltip">WhatsApp</div>
             </a>
           </li>
           <li>
-            <a href="#" class="project-card">
-              <figure class="card-banner">
-                <img src="./assets/images/project-3.png" class="w-100" alt="A Cassette tape on a mellow apricot background.">
-              </figure>
-              <div class="card-content">
-                <h3 class="h4 card-title">Meja Lipat</h3>
-                <time class="publish-date" datetime="2025-04">April 2025</time>
-              </div>
+            <a href="https://www.instagram.com/apexel.caruban" class="hero-social-link" target="_blank">
+              <ion-icon name="logo-instagram"></ion-icon>
+              <div class="tooltip">Instagram</div>
             </a>
           </li>
           <li>
-            <a href="#" class="project-card">
-              <figure class="card-banner">
-                <img src="./assets/images/project-4.png" class="w-100" alt="Blue digital watch on a dark liver background.">
-              </figure>
-              <div class="card-content">
-                <h3 class="h4 card-title">Tripod</h3>
-                <time class="publish-date" datetime="2025-04">April 2025</time>
-              </div>
+            <a href="https://www.tiktok.com/@apexel.caruban" class="hero-social-link" target="_blank">
+              <ion-icon name="logo-tiktok"></ion-icon>
+              <div class="tooltip">TikTok</div>
             </a>
-          </li>
-          <li>
-            <a href="#" class="project-card">
-              <figure class="card-banner">
-                <img src="./assets/images/project-5.png" class="w-100" alt="On a dark liver background, Airport luggage car carrying a luggage.">
-              </figure>
-              <div class="card-content">
-                <h3 class="h4 card-title">Kompor Portable</h3>
-                <time class="publish-date" datetime="2025-04">April 2025</time>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="project-card">
-              <figure class="card-banner">
-                <img src="./assets/images/project-6.png" class="w-100" alt="On a yellow background, a digital watch and a glass.">
-              </figure>
-              <div class="card-content">
-                <h3 class="h4 card-title">Keranjang Piknik</h3>
-                <time class="publish-date" datetime="2025-04">April 2025</time>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="project-card">
-              <figure class="card-banner">
-                <img src="./assets/images/project-7.png" class="w-100" alt="A fujifilm instant camera on a dark electric blue background.">
-              </figure>
-              <div class="card-content">
-                <h3 class="h4 card-title">Tikar Piknik</h3>
-                <time class="publish-date" datetime="2025-04">April 2025</time>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="https://wa.me/c/6289671172929" class="load-more" target="_blank">Selengkapnya</a>
           </li>
         </ul>
-      </section>
+      </div>
+    </section>
 
-      <!-- #CONTACT -->
-      <section class="contact" id="contact">
-        <div class="contact-content section-content">
-          <p class="section-subtitle">Contact</p>
-          <h2 class="h3 section-title">Berminat untuk sewa di tempat kami?</h2>
-          <p class="section-text">
-            Informasi lebih lanjut hubungi kontak di bawah yaa!
-          </p>
-          <ul class="contact-list">
-            <li class="contact-list-item">
-              <div class="contact-item-icon">
-                <ion-icon name="location-outline"></ion-icon>
-              </div>
-              <div class="wrapper">
-                <h3 class="h4 contact-item-title">Lokasi:</h3>
-                <address class="contact-info"><a href="https://maps.app.goo.gl/3xutwkxrtYY6C38r6" target="_blank">Desa Tulung Kec Saradan Kab Madiun</a></address>
-              </div>
-            </li>
-            <li class="contact-list-item">
-              <div class="contact-item-icon">
-                <ion-icon name="call-outline"></ion-icon>
-              </div>
-              <div class="wrapper">
-                <h3 class="h4 contact-item-title">Whatsapp:</h3>
-                <a href="https://wa.me/6289671172929" class="contact-info" target="_blank">089671172929</a>
-              </div>
-            </li>
-            <li class="contact-list-item">
-              <div class="contact-item-icon">
-                <ion-icon name="mail-outline"></ion-icon>
-              </div>
-              <div class="wrapper">
-                <h3 class="h4 contact-item-title">Email:</h3>
-                <a href="mailto:cs@apexelcaruban.my.id" class="contact-info">cs@apexelcaruban.my.id</a>
-                <a href="mailto:support@apexelcaruban.my.id" class="contact-info">support@apexelcaruban.my.id</a>
-              </div>
-            </li>
-            <li class="contact-list-item">
-              <ul class="contact-social-list">
-                <li>
-                  <a href="https://www.facebook.com/profile.php?id=61561300013679" class="contact-social-link" target="_blank">
-                    <div class="tooltip">Facebook</div>
-                    <ion-icon name="logo-facebook"></ion-icon>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.instagram.com/apexel.caruban" class="contact-social-link" target="_blank">
-                    <div class="tooltip">Instagram</div>
-                    <ion-icon name="logo-instagram"></ion-icon>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.tiktok.com/@apexel.caruban" class="contact-social-link" target="_blank">
-                    <div class="tooltip">TikTok</div>
-                    <ion-icon name="logo-tiktok"></ion-icon>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://wa.me/6289671172929" class="contact-social-link" target="_blank">
-                    <div class="tooltip">Whatsapp</div>
-                    <ion-icon name="logo-whatsapp"></ion-icon>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+    <!-- Products Section -->
+    <section class="products" id="products">
+      <div class="container">
+        <p class="section-subtitle animate-on-scroll" data-animation="fade-in">Produk Kami</p>
+        <h2 class="h3 section-title animate-on-scroll" data-animation="slide-up">Daftar Alat yang Tersedia</h2>
+        <div class="product-grid">
+          <div class="product-item animate-on-scroll" data-animation="scale-up">Lensa Apexel</div>
+          <div class="product-item animate-on-scroll" data-animation="scale-up">Remote Bluetooth</div>
+          <div class="product-item animate-on-scroll" data-animation="scale-up">Tripod</div>
+          <div class="product-item animate-on-scroll" data-animation="scale-up">Kursi Lipat</div>
+          <div class="product-item animate-on-scroll" data-animation="scale-up">Meja Lipat</div>
+          <div class="product-item animate-on-scroll" data-animation="scale-up">Tikar Piknik</div>
+          <div class="product-item animate-on-scroll" data-animation="scale-up">Kompor Portable</div>
+          <div class="product-item animate-on-scroll" data-animation="scale-up">Keranjang Piknik</div>
+          <div class="product-item animate-on-scroll" data-animation="scale-up">Topi & Kacamata</div>
         </div>
-        <form onsubmit="return sendToWA()" class="contact-form">
-          <div class="form-wrapper">
-            <label for="nama" class="form-label">Nama</label>
-            <div class="input-wrapper">
-              <input type="text" id="nama" name="nama" required placeholder="Nama Anda" class="input-field">
-              <ion-icon name="person-circle"></ion-icon>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <p class="section-subtitle animate-on-scroll" data-animation="fade-in">Galeri</p>
+        <h2 class="h3 section-title animate-on-scroll" data-animation="slide-up">Detail Produk Apexel Caruban</h2>
+        <ul class="gallery-list">
+          <li class="gallery-item animate-on-scroll" data-animation="slide-up">
+            <figure class="card-banner">
+              <img src="./assets/images/project-1.png" class="w-100" alt="Lensa Apexel">
+            </figure>
+            <div class="card-content">
+              <h3 class="h4 card-title">Lensa Apexel</h3>
             </div>
-          </div>
-          <div class="form-wrapper">
-            <label for="alamat" class="form-label">Alamat</label>
-            <div class="input-wrapper">
-              <input type="text" id="alamat" name="alamat" required placeholder="Alamat Lengkap" class="input-field">
-              <ion-icon name="location"></ion-icon>
+          </li>
+          <li class="gallery-item animate-on-scroll" data-animation="slide-up">
+            <figure class="card-banner">
+              <img src="./assets/images/project-2.png" class="w-100" alt="Kursi Lipat">
+            </figure>
+            <div class="card-content">
+              <h3 class="h4 card-title">Kursi Lipat</h3>
             </div>
-          </div>
-          <div class="form-wrapper">
-            <label for="sewa" class="form-label">Pilihan Sewa</label>
-            <div class="input-wrapper">
-              <select id="sewa" name="sewa" required class="input-field">
-                <option value="">-- Pilih Alat --</option>
-                <option value="Lensa Apexel">Lensa Apexel</option>
-                <option value="Remote Bluetooth">Remote Bluetooth</option>
-                <option value="Tripod">Tripod</option>
-                <option value="Kursi Lipat">Kursi Lipat</option>
-                <option value="Meja Lipat">Meja Lipat</option>
-                <option value="Tikar Piknik">Tikar Piknik</option>
-                <option value="Kompor Portable">Kompor Portable</option>
-                <option value="Keranjang Piknik">Keranjang Piknik</option>
-                <option value="Topi & Kacamata">Topi & Kacamata</option>
-              </select>
-              <ion-icon name="cube"></ion-icon>
+          </li>
+          <li class="gallery-item animate-on-scroll" data-animation="slide-up">
+            <figure class="card-banner">
+              <img src="./assets/images/project-3.png" class="w-100" alt="Meja Lipat">
+            </figure>
+            <div class="card-content">
+              <h3 class="h4 card-title">Meja Lipat</h3>
             </div>
+          </li>
+          <li class="gallery-item animate-on-scroll" data-animation="slide-up">
+            <figure class="card-banner">
+              <img src="./assets/images/project-4.png" class="w-100" alt="Tripod">
+            </figure>
+            <div class="card-content">
+              <h3 class="h4 card-title">Tripod</h3>
+            </div>
+          </li>
+        </ul>
+        <a href="https://wa.me/c/6289671172929" class="load-more animate-on-scroll" data-animation="fade-in" target="_blank">Selengkapnya</a>
+      </div>
+      <div class="modal" id="gallery-modal">
+        <span class="modal-close">×</span>
+        <img class="modal-content" id="modal-img">
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <p class="section-subtitle animate-on-scroll" data-animation="fade-in">Kontak</p>
+        <h2 class="h3 section-title animate-on-scroll" data-animation="slide-up">Berminat untuk Sewa?</h2>
+        <div class="contact-grid">
+          <div class="contact-content animate-on-scroll" data-animation="slide-up">
+            <ul class="contact-list">
+              <li class="contact-list-item">
+                <div class="contact-item-icon"><ion-icon name="location-outline"></ion-icon></div>
+                <div class="wrapper">
+                  <h3 class="h4 contact-item-title">Lokasi:</h3>
+                  <address class="contact-info"><a href="https://maps.app.goo.gl/3xutwkxrtYY6C38r6" target="_blank">Desa Tulung, Kec Saradan, Kab Madiun</a></address>
+                </div>
+              </li>
+              <li class="contact-list-item">
+                <div class="contact-item-icon"><ion-icon name="call-outline"></ion-icon></div>
+                <div class="wrapper">
+                  <h3 class="h4 contact-item-title">WhatsApp:</h3>
+                  <a href="https://wa.me/6289671172929" class="contact-info" target="_blank">089671172929</a>
+                </div>
+              </li>
+              <li class="contact-list-item">
+                <div class="contact-item-icon"><ion-icon name="mail-outline"></ion-icon></div>
+                <div class="wrapper">
+                  <h3 class="h4 contact-item-title">Email:</h3>
+                  <a href="mailto:info@apexelcaruban.com" class="contact-info">info@apexelcaruban.com</a>
+                </div>
+              </li>
+              <li class="contact-list-item">
+                <ul class="contact-social-list">
+                  <li><a href="https://www.facebook.com/profile.php?id=61561300013679" class="contact-social-link" target="_blank"><ion-icon name="logo-facebook"></ion-icon><div class="tooltip">Facebook</div></a></li>
+                  <li><a href="https://www.instagram.com/apexel.caruban" class="contact-social-link" target="_blank"><ion-icon name="logo-instagram"></ion-icon><div class="tooltip">Instagram</div></a></li>
+                  <li><a href="https://www.tiktok.com/@apexel.caruban" class="contact-social-link" target="_blank"><ion-icon name="logo-tiktok"></ion-icon><div class="tooltip">TikTok</div></a></li>
+                  <li><a href="https://wa.me/6289671172929" class="contact-social-link" target="_blank"><ion-icon name="logo-whatsapp"></ion-icon><div class="tooltip">WhatsApp</div></a></li>
+                </ul>
+              </li>
+            </ul>
           </div>
-          <button type="submit" class="btn btn-primary">Kirim via WhatsApp</button>
-        </form>
-      </section>
-    </article>
+          <form onsubmit="return sendToWA()" class="contact-form animate-on-scroll" data-animation="slide-up">
+            <div class="form-wrapper">
+              <label for="nama" class="form-label">Nama</label>
+              <div class="input-wrapper">
+                <input type="text" id="nama" name="nama" required placeholder="Nama Anda" class="input-field">
+                <ion-icon name="person-circle"></ion-icon>
+              </div>
+            </div>
+            <div class="form-wrapper">
+              <label for="alamat" class="form-label">Alamat</label>
+              <div class="input-wrapper">
+                <input type="text" id="alamat" name="alamat" required placeholder="Alamat Lengkap" class="input-field">
+                <ion-icon name="location"></ion-icon>
+              </div>
+            </div>
+            <div class="form-wrapper">
+              <label for="sewa" class="form-label">Pilihan Sewa</label>
+              <div class="input-wrapper">
+                <select id="sewa" name="sewa" required class="input-field">
+                  <option value="">-- Pilih Alat --</option>
+                  <option value="Lensa Apexel">Lensa Apexel</option>
+                  <option value="Remote Bluetooth">Remote Bluetooth</option>
+                  <option value="Tripod">Tripod</option>
+                  <option value="Kursi Lipat">Kursi Lipat</option>
+                  <option value="Meja Lipat">Meja Lipat</option>
+                  <option value="Tikar Piknik">Tikar Piknik</option>
+                  <option value="Kompor Portable">Kompor Portable</option>
+                  <option value="Keranjang Piknik">Keranjang Piknik</option>
+                  <option value="Topi & Kacamata">Topi & Kacamata</option>
+                </select>
+                <ion-icon name="cube"></ion-icon>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Kirim via WhatsApp</button>
+            <p class="form-message"></p>
+          </form>
+        </div>
+        <div class="map animate-on-scroll" data-animation="fade-in">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.123456789!2d111.516789!3d-7.629876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMzcnNDcuNiJTIDExMcKwMzEnMDAuNCJF!5e0!3m2!1sen!2sid!4v1634567890123" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- #FOOTER -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p class="h1 logo">
-        <a href="#">Apexel<span>.</span></a>
-      </p>
-      <p class="copyright">
-        © 2025 <a href="#">apexelcaruban©</a>. All rights reserved
-      </p>
+      <p class="h1 logo"><a href="#">Apexel<span>.</span></a></p>
+      <p class="copyright">© 2025 <a href="#">Apexel Caruban</a>. Hak cipta dilindungi.</p>
+      <ul class="footer-social-list">
+        <li><a href="https://www.facebook.com/profile.php?id=61561300013679" class="contact-social-link" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a></li>
+        <li><a href="https://www.instagram.com/apexel.caruban" class="contact-social-link" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a></li>
+        <li><a href="https://www.tiktok.com/@apexel.caruban" class="contact-social-link" target="_blank"><ion-icon name="logo-tiktok"></ion-icon></a></li>
+        <li><a href="https://wa.me/6289671172929" class="contact-social-link" target="_blank"><ion-icon name="logo-whatsapp"></ion-icon></a></li>
+      </ul>
     </div>
   </footer>
 
-  <!-- #GO TO TOP -->
-  <a href="#top" class="go-top" data-go-top title="Go to Top">
+  <!-- Go to Top -->
+  <a href="#top" class="go-top" data-go-top title="Kembali ke Atas">
     <ion-icon name="arrow-up"></ion-icon>
   </a>
 
-  <!-- custom js link -->
-  <script src="./assets/js/script.js"></script>
-
-  <!-- ionicon link -->
+  <!-- Scripts -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
