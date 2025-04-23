@@ -19,7 +19,12 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&family=Saira+Stencil+One&display=swap"
     rel="stylesheet">
+
+  <!-- ANIMASI SCROLL & CSS WOW -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 </head>
+
 
 <body id="top" class="light_theme">
 
@@ -81,7 +86,7 @@
           </picture>
         </figure>
         <div class="hero-content">
-          <h2 class="h2 hero-title">Picnic Jadi Makin Aesthetic</h2>
+          <h2 class="h2 hero-title wow animate__animated animate__fadeInUp">Picnic Jadi Makin Aesthetic</h2>
           <a href="#contact" class="btn btn-primary">Sewa Sekarang</a>
         </div>
 <ul class="hero-social-list">
@@ -131,15 +136,15 @@
           <p class="section-subtitle">Produk Kami</p>
           <h2 class="h3 section-title">Daftar Alat yang Tersedia</h2>
           <div class="product-grid">
-            <div class="product-item">Lensa Apexel</div>
-            <div class="product-item">Remote Bluetooth</div>
-            <div class="product-item">Tripod</div>
-            <div class="product-item">Kursi Lipat</div>
-            <div class="product-item">Meja Lipat</div>
-            <div class="product-item">Tikar Piknik</div>
-            <div class="product-item">Kompor Portable</div>
-            <div class="product-item">Keranjang Piknik</div>
-            <div class="product-item">Topi & Kacamata</div>
+            <div class="product-item wow animate__animated animate__zoomIn">Lensa Apexel</div>
+            <div class="product-item wow animate__animated animate__zoomIn">Remote Bluetooth</div>
+            <div class="product-item wow animate__animated animate__zoomIn">Tripod</div>
+            <div class="product-item wow animate__animated animate__zoomIn">Kursi Lipat</div>
+            <div class="product-item wow animate__animated animate__zoomIn">Meja Lipat</div>
+            <div class="product-item wow animate__animated animate__zoomIn">Tikar Piknik</div>
+            <div class="product-item wow animate__animated animate__zoomIn">Kompor Portable</div>
+            <div class="product-item wow animate__animated animate__zoomIn">Keranjang Piknik</div>
+            <div class="product-item wow animate__animated animate__zoomIn">Topi & Kacamata</div>
           </div>
         </div>
       </section>
@@ -370,5 +375,25 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
+
+  <!-- TOMBOL BACK TO TOP -->
+  <a href="#" class="back-to-top" id="backToTop"><ion-icon name="arrow-up-outline"></ion-icon></a>
+
+  <script>
+    new WOW().init();
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 300) {
+        backToTop.style.display = "grid";
+      } else {
+        backToTop.style.display = "none";
+      }
+    });
+    backToTop.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
 </body>
+
 </html>
