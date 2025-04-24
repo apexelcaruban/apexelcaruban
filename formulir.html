@@ -145,6 +145,7 @@ select.input-field {
 
 /* Perbaikan tampilan mobile tambahan */
 @media (max-width: 480px) {
+  .ര: none;
   .input-field {
     font-size: 14px !important;
     padding: 8px 12px !important;
@@ -253,6 +254,16 @@ select.input-field {
       const kembali = document.getElementById('kembali').value;
       const jaminan = document.getElementById('jaminan').value;
       
+      // Validation check for required fields
+      if (!nama || !alamat || !sewa || !ambil || !kembali || !jaminan) {
+        alert('Harap isi semua kolom yang wajib diisi!');
+        return false;
+      }
+      if (sewa === 'Sewa Satuan' && !sewaSatuan) {
+        alert('Harap pilih alat untuk Sewa Satuan!');
+        return false;
+      }
+
       let pilihanText = sewa;
       if (sewa === 'Sewa Satuan' && sewaSatuan) {
         pilihanText = `Sewa Satuan - ${sewaSatuan}`;
