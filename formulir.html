@@ -195,6 +195,12 @@ select.input-field {
       </select>
     </div>
 
+    <div class="form-wrapper">
+      <label for="lama-sewa" class="form-label">Lama Sewa</label>
+      <input type="text" id="lama-sewa" name="lama-sewa" class="input-field" required placeholder="Masukkan lama sewa">
+      <span class="example-text">Contoh: 1 hari, 2 hari</span>
+    </div>
+
     <div class="form-wrapper" id="sewa-satuan-wrapper" style="display: none;">
       <label for="sewa-satuan" class="form-label">Pilih Alat</label>
       <select id="sewa-satuan" name="sewa-satuan" class="input-field">
@@ -224,9 +230,7 @@ select.input-field {
     </div>
 
     <div class="form-wrapper">
-      <label for="
-
-jaminan" class="form-label">Jaminan</label>
+      <label for="jaminan" class="form-label">Jaminan</label>
       <input type="text" id="jaminan" name="jaminan" class="input-field" required placeholder="Masukkan jaminan">
       <span class="example-text">Contoh: KTP, SIM, KTA</span>
     </div>
@@ -253,6 +257,7 @@ jaminan" class="form-label">Jaminan</label>
       const nama = document.getElementById('nama').value.trim();
       const alamat = document.getElementById('alamat').value.trim();
       const sewa = document.getElementById('sewa').value;
+      const lamaSewa = document.getElementById('lama-sewa').value.trim();
       const sewaSatuan = document.getElementById('sewa-satuan').value;
       const ambil = document.getElementById('ambil').value.trim();
       const kembali = document.getElementById('kembali').value.trim();
@@ -269,6 +274,10 @@ jaminan" class="form-label">Jaminan</label>
       }
       if (!sewa) {
         alert('Harap pilih Pilihan Sewa!');
+        return false;
+      }
+      if (!lamaSewa) {
+        alert('Harap isi kolom Lama Sewa!');
         return false;
       }
       if (sewa === 'Sewa Satuan' && !sewaSatuan) {
@@ -298,6 +307,7 @@ jaminan" class="form-label">Jaminan</label>
                    `• Nama: ${encodeURIComponent(nama)}%0A` +
                    `• Alamat: ${encodeURIComponent(alamat)}%0A` +
                    `• Pilihan Sewa: ${encodeURIComponent(pilihanText)}%0A` +
+                   `• Lama Sewa: ${encodeURIComponent(lamaSewa)}%0A` +
                    `• Tanggal & Jam Ambil: ${encodeURIComponent(ambil)}%0A` +
                    `• Tanggal & Jam Kembali: ${encodeURIComponent(kembali)}%0A` +
                    `• Jaminan: ${encodeURIComponent(jaminan)}%0A%0A` +
