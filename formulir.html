@@ -16,7 +16,7 @@
       margin: 0;
       padding: 20px;
     }
-    .contact-form {
+    .form-container {
       background: #fff;
       padding: 25px;
       border-radius: 10px;
@@ -24,13 +24,24 @@
       max-width: 500px;
       width: 100%;
       animation: fadeIn 1s;
+      text-align: center;
+    }
+    .form-container img {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+    .form-title {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #333;
     }
     .form-wrapper {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+      text-align: left;
     }
     .form-label {
       font-weight: bold;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       display: block;
     }
     .input-wrapper {
@@ -52,6 +63,7 @@
       border-radius: 6px;
       cursor: pointer;
       width: 100%;
+      margin-top: 15px;
     }
     .btn:hover {
       background-color: #e26f00;
@@ -59,47 +71,74 @@
   </style>
 </head>
 <body>
-  <form onsubmit="return sendToWA()" class="contact-form wow animate__animated animate__fadeInLeft">
-          <div class="form-wrapper">
-            <label for="nama" class="form-label wow animate__animated animate__fadeInLeft">Nama</label>
-            <div class="input-wrapper">
-              <input type="text" id="nama" name="nama" required placeholder="Nama Anda" class="input-field">
-              <ion-icon name="person-circle"></ion-icon>
-            </div>
-          </div>
-          <div class="form-wrapper">
-            <label for="alamat" class="form-label wow animate__animated animate__fadeInLeft">Alamat</label>
-            <div class="input-wrapper">
-              <input type="text" id="alamat" name="alamat" required placeholder="Alamat Lengkap" class="input-field">
-              <ion-icon name="location"></ion-icon>
-            </div>
-          </div>
-          <div class="form-wrapper">
-            <label for="sewa" class="form-label wow animate__animated animate__fadeInLeft">Pilihan Sewa</label>
-            <div class="input-wrapper">
-              <select id="sewa" name="sewa" required class="input-field">
-                <option value="">-- Pilih Alat --</option>
-                <option value="Lensa Apexel">Lensa Apexel</option>
-                <option value="Remote Bluetooth">Remote Bluetooth</option>
-                <option value="Tripod">Tripod</option>
-                <option value="Kursi Lipat">Kursi Lipat</option>
-                <option value="Meja Lipat">Meja Lipat</option>
-                <option value="Tikar Piknik">Tikar Piknik</option>
-                <option value="Kompor Portable">Kompor Portable</option>
-                <option value="Keranjang Piknik">Keranjang Piknik</option>
-                <option value="Topi & Kacamata">Topi & Kacamata</option>
-              </select>
-              <ion-icon name="cube"></ion-icon>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Kirim via WhatsApp</button>
-        </form>
+  <form onsubmit="return sendToWA()" class="form-container">
+    <img src="https://apexelcaruban.my.id/assets/images/logo.png" alt="Logo Apexel">
+    <div class="form-title">Formulir Sewa</div>
+    
+    <div class="form-wrapper">
+      <label for="nama" class="form-label">Nama</label>
+      <input type="text" id="nama" name="nama" class="input-field" required placeholder="Nama Lengkap">
+    </div>
+
+    <div class="form-wrapper">
+      <label for="alamat" class="form-label">Alamat</label>
+      <input type="text" id="alamat" name="alamat" class="input-field" required placeholder="Alamat Lengkap">
+    </div>
+
+    <div class="form-wrapper">
+      <label for="sewa" class="form-label">Pilihan Sewa</label>
+      <select id="sewa" name="sewa" class="input-field" required>
+        <option value="">-- Pilih Alat --</option>
+        <option value="Lensa Apexel">Lensa Apexel</option>
+        <option value="Remote Bluetooth">Remote Bluetooth</option>
+        <option value="Tripod">Tripod</option>
+        <option value="Kursi Lipat">Kursi Lipat</option>
+        <option value="Meja Lipat">Meja Lipat</option>
+        <option value="Tikar Piknik">Tikar Piknik</option>
+        <option value="Kompor Portable">Kompor Portable</option>
+        <option value="Keranjang Piknik">Keranjang Piknik</option>
+        <option value="Topi & Kacamata">Topi & Kacamata</option>
+      </select>
+    </div>
+
+    <div class="form-wrapper">
+      <label for="ambil" class="form-label">Tanggal & Jam Ambil</label>
+      <input type="datetime-local" id="ambil" name="ambil" class="input-field" required>
+    </div>
+
+    <div class="form-wrapper">
+      <label for="kembali" class="form-label">Tanggal & Jam Kembali</label>
+      <input type="datetime-local" id="kembali" name="kembali" class="input-field" required>
+    </div>
+
+    <div class="form-wrapper">
+      <label for="jaminan" class="form-label">Jaminan</label>
+      <select id="jaminan" name="jaminan" class="input-field" required>
+        <option value="">-- Pilih Jaminan --</option>
+        <option value="KTP">KTP</option>
+        <option value="SIM">SIM</option>
+        <option value="KTA">KTA</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn">Kirim via WhatsApp</button>
+  </form>
+
   <script>
     function sendToWA() {
       const nama = document.getElementById('nama').value;
       const alamat = document.getElementById('alamat').value;
       const sewa = document.getElementById('sewa').value;
-      const text = `Halo! Saya ingin menyewa alat.%0ANama: ${nama}%0AAlamat: ${alamat}%0APilihan: ${sewa}`;
+      const ambil = document.getElementById('ambil').value;
+      const kembali = document.getElementById('kembali').value;
+      const jaminan = document.getElementById('jaminan').value;
+      const text = `Halo! Saya ingin menyewa alat.%0A` +
+                   `Nama: ${nama}%0A` +
+                   `Alamat: ${alamat}%0A` +
+                   `Pilihan: ${sewa}%0A` +
+                   `Ambil: ${ambil}%0A` +
+                   `Kembali: ${kembali}%0A` +
+                   `Jaminan: ${jaminan}`;
       const url = `https://wa.me/6289671172929?text=${text}`;
       window.open(url, '_blank');
       return false;
