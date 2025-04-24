@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Sewa Apexel</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .contact-form {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+      animation: fadeIn 1s;
+    }
+    .form-wrapper {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .input-wrapper {
+      position: relative;
+    }
+    .input-field {
+      width: 100%;
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .btn {
+      background-color: #ff800f;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn:hover {
+      background-color: #e26f00;
+    }
+  </style>
+</head>
+<body>
+  <form onsubmit="return sendToWA()" class="contact-form wow animate__animated animate__fadeInLeft">
+          <div class="form-wrapper">
+            <label for="nama" class="form-label wow animate__animated animate__fadeInLeft">Nama</label>
+            <div class="input-wrapper">
+              <input type="text" id="nama" name="nama" required placeholder="Nama Anda" class="input-field">
+              <ion-icon name="person-circle"></ion-icon>
+            </div>
+          </div>
+          <div class="form-wrapper">
+            <label for="alamat" class="form-label wow animate__animated animate__fadeInLeft">Alamat</label>
+            <div class="input-wrapper">
+              <input type="text" id="alamat" name="alamat" required placeholder="Alamat Lengkap" class="input-field">
+              <ion-icon name="location"></ion-icon>
+            </div>
+          </div>
+          <div class="form-wrapper">
+            <label for="sewa" class="form-label wow animate__animated animate__fadeInLeft">Pilihan Sewa</label>
+            <div class="input-wrapper">
+              <select id="sewa" name="sewa" required class="input-field">
+                <option value="">-- Pilih Alat --</option>
+                <option value="Lensa Apexel">Lensa Apexel</option>
+                <option value="Remote Bluetooth">Remote Bluetooth</option>
+                <option value="Tripod">Tripod</option>
+                <option value="Kursi Lipat">Kursi Lipat</option>
+                <option value="Meja Lipat">Meja Lipat</option>
+                <option value="Tikar Piknik">Tikar Piknik</option>
+                <option value="Kompor Portable">Kompor Portable</option>
+                <option value="Keranjang Piknik">Keranjang Piknik</option>
+                <option value="Topi & Kacamata">Topi & Kacamata</option>
+              </select>
+              <ion-icon name="cube"></ion-icon>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Kirim via WhatsApp</button>
+        </form>
+  <script>
+    function sendToWA() {
+      const nama = document.getElementById('nama').value;
+      const alamat = document.getElementById('alamat').value;
+      const sewa = document.getElementById('sewa').value;
+      const text = `Halo! Saya ingin menyewa alat.%0ANama: ${nama}%0AAlamat: ${alamat}%0APilihan: ${sewa}`;
+      const url = `https://wa.me/6289671172929?text=${text}`;
+      window.open(url, '_blank');
+      return false;
+    }
+  </script>
+</body>
+</html>
