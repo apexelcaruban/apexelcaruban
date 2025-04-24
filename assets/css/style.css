@@ -1260,3 +1260,32 @@ textarea.input-field {
 .back-to-top:hover {
   background: var(--scarlet);
 }
+
+
+/* Fix for desktop section layout */
+
+@media (min-width: 992px) {
+  .section-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-subtitle {
+    position: relative;
+    transform: none;
+    top: auto;
+    left: auto;
+    margin-bottom: 10px;
+  }
+
+  .section-subtitle::after {
+    right: auto;
+    left: 0;
+  }
+
+  .section-title {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+}
