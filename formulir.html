@@ -85,6 +85,42 @@
   }
 }
 
+
+input.input-field,
+select.input-field,
+textarea.input-field {
+  box-sizing: border-box;
+  display: block;
+  margin-top: 4px;
+  font-size: 16px;
+}
+
+select.input-field {
+  appearance: none;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'10'%20height%3D'10'%20viewBox%3D'0%200%2010%2010'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M0%203l5%205%205-5z'%20fill%3D'%23333'%2F%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 10px;
+  padding-right: 30px;
+}
+
+/* Perbaikan tampilan mobile tambahan */
+@media (max-width: 480px) {
+  .input-field {
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+  }
+
+  .form-container {
+    padding: 15px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
 </style>
 </head>
 <body>
