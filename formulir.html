@@ -253,15 +253,25 @@ select.input-field {
       }
     }
 
+    function cleanInput(input) {
+      // Menghapus karakter bermasalah dan membatasi panjang
+      return input
+        .replace(/[\n\r%&+#]/g, ' ') // Ganti karakter bermasalah dengan spasi
+        .replace(/\s+/g, ' ') // Ganti spasi berulang dengan satu spasi
+        .trim()
+        .substring(0, 200); // Batasi panjang hingga 200 karakter
+    }
+
     function sendToWA() {
-      const nama = document.getElementById('nama').value.trim();
-      const alamat = document.getElementById('alamat').value.trim();
+      // Ambil dan bersihkan input
+      const nama = cleanInput(document.getElementById('nama').value.trim());
+      const alamat = cleanInput(document.getElementById('alamat').value.trim());
       const sewa = document.getElementById('sewa').value;
-      const lamaSewa = document.getElementById('lama-sewa').value.trim();
+      const lamaSewa = cleanInput(document.getElementById('lama-sewa').value.trim());
       const sewaSatuan = document.getElementById('sewa-satuan').value;
-      const ambil = document.getElementById('ambil').value.trim();
-      const kembali = document.getElementById('kembali').value.trim();
-      const jaminan = document.getElementById('jaminan').value.trim();
+      const ambil = cleanInput(document.getElementById('ambil').value.trim());
+      const kembali = cleanInput(document.getElementById('kembali').value.trim());
+      const jaminan = cleanInput(document.getElementById('jaminan').value.trim());
 
       // Validasi input
       if (!nama) {
@@ -297,6 +307,18 @@ select.input-field {
         return false;
       }
 
+      // Log input untuk debugging
+      console.log('Input values:', {
+        nama,
+        alamat,
+        sewa,
+        lamaSewa,
+        sewaSatuan,
+        ambil,
+        kembali,
+        jaminan
+      });
+
       let pilihanText = sewa;
       if (sewa === 'Sewa Satuan' && sewaSatuan) {
         pilihanText = `Sewa Satuan - ${sewaSatuan}`;
@@ -313,11 +335,18 @@ select.input-field {
                    `• Jaminan: ${encodeURIComponent(jaminan)}%0A%0A` +
                    `Terima kasih!`;
 
+      // Periksa panjang URL
+      const url = `https://wa.me/6289671172929?text=${text}`;
+      if (url.length > 2000) {
+        alert('Pesan terlalu panjang! Harap pendekkan input, misalnya alamat atau lama sewa.');
+        return false;
+      }
+
       // Log untuk debugging
       console.log('Pesan WhatsApp:', decodeURIComponent(text));
+      console.log('Panjang URL:', url.length);
 
       // Kirim ke WhatsApp
-      const url = `https://wa.me/6289671172929?text=${text}`;
       window.open(url, '_blank');
       return false;
     }
