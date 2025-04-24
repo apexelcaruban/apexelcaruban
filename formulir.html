@@ -1,10 +1,50 @@
-<!DOCTYPE html>
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulir Sewa Apexel</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -26,14 +66,12 @@
       animation: fadeIn 1s;
       text-align: center;
     }
-    .form-container img {
-      width: 100px;
-      margin-bottom: 10px;
-    }
     .form-title {
       font-size: 22px;
       margin-bottom: 20px;
       color: #333;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
     }
     .form-wrapper {
       margin-bottom: 15px;
@@ -125,7 +163,6 @@ select.input-field {
 </head>
 <body>
   <form onsubmit="return sendToWA()" class="form-container">
-    <img src="/ikon.svg" alt="Logo Apexel">
     <div class="form-title">Formulir Sewa</div>
     
     <div class="form-wrapper">
@@ -140,7 +177,22 @@ select.input-field {
 
     <div class="form-wrapper">
       <label for="sewa" class="form-label">Pilihan Sewa</label>
-      <select id="sewa" name="sewa" class="input-field" required>
+      <select id="sewa" name="sewa" class="input-field" required onchange="toggleSewaSatuan()">
+        <option value="">-- Pilih Paket --</option>
+        <option value="Paket A">Paket A</option>
+        <option value="Paket B">Paket B</option>
+        <option value="Paket C">Paket C</option>
+        <option value="Paket Lengkap">Paket Lengkap</option>
+        <option value="Paket 1">Paket 1</option>
+        <option value="Paket 2">Paket 2</option>
+        <option value="Paket 3">Paket 3</option>
+        <option value="Sewa Satuan">Sewa Satuan</option>
+      </select>
+    </div>
+
+    <div class="form-wrapper" id="sewa-satuan-wrapper" style="display: none;">
+      <label for="sewa-satuan" class="form-label">Pilih Alat</label>
+      <select id="sewa-satuan" name="sewa-satuan" class="input-field">
         <option value="">-- Pilih Alat --</option>
         <option value="Lensa Apexel">Lensa Apexel</option>
         <option value="Remote Bluetooth">Remote Bluetooth</option>
@@ -178,20 +230,42 @@ select.input-field {
   </form>
 
   <script>
+    function toggleSewaSatuan() {
+      const sewa = document.getElementById('sewa').value;
+      const sewaSatuanWrapper = document.getElementById('sewa-satuan-wrapper');
+      const sewaSatuan = document.getElementById('sewa-satuan');
+      if (sewa === 'Sewa Satuan') {
+        sewaSatuanWrapper.style.display = 'block';
+        sewaSatuan.setAttribute('required', 'required');
+      } else {
+        sewaSatuanWrapper.style.display = 'none';
+        sewaSatuan.removeAttribute('required');
+        sewaSatuan.value = '';
+      }
+    }
+
     function sendToWA() {
       const nama = document.getElementById('nama').value;
       const alamat = document.getElementById('alamat').value;
       const sewa = document.getElementById('sewa').value;
+      const sewaSatuan = document.getElementById('sewa-satuan').value;
       const ambil = document.getElementById('ambil').value;
       const kembali = document.getElementById('kembali').value;
       const jaminan = document.getElementById('jaminan').value;
-      const text = `Halo! Saya ingin menyewa alat.%0A` +
-                   `Nama: ${nama}%0A` +
-                   `Alamat: ${alamat}%0A` +
-                   `Pilihan: ${sewa}%0A` +
-                   `Ambil: ${ambil}%0A` +
-                   `Kembali: ${kembali}%0A` +
-                   `Jaminan: ${jaminan}`;
+      
+      let pilihanText = sewa;
+      if (sewa === 'Sewa Satuan' && sewaSatuan) {
+        pilihanText = `Sewa Satuan - ${sewaSatuan}`;
+      }
+
+      const text = `Halo! Saya ingin menyewa alat:%0A%0A` +
+                   `• Nama: ${nama}%0A` +
+                   `• Alamat: ${alamat}%0A` +
+                   `• Pilihan Sewa: ${pilihanText}%0A` +
+                   `• Tanggal & Jam Ambil: ${ambil}%0A` +
+                   `• Tanggal & Jam Kembali: ${kembali}%0A` +
+                   `• Jaminan: ${jaminan}%0A%0A` +
+                   `Terima kasih!`;
       const url = `https://wa.me/6289671172929?text=${text}`;
       window.open(url, '_blank');
       return false;
