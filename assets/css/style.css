@@ -1289,3 +1289,28 @@ textarea.input-field {
     margin-bottom: 20px;
   }
 }
+
+
+/* Additional final fixes */
+
+/* Fix: Remove text strikethrough if applied */
+.section-title, .section-subtitle {
+  text-decoration: none !important;
+}
+
+/* Fix: Product Grid in desktop */
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    justify-content: center;
+    align-items: start;
+  }
+}
+
+/* Fix: Center social icons in hero section on desktop */
+@media (min-width: 992px) {
+  .hero-social-list {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
