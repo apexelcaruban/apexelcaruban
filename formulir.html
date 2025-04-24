@@ -22,7 +22,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       max-width: 500px;
-      width: 100%;
+      width: 100%; max-width: 100%;
       animation: fadeIn 1s;
       text-align: center;
     }
@@ -48,7 +48,7 @@
       position: relative;
     }
     .input-field {
-      width: 100%;
+      width: 100%; max-width: 100%;
       padding: 10px 15px;
       border-radius: 8px;
       border: 1px solid #ccc;
@@ -62,17 +62,34 @@
       font-size: 16px;
       border-radius: 6px;
       cursor: pointer;
-      width: 100%;
+      width: 100%; max-width: 100%;
       margin-top: 15px;
     }
     .btn:hover {
       background-color: #e26f00;
     }
-  </style>
+  
+@media (max-width: 480px) {
+  .input-field {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .form-container {
+    padding: 15px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+</style>
 </head>
 <body>
   <form onsubmit="return sendToWA()" class="form-container">
-    <img src="https://apexelcaruban.my.id/assets/images/logo.png" alt="Logo Apexel">
+    <img src="/ikon.svg" alt="Logo Apexel">
     <div class="form-title">Formulir Sewa</div>
     
     <div class="form-wrapper">
