@@ -383,10 +383,10 @@
     });
   </script>
 
-<!-- WhatsApp Popup Chat -->
+<!-- Removed Popup Start -->
 <script>
   function openWhatsApp() {
-    window.open('https://wa.me/6289671172929?text=hallo', '_blank');
+    window.open('https://wa.me/6289671172929', '_blank');
   }
 </script>
 
@@ -395,7 +395,68 @@
     💬 Chat via WhatsApp
   </div>
 </div>
-<!-- End WhatsApp Popup Chat -->
+<!-- Removed Popup End -->
+
+
+<!-- WhatsApp Chat Box with Close Button -->
+<style>
+  #whatsapp-chat-box {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 16px;
+    display: none;
+    z-index: 1000;
+    max-width: 250px;
+    font-family: Arial, sans-serif;
+  }
+  #whatsapp-chat-box header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  #whatsapp-chat-box header span {
+    font-weight: bold;
+  }
+  #whatsapp-chat-box header button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  #whatsapp-chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+</style>
+
+<div id="whatsapp-chat-box">
+  <header>
+    <span>Chat via WhatsApp</span>
+    <button onclick="document.getElementById('whatsapp-chat-box').style.display='none'">✖</button>
+  </header>
+  <p>Hai! Ada yang bisa kami bantu?</p>
+  <a href="https://wa.me/6289671172929" target="_blank" style="color: white; background-color: #25D366; padding: 10px 15px; border-radius: 5px; text-decoration: none; display: inline-block;">Mulai Chat</a>
+</div>
+
+<div id="whatsapp-chat-button" onclick="document.getElementById('whatsapp-chat-box').style.display='block'">
+  💬
+</div>
+<!-- End WhatsApp Chat Box -->
 
 </body>
 
