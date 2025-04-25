@@ -23,6 +23,16 @@
   <!-- ANIMASI SCROLL & CSS WOW -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+<style>
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.btn-sewa {
+  animation: bounce 1.2s ease-in-out infinite;
+}
+</style>
 </head>
 
 
@@ -80,7 +90,7 @@
         </figure>
         <div class="hero-content">
           <h2 class="h2 hero-title wow animate__animated animate__fadeInLeft">Picnic Jadi Makin Aesthetic</h2>
-          <a href="#contact" class="btn btn-primary wow animate__animated animate__fadeInLeft">Sewa Sekarang</a>
+          <a href="#contact" class="btn btn-primary wow animate__animated animate__fadeInLeft btn-sewa">Sewa Sekarang</a>
         </div>
 <ul class="hero-social-list">
   <li>
@@ -449,7 +459,7 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #000000; /* tombol trigger warna hitam */
+    background-color: #25D366;
     color: white;
     padding: 12px 16px;
     border-radius: 50%;
@@ -471,14 +481,13 @@
     <button onclick="document.getElementById('whatsapp-chat-box').style.display='none'">×</button>
   </header>
   <p style="color: #555;">Hai! Ada yang bisa kami bantu?</p>
-  <a href="https://wa.me/6289671172929?text=Halo%2C%20saya%20mau%20tanya%20tentang%20pricelist" target="_blank" style="color: white; background-color: #000000; padding: 10px 15px; border-radius: 5px; text-decoration: none; display: inline-block;">Mulai Chat</a>
+  <a href="https://wa.me/6289671172929?text=Halo%2C%20saya%20mau%20tanya%20tentang%20pricelist" target="_blank" style="color: white; background-color: #25D366; padding: 10px 15px; border-radius: 5px; text-decoration: none; display: inline-block;">Mulai Chat</a>
 </div>
 
 <div id="whatsapp-chat-button" onclick="document.getElementById('whatsapp-chat-box').style.display='block'">
   💬
 </div>
 <!-- End WhatsApp Chat Box -->
-
 
 
 </body>
