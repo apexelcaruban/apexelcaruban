@@ -33,6 +33,32 @@
   animation: bounce 1.2s ease-in-out infinite;
 }
 </style>
+
+<style>
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(2deg); }
+  75% { transform: rotate(-2deg); }
+}
+@keyframes rotate {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Assign different animations */
+.ani-bounce { animation: bounce 1.5s ease-in-out infinite; }
+.ani-pulse { animation: pulse 2s ease-in-out infinite; }
+.ani-wiggle { animation: wiggle 1.8s ease-in-out infinite; }
+.ani-rotate { animation: rotate 3s linear infinite; }
+</style>
 </head>
 
 
@@ -46,12 +72,12 @@
       </h1>
 
       <div class="navbar-actions">
-        <button class="theme-btn" aria-label="Change Theme" title="Change Theme" data-theme-btn>
+        <button class="theme-btn ani-rotate" aria-label="Change Theme" title="Change Theme" data-theme-btn>
           <span class="icon"></span>
         </button>
       </div>
 
-      <button class="nav-toggle-btn" aria-label="Toggle Menu" title="Toggle Menu" data-nav-toggle-btn>
+      <button class="nav-toggle-btn ani-rotate" aria-label="Toggle Menu" title="Toggle Menu" data-nav-toggle-btn>
         <span class="one"></span>
         <span class="two"></span>
         <span class="three"></span>
@@ -90,7 +116,7 @@
         </figure>
         <div class="hero-content">
           <h2 class="h2 hero-title wow animate__animated animate__fadeInLeft">Picnic Jadi Makin Aesthetic</h2>
-          <a href="#contact" class="btn btn-primary wow animate__animated animate__fadeInLeft btn-sewa">Sewa Sekarang</a>
+          <a href="#contact" class="btn btn-primary wow animate__animated animate__fadeInLeft btn-sewa ani-bounce">Sewa Sekarang</a>
         </div>
 <ul class="hero-social-list">
   <li>
@@ -331,7 +357,7 @@
               <ion-icon name="cube"></ion-icon>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">Kirim via WhatsApp</button>
+          <button type="submit" class="btn btn-primary ani-rotate">Kirim via WhatsApp</button>
         </form>
       </section>
     </article>
@@ -484,7 +510,7 @@
   <a href="https://wa.me/6289671172929?text=Halo%2C%20saya%20mau%20tanya%20tentang%20pricelist" target="_blank" style="color: white; background-color: #25D366; padding: 10px 15px; border-radius: 5px; text-decoration: none; display: inline-block;">Mulai Chat</a>
 </div>
 
-<div id="whatsapp-chat-button" onclick="document.getElementById('whatsapp-chat-box').style.display='block'">
+<div id="whatsapp-chat-button" class="ani-wiggle" onclick="document.getElementById('whatsapp-chat-box').style.display='block'">
   💬
 </div>
 <!-- End WhatsApp Chat Box -->
