@@ -389,6 +389,10 @@
 <!-- Removed Popup End -->
 
 
+
+
+
+
 <!-- WhatsApp Chat Box with Close Button -->
 <style>
   #whatsapp-chat-box {
@@ -398,28 +402,49 @@
     background-color: #ffffff;
     border: 1px solid #ccc;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
     padding: 16px;
     display: none;
     z-index: 1000;
-    max-width: 250px;
-    font-family: Arial, sans-serif;
+    max-width: 260px;
+    font-family: 'Segoe UI', sans-serif;
+    animation: fadeIn 0.3s ease;
   }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   #whatsapp-chat-box header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
   }
+
   #whatsapp-chat-box header span {
     font-weight: bold;
+    color: #444;
   }
+
   #whatsapp-chat-box header button {
-    background: none;
+    background-color: #ff4d4f;
     border: none;
-    font-size: 16px;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    line-height: 24px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
   }
+
+  #whatsapp-chat-box header button:hover {
+    background-color: #d9363e;
+  }
+
   #whatsapp-chat-button {
     position: fixed;
     bottom: 20px;
@@ -431,23 +456,29 @@
     font-size: 24px;
     cursor: pointer;
     z-index: 1001;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease;
+  }
+
+  #whatsapp-chat-button:hover {
+    transform: scale(1.1);
   }
 </style>
 
 <div id="whatsapp-chat-box">
   <header>
     <span>Chat via WhatsApp</span>
-    <button onclick="document.getElementById('whatsapp-chat-box').style.display='none'">✖</button>
+    <button onclick="document.getElementById('whatsapp-chat-box').style.display='none'">×</button>
   </header>
-  <p>Hai! Ada yang bisa kami bantu?</p>
-  
+  <p style="color: #555;">Hai! Ada yang bisa kami bantu?</p>
+  <a href="https://wa.me/6289671172929?text=Halo%2C%20saya%20mau%20tanya%20tentang%20pricelist" target="_blank" style="color: white; background-color: #25D366; padding: 10px 15px; border-radius: 5px; text-decoration: none; display: inline-block;">Mulai Chat</a>
 </div>
 
 <div id="whatsapp-chat-button" onclick="document.getElementById('whatsapp-chat-box').style.display='block'">
   💬
 </div>
 <!-- End WhatsApp Chat Box -->
+
 
 </body>
 
