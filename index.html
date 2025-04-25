@@ -382,6 +382,21 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   </script>
+
+<!-- WhatsApp Popup Chat -->
+<script>
+  function openWhatsApp() {
+    window.open('https://wa.me/6289671172929', '_blank');
+  }
+</script>
+
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+  <div onclick="openWhatsApp()" style="background-color: #25D366; color: white; padding: 12px 16px; border-radius: 30px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family: Arial, sans-serif;">
+    💬 Chat via WhatsApp
+  </div>
+</div>
+<!-- End WhatsApp Popup Chat -->
+
 </body>
 
 </html>
