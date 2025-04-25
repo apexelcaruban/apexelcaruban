@@ -24,38 +24,33 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 
-<style>
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-.btn-sewa {
-  animation: bounce 1.2s ease-in-out infinite;
-}
-</style>
+
+
 
 <style>
+
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
 }
+
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
+  50% { transform: scale(1.05); }
 }
+
 @keyframes wiggle {
-  0%, 100% { transform: rotate(0); }
-  25% { transform: rotate(2deg); }
-  75% { transform: rotate(-2deg); }
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(3deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
 }
 
-  100% { transform: rotate(360deg); }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
-/* Assign different animations */
-.ani-bounce { animation: bounce 1.5s ease-in-out infinite; }
-.ani-pulse { animation: pulse 2s ease-in-out infinite; }
-.ani-wiggle { animation: wiggle 1.8s ease-in-out infinite; }
 
 </style>
 </head>
@@ -429,76 +424,7 @@
 
 
 <!-- WhatsApp Chat Box with Close Button -->
-<style>
-  #whatsapp-chat-box {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-    padding: 16px;
-    display: none;
-    z-index: 1000;
-    max-width: 260px;
-    font-family: 'Segoe UI', sans-serif;
-    animation: fadeIn 0.3s ease;
-  }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  #whatsapp-chat-box header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-
-  #whatsapp-chat-box header span {
-    font-weight: bold;
-    color: #444;
-  }
-
-  #whatsapp-chat-box header button {
-    background-color: #ff4d4f;
-    border: none;
-    color: white;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    font-size: 14px;
-    line-height: 24px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  #whatsapp-chat-box header button:hover {
-    background-color: #d9363e;
-  }
-
-  #whatsapp-chat-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25D366;
-    color: white;
-    padding: 12px 16px;
-    border-radius: 50%;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1001;
-    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
-    transition: transform 0.2s ease;
-  }
-
-  #whatsapp-chat-button:hover {
-    transform: scale(1.1);
-  }
-</style>
 
 <div id="whatsapp-chat-box">
   <header>
@@ -515,6 +441,34 @@
 <!-- End WhatsApp Chat Box -->
 
 
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const track = document.querySelector(".carousel-track");
+  const images = document.querySelectorAll(".carousel-img");
+  const prev = document.querySelector(".carousel-btn.prev");
+  const next = document.querySelector(".carousel-btn.next");
+
+  let index = 0;
+  const total = images.length;
+
+  function updateCarousel() {
+    track.style.transform = "translateX(" + (-index * 100) + "%)";
+  }
+
+  next.addEventListener("click", () => {
+    index = (index + 1) % total;
+    updateCarousel();
+  });
+
+  prev.addEventListener("click", () => {
+    index = (index - 1 + total) % total;
+    updateCarousel();
+  });
+});
+</script>
 </body>
 
 </html>
