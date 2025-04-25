@@ -48,8 +48,7 @@
   25% { transform: rotate(2deg); }
   75% { transform: rotate(-2deg); }
 }
-@keyframes rotate {
-  0% { transform: rotate(0); }
+
   100% { transform: rotate(360deg); }
 }
 
@@ -57,7 +56,7 @@
 .ani-bounce { animation: bounce 1.5s ease-in-out infinite; }
 .ani-pulse { animation: pulse 2s ease-in-out infinite; }
 .ani-wiggle { animation: wiggle 1.8s ease-in-out infinite; }
-.ani-rotate { animation: rotate 3s linear infinite; }
+
 </style>
 </head>
 
@@ -72,12 +71,12 @@
       </h1>
 
       <div class="navbar-actions">
-        <button class="theme-btn ani-rotate" aria-label="Change Theme" title="Change Theme" data-theme-btn>
+        <button class="theme-btn  ani-pulse" aria-label="Change Theme" title="Change Theme" data-theme-btn>
           <span class="icon"></span>
         </button>
       </div>
 
-      <button class="nav-toggle-btn ani-rotate" aria-label="Toggle Menu" title="Toggle Menu" data-nav-toggle-btn>
+      <button class="nav-toggle-btn  ani-pulse" aria-label="Toggle Menu" title="Toggle Menu" data-nav-toggle-btn>
         <span class="one"></span>
         <span class="two"></span>
         <span class="three"></span>
@@ -120,25 +119,25 @@
         </div>
 <ul class="hero-social-list">
   <li>
-    <a href="https://www.facebook.com/profile.php?id=61561300013679" class="hero-social-link wow animate__animated animate__fadeInLeft" data-wow-delay="0.3s" data-wow-delay="0.2s" data-wow-delay="0.1s" data-wow-delay="0s" target="_blank">
+    <a href="https://www.facebook.com/profile.php?id=61561300013679" class="hero-social-link wow animate__animated animate__fadeInLeft ani-pulse" data-wow-delay="0.3s" data-wow-delay="0.2s" data-wow-delay="0.1s" data-wow-delay="0s" target="_blank">
       <ion-icon name="logo-facebook"></ion-icon>
       <div class="tooltip">Facebook</div>
     </a>
   </li>
   <li>
-    <a href="https://wa.me/6289671172929?text=hallo" class="hero-social-link wow animate__animated animate__fadeInLeft" target="_blank">
+    <a href="https://wa.me/6289671172929?text=hallo" class="hero-social-link wow animate__animated animate__fadeInLeft ani-pulse" target="_blank">
       <ion-icon name="logo-whatsapp"></ion-icon>
       <div class="tooltip">WhatsApp</div>
     </a>
   </li>
   <li>
-    <a href="https://www.instagram.com/apexel.caruban" class="hero-social-link wow animate__animated animate__fadeInLeft" target="_blank">
+    <a href="https://www.instagram.com/apexel.caruban" class="hero-social-link wow animate__animated animate__fadeInLeft ani-pulse" target="_blank">
       <ion-icon name="logo-instagram"></ion-icon>
       <div class="tooltip">Instagram</div>
     </a>
   </li>
   <li>
-    <a href="https://www.tiktok.com/@apexel.caruban" class="hero-social-link wow animate__animated animate__fadeInLeft" target="_blank">
+    <a href="https://www.tiktok.com/@apexel.caruban" class="hero-social-link wow animate__animated animate__fadeInLeft ani-pulse" target="_blank">
       <ion-icon name="logo-tiktok"></ion-icon>
       <div class="tooltip">TikTok</div>
     </a>
@@ -255,7 +254,7 @@
         
       </ul>
       <div style="text-align:center; margin-top: 30px;">
-        <a href="https://wa.me/c/6289671172929" target="_blank" class="btn btn-primary wow animate__animated animate__fadeInLeft">Selengkapnya di WhatsApp</a>
+        <a href="https://wa.me/c/6289671172929" target="_blank" class="btn btn-primary wow animate__animated animate__fadeInLeft ani-pulse">Selengkapnya di WhatsApp</a>
       </div>
       </section>
 
@@ -300,19 +299,19 @@
             <li class="contact-list-item wow animate__animated animate__fadeInLeft">
               <ul class="contact-social-list">
                 <li>
-                  <a href="https://www.facebook.com/profile.php?id=61561300013679" class="contact-social-link wow animate__animated animate__fadeInLeft" data-wow-delay="0.3s" data-wow-delay="0.2s" data-wow-delay="0.1s" data-wow-delay="0s" target="_blank">
+                  <a href="https://www.facebook.com/profile.php?id=61561300013679" class="contact-social-link wow animate__animated animate__fadeInLeft ani-pulse" data-wow-delay="0.3s" data-wow-delay="0.2s" data-wow-delay="0.1s" data-wow-delay="0s" target="_blank">
                     <div class="tooltip">Facebook</div>
                     <ion-icon name="logo-facebook"></ion-icon>
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/apexel.caruban" class="contact-social-link wow animate__animated animate__fadeInLeft" target="_blank">
+                  <a href="https://www.instagram.com/apexel.caruban" class="contact-social-link wow animate__animated animate__fadeInLeft ani-pulse" target="_blank">
                     <div class="tooltip">Instagram</div>
                     <ion-icon name="logo-instagram"></ion-icon>
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.tiktok.com/@apexel.caruban" class="contact-social-link wow animate__animated animate__fadeInLeft" target="_blank">
+                  <a href="https://www.tiktok.com/@apexel.caruban" class="contact-social-link wow animate__animated animate__fadeInLeft ani-pulse" target="_blank">
                     <div class="tooltip">TikTok</div>
                     <ion-icon name="logo-tiktok"></ion-icon>
                   </a>
@@ -357,7 +356,7 @@
               <ion-icon name="cube"></ion-icon>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary ani-rotate">Kirim via WhatsApp</button>
+          <button type="submit" class="btn btn-primary  ani-pulse">Kirim via WhatsApp</button>
         </form>
       </section>
     </article>
@@ -507,7 +506,7 @@
     <button onclick="document.getElementById('whatsapp-chat-box').style.display='none'">×</button>
   </header>
   <p style="color: #555;">Hai! Ada yang bisa kami bantu?</p>
-  <a href="https://wa.me/6289671172929?text=Halo%2C%20saya%20mau%20tanya%20tentang%20pricelist" target="_blank" style="color: white; background-color: #25D366; padding: 10px 15px; border-radius: 5px; text-decoration: none; display: inline-block;">Mulai Chat</a>
+  <a href="https://wa.me/6289671172929?text=Halo%2C%20saya%20mau%20tanya%20tentang%20pricelist" target="_blank" style="color: white; background-color: #25D366; padding: 10px 15px; border-radius: 5px; text-decoration: none; display: inline-block;" class="ani-pulse">Mulai Chat</a>
 </div>
 
 <div id="whatsapp-chat-button" class="ani-wiggle" onclick="document.getElementById('whatsapp-chat-box').style.display='block'">
