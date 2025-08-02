@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apexel Caruban</title>
+  <meta name="description" content="Apexel Caruban - Rental & penyewaan resmi dengan WhatsApp Business API. Lihat pricelist dan hubungi via WhatsApp.">
+  <meta name="author" content="Apexel Caruban">
+  <style>
+    :root {
+      --radius:14px;
+      --shadow:0 30px 80px -10px rgba(31,45,79,0.12);
+      --blue:#2563eb;
+      --bg:#f5f7fa;
+      --card:#ffffff;
+      --dark:#1f2d4f;
+      --muted:#6b7280;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      background: var(--bg);
+      color: var(--dark);
+      line-height:1.45;
+      min-height:100vh;
+      padding:0 1rem;
+    }
+    a{color: var(--blue); text-decoration:none;}
+    .container{
+      max-width:1024px;
+      margin:0 auto;
+      padding:2rem 0;
+      display:grid;
+      gap:2rem;
+    }
+    header{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      align-items:center;
+      gap:1rem;
+      margin-bottom:1rem;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+    }
+    .brand img{
+      width:48px;
+      height:48px;
+      object-fit:cover;
+      border-radius:8px;
+      background:#fff;
+      padding:4px;
+    }
+    .brand-text h1{
+      font-size:1.5rem;
+      margin:0;
+    }
+    .nav{
+      display:flex;
+      gap:1rem;
+      flex-wrap:wrap;
+      font-size:.9rem;
+    }
+    .nav a{
+      padding:.5rem .9rem;
+      border-radius:8px;
+      background: rgba(37,99,235,0.1);
+      font-weight:600;
+    }
+    .hero{
+      background: var(--card);
+      padding:2rem;
+      border-radius:16px;
+      box-shadow: var(--shadow);
+      display:grid;
+      gap:1.5rem;
+      grid-template-columns:1fr;
+    }
+    .badge{
+      display:inline-block;
+      background:#10b981;
+      color:#fff;
+      padding:5px 14px;
+      border-radius:999px;
+      font-size:.55rem;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:8px;
+    }
+    .btn{
+      display:inline-block;
+      padding:.75rem 1.25rem;
+      border-radius:999px;
+      background: var(--blue);
+      color:#fff;
+      font-weight:600;
+      margin-top:10px;
+    }
+    .section{
+      background: var(--card);
+      padding:1.75rem;
+      border-radius:14px;
+      box-shadow: var(--shadow);
+    }
+    .split{
+      display:grid;
+      gap:1.5rem;
+    }
+    .cards{
+      display:grid;
+      gap:1rem;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      margin-top:8px;
+    }
+    .card{
+      background: #f9f9fc;
+      border-radius:12px;
+      padding:1rem 1rem;
+      position:relative;
+    }
+    .card h3{
+      margin:0 0 .5rem;
+      font-size:1.1rem;
+    }
+    .pricelist{
+      display:grid;
+      gap:1rem;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      margin-top:8px;
+    }
+    .price-card{
+      background:#fff;
+      border:1px solid #e2e8f0;
+      border-radius:12px;
+      padding:1rem 1rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      box-shadow:0 16px 40px -8px rgba(31,45,79,0.08);
+    }
+    .price-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:6px;
+    }
+    .price-title{
+      font-weight:700;
+      font-size:1rem;
+      margin:0;
+    }
+    .price-value{
+      font-weight:700;
+      font-size:1rem;
+      color: #111;
+    }
+    .price-items{
+      margin:6px 0 0 0;
+      padding-left:1rem;
+      font-size:.9rem;
+    }
+    .note{
+      background:rgba(37,99,235,0.08);
+      padding:10px 12px;
+      border-radius:8px;
+      font-size:.85rem;
+      margin-top:6px;
+    }
+    .info-grid{
+      display:grid;
+      gap:1rem;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      margin-top:8px;
+    }
+    .two-col{
+      display:grid;
+      gap:1rem;
+      grid-template-columns:1fr 1fr;
+    }
+    .subtle{
+      color: var(--muted);
+      font-size:.85rem;
+    }
+    footer{
+      margin-top:3rem;
+      text-align:center;
+      font-size:.75rem;
+      color:#777;
+    }
+    .tag{
+      background: #f3f4f6;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:.55rem;
+      display:inline-block;
+      margin-bottom:4px;
+    }
+    @media (min-width:900px){
+      .hero{grid-template-columns:1fr 1fr;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header aria-label="header">
+      <div class="brand">
+        <img src="logo.png" alt="Logo Apexel Caruban" />
+        <div class="brand-text">
+          <h1>Apexel Caruban</h1>
+          <div style="font-size:.8rem;color:var(--muted);">Rental & Penyewaan Resmi</div>
+        </div>
+      </div>
+      <nav class="nav" aria-label="navigasi">
+        <a href="#about">Tentang</a>
+        <a href="#pricelist">Pricelist</a>
+        <a href="#kontak">Kontak</a>
+        <a href="#verifikasi">Verifikasi</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="about">
+      <div>
+        <div class="badge">Proses Verifikasi</div>
+        <h2>Apexel Caruban — Penyewaan Resmi</h2>
+        <p>Kami menyediakan layanan rental & penyewaan peralatan dengan dukungan WhatsApp Business API. Semua usaha didukung dokumen legal (NIB terbit) dan komunikasi otomatis via WhatsApp.</p>
+        <a class="btn" href="https://wa.me/6289671172929?text=Halo%20Apexel%20Caruban">Hubungi via WhatsApp</a>
+        <div class="note">
+          Nomor utama usaha sesuai NIB: <strong>+62 857-3260-7746</strong>. <br>
+          Nomor layanan otomatis / API: <strong>+62 896-7117-2929</strong>.
+        </div>
+      </div>
+      <div>
+        <h3>Mengapa Memilih Kami?</h3>
+        <ul>
+          <li>Legal & tercatat: NIB terbit untuk Apexel Caruban</li>
+          <li>Verifikasi via WhatsApp Business API</li>
+          <li>Respon cepat & otomatis</li>
+          <li>Harga transparan tanpa biaya tersembunyi</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="pricelist">
+      <h2>🛒 Pricelist Apexel Caruban</h2>
+      <p class="subtle">Harga per hari. Paket bisa disesuaikan sesuai kebutuhan.</p>
+      <div class="pricelist">
+        <div class="price-card">
+          <div class="price-header">
+            <div class="price-title">PAKET A</div>
+            <div class="price-value">Rp30.000</div>
+          </div>
+          <div style="font-size:.85rem;">Termasuk:</div>
+          <ul class="price-items">
+            <li>Lensa Apexel</li>
+            <li>Remote Bluetooth</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-header">
+            <div class="price-title">PAKET B</div>
+            <div class="price-value">Rp50.000</div>
+          </div>
+          <div style="font-size:.85rem;">Termasuk:</div>
+          <ul class="price-items">
+            <li>Lensa Apexel</li>
+            <li>Remote Bluetooth</li>
+            <li>Tripod 2 Meter</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-header">
+            <div class="price-title">PAKET C</div>
+            <div class="price-value">Rp70.000</div>
+          </div>
+          <div style="font-size:.85rem;">Termasuk:</div>
+          <ul class="price-items">
+            <li>Lensa Apexel</li>
+            <li>Remote Bluetooth</li>
+            <li>Tripod 2 Meter</li>
+            <li>Kursi Lipat 2 pcs</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-header">
+            <div class="price-title">PAKET LENGKAP</div>
+            <div class="price-value">Rp75.000</div>
+          </div>
+          <div style="font-size:.85rem;">Termasuk:</div>
+          <ul class="price-items">
+            <li>Lensa Apexel</li>
+            <li>Remote Bluetooth</li>
+            <li>Tripod 2 Meter</li>
+            <li>Kursi Lipat 2 pcs</li>
+            <li>Meja Lipat</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-header">
+            <div class="price-title">PAKET 1</div>
+            <div class="price-value">Rp20.000</div>
+          </div>
+          <div style="font-size:.85rem;">Termasuk:</div>
+          <ul class="price-items">
+            <li>Kursi Lipat 2 pcs</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-header">
+            <div class="price-title">PAKET 2</div>
+            <div class="price-value">Rp25.000</div>
+          </div>
+          <div style="font-size:.85rem;">Termasuk:</div>
+          <ul class="price-items">
+            <li>Kursi Lipat 2 pcs</li>
+            <li>Meja Lipat</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-header">
+            <div class="price-title">PAKET 3</div>
+            <div class="price-value">Rp30.000</div>
+          </div>
+          <div style="font-size:.85rem;">Termasuk:</div>
+          <ul class="price-items">
+            <li>Kursi Lipat 2 pcs</li>
+            <li>Meja Lipat</li>
+            <li>Tripod 2 Meter</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-header">
+            <div class="price-title">TIKAR PIKNIK</div>
+            <div class="price-value">Rp15.000</div>
+          </div>
+          <div style="font-size:.85rem;">Detail:</div>
+          <ul class="price-items">
+            <li>Ukuran 200x200cm, muat 6–8 orang</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-header">
+            <div class="price-title">KOMPOR PORTABLE</div>
+            <div class="price-value">Rp50.000</div>
+          </div>
+          <div style="font-size:.85rem;">Termasuk:</div>
+          <ul class="price-items">
+            <li>Gas</li>
+            <li>Koper</li>
+            <li>Wajan anti lengket</li>
+            <li>Capit & Sumpit</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;">
+        <h3>Sewa Satuan (per hari)</h3>
+        <div class="cards">
+          <div class="card">
+            <div class="price-header">
+              <div class="price-title">Tripod 2m</div>
+              <div class="price-value">Rp10.000</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="price-header">
+              <div class="price-title">Kursi Lipat</div>
+              <div class="price-value">Rp12.000</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="price-header">
+              <div class="price-title">Meja Lipat</div>
+              <div class="price-value">Rp8.000</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="price-header">
+              <div class="price-title">Kacamata</div>
+              <div class="price-value">Rp5.000</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="price-header">
+              <div class="price-title">Topi Bucket</div>
+              <div class="price-value">Rp5.000</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="price-header">
+              <div class="price-title">Keranjang Piknik</div>
+              <div class="price-value">Rp10.000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kontak">
+      <h2>Kontak & Legal</h2>
+      <div class="two-col">
+        <div>
+          <h3>Informasi Kontak</h3>
+          <div class="info-grid">
+            <div>
+              <strong>Nama Usaha:</strong>
+              <p>Apexel Caruban</p>
+            </div>
+            <div>
+              <strong>Alamat:</strong>
+              <p>Dusun Tulung, Tulung, Saradan, Kab. Madiun, Jawa Timur</p>
+            </div>
+            <div>
+              <strong>WA Utama (NIB):</strong>
+              <p><a href="https://wa.me/6285732607746">+62 857-3260-7746</a></p>
+            </div>
+            <div>
+              <strong>WA API:</strong>
+              <p><a href="https://wa.me/6289671172929">+62 896-7117-2929</a></p>
+            </div>
+            <div>
+              <strong>Email:</strong>
+              <p><a href="mailto:info@apexelcaruban.my.id">info@apexelcaruban.my.id</a></p>
+            </div>
+            <div>
+              <strong>Website:</strong>
+              <p><a href="https://apexelcaruban.my.id">apexelcaruban.my.id</a></p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>Detail Legal & Verifikasi</h3>
+          <div class="legal">
+            <ul style="list-style:none; padding:0; margin:0;">
+              <li><strong>Nama usaha resmi:</strong> Apexel Caruban</li>
+              <li><strong>KBLI:</strong> 77321 - Penyewaan alat perekaman gambar & editing</li>
+              <li><strong>Alamat:</strong> Dusun Tulung, Tulung, Saradan, Kab. Madiun, Jawa Timur</li>
+              <li><strong>Email resmi:</strong> info@apexelcaruban.my.id</li>
+              <li><strong>Nomor WhatsApp utama:</strong> +62 857-3260-7746</li>
+              <li><strong>Nomor WhatsApp API:</strong> +62 896-7117-2929</li>
+              <li><strong>Status NIB:</strong> Terbit (valid & aktif)</li>
+            </ul>
+            <div class="note" style="margin-top:8px;">
+              Penjelasan: <br>
+              Apexel Caruban dimiliki dan dijalankan oleh Agung Bayu Santoso. Nomor +62 857-3260-7746 tercantum sebagai kontak utama di dokumen legal (NIB), sedangkan +62 896-7117-2929 digunakan untuk integrasi WhatsApp Business API & otomasi. Keduanya dikelola oleh pemilik yang sama.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>&copy; 2025 Apexel Caruban. Semua hak dilindungi.</div>
+      <div style="margin-top:4px;">Dibuat untuk keperluan verifikasi WhatsApp Business API dan membangun kepercayaan pelanggan.</div>
+    </footer>
+  </div>
+</body>
+</html>
