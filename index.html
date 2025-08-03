@@ -31,6 +31,26 @@
       --blue:#6366f1;
       color-scheme: dark;
     }
+
+    /* perbaikan khusus dark mode untuk pricelist */
+    [data-theme="dark"] .price-card {
+      background: #1f2d4f;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 30px 70px -10px rgba(255,255,255,0.07);
+    }
+    [data-theme="dark"] .price-card .price-title {
+      color: #f0f7ff;
+    }
+    [data-theme="dark"] .price-card .price-value {
+      color: #dbe9ff;
+    }
+    [data-theme="dark"] .price-card ul li {
+      color: rgba(255,255,255,0.85);
+    }
+    [data-theme="dark"] .note {
+      background: rgba(255,255,255,0.08);
+    }
+
     *{box-sizing:border-box;margin:0;padding:0;}
     body{
       background: var(--bg);
@@ -367,7 +387,6 @@
 <body data-theme="light">
   <div class="floating-sewa">
     <a class="sewa-btn" aria-label="Sewa Sekarang via WhatsApp" href="https://wa.me/6287770557489?text=Halo%20Apexel%20Caruban%2C%20saya%20ingin%20sewa">
-      <!-- WhatsApp SVG -->
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
         <path d="M17.472 14.382c-.297-.149-1.758-.868-2.03-.967-.272-.1-.47-.149-.668.149s-.766.967-.94 1.164c-.173.198-.347.223-.644.075-1.758-.868-2.908-1.54-4.072-3.49-.309-.53.309-.492.886-1.64.098-.198.05-.372-.025-.521-.075-.149-.668-1.612-.916-2.207-.242-.579-.487-.5-.668-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.064 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.693.627.712.227 1.36.195 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.413-.075-.124-.272-.198-.569-.347z" fill="currentColor"/>
         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2.002c-5.519 0-9.998 4.48-9.998 9.998 0 2.01.56 3.874 1.523 5.467L2 22l4.76-1.25a9.92 9.92 0 005.244 1.41h.001c5.52 0 9.999-4.48 9.999-9.998 0-5.52-4.48-10-9.999-10zm0 18.33c-1.71 0-3.366-.453-4.806-1.31l-.344-.19-2.828.74.756-2.754-.224-.356a8.365 8.365 0 01-1.285-4.49c0-4.63 3.764-8.396 8.405-8.396 4.64 0 8.405 3.766 8.405 8.396 0 4.63-3.765 8.396-8.405 8.396z" fill="currentColor"/>
@@ -405,7 +424,6 @@
         <p class="lead">Layanan rental resmi yang mudah dihubungi lewat WhatsApp. Pilih paket, klik, dan sewa—tanpa ribet.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
           <a class="btn" href="https://wa.me/6287770557489?text=Halo%20Apexel%20Caruban%2C%20saya%20ingin%20sewa">
-            <!-- WhatsApp icon -->
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <path d="M17.472 14.382c-.297-.149-1.758-.868-2.03-.967-.272-.1-.47-.149-.668.149s-.766.967-.94 1.164c-.173.198-.347.223-.644.075-1.758-.868-2.908-1.54-4.072-3.49-.309-.53.309-.492.886-1.64.098-.198.05-.372-.025-.521-.075-.149-.668-1.612-.916-2.207-.242-.579-.487-.5-.668-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.064 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.693.627.712.227 1.36.195 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.413-.075-.124-.272-.198-.569-.347z" fill="currentColor"/>
               <path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2.002c-5.519 0-9.998 4.48-9.998 9.998 0 2.01.56 3.874 1.523 5.467L2 22l4.76-1.25a9.92 9.92 0 005.244 1.41h.001c5.52 0 9.999-4.48 9.999-9.998 0-5.52-4.48-10-9.999-10zm0 18.33c-1.71 0-3.366-.453-4.806-1.31l-.344-.19-2.828.74.756-2.754-.224-.356a8.365 8.365 0 01-1.285-4.49c0-4.63 3.764-8.396 8.405-8.396 4.64 0 8.405 3.766 8.405 8.396 0 4.63-3.765 8.396-8.405 8.396z" fill="currentColor"/>
@@ -607,7 +625,7 @@
       <h2>Kontak & Informasi</h2>
       <div class="two-col">
         <div>
-          <h3>Informasi Kontak</h3>
+          <h3>Hubungi Kami</h3>
           <div class="info-grid">
             <div>
               <strong>Nama Usaha:</strong>
@@ -618,7 +636,7 @@
               <p>Dusun Tulung, Tulung, Saradan, Kab. Madiun, Jawa Timur</p>
             </div>
             <div>
-              <strong>WA Sewa:</strong>
+              <strong>WhatsApp:</strong>
               <p><a href="https://wa.me/6287770557489">+62 877-7055-7489</a></p>
             </div>
             <div>
@@ -634,8 +652,10 @@
         <div style="margin-top:16px;">
           <h3>Tentang Kami</h3>
           <div class="note">
-            Apexel Caruban dimiliki dan dijalankan oleh Agung Bayu Santoso. Kontak sewa utama adalah +62 877-7055-7489 yang bisa dihubungi langsung lewat WhatsApp untuk pemesanan cepat.
-          </div>
+  Apexel Caruban adalah penyedia layanan rental peralatan terpercaya di wilayah Caruban dan sekitarnya. 
+  Kami berkomitmen memberikan pengalaman sewa yang mudah, cepat, dan transparan melalui layanan pemesanan via WhatsApp. 
+  Semua peralatan selalu dirawat dengan baik agar siap digunakan kapan saja.
+</div>
           <div class="map-badge">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" fill="currentColor"/>
