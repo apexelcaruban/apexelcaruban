@@ -1,3 +1,5 @@
+[![MIT License][license-shield]][license-url]
+
 📦 Apexel Caruban – Website Rental Peralatan
 
 Website resmi Apexel Caruban untuk layanan sewa peralatan di wilayah Caruban dan sekitarnya.  
