@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apexel Caruban</title>
-  <meta name="description" content="Apexel Caruban - Rental & penyewaan resmi dengan WhatsApp Business API. Lihat pricelist dan hubungi via WhatsApp.">
+  <meta name="description" content="Apexel Caruban - Rental & penyewaan resmi. Sewa sekarang lewat WhatsApp.">
   <meta name="author" content="Apexel Caruban">
   <style>
     :root {
@@ -15,31 +15,57 @@
       --card:#ffffff;
       --dark:#1f2d4f;
       --muted:#6b7280;
+      --text:#1f2d4f;
+      --border:rgba(0,0,0,0.04);
+      --transition:.35s cubic-bezier(.4,.2,.2,1);
+      --radius-sm:8px;
       font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+      color-scheme: light;
+    }
+    [data-theme="dark"] {
+      --bg:#0f172a;
+      --card:#1e294f;
+      --text:#f5f7fa;
+      --muted:rgba(255,255,255,0.6);
+      --border:rgba(255,255,255,0.07);
+      --blue:#6366f1;
+      color-scheme: dark;
     }
     *{box-sizing:border-box;margin:0;padding:0;}
     body{
       background: var(--bg);
-      color: var(--dark);
+      color: var(--text);
       line-height:1.45;
       min-height:100vh;
       padding:0;
+      transition: background var(--transition), color var(--transition);
     }
     a{color: var(--blue); text-decoration:none;}
     .container{
-      max-width:1024px;
+      max-width:1120px;
       margin:0 auto;
       padding:1rem 1rem 2rem;
       display:grid;
       gap:2rem;
     }
     header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(12px);
+      background:rgba(255,255,255,0.85);
+      border-radius:12px;
       display:flex;
       flex-wrap:wrap;
       justify-content:space-between;
       align-items:center;
       gap:0.75rem;
-      padding:1rem 0;
+      padding:0.75rem 1rem;
+      box-shadow:0 12px 40px -10px rgba(31,45,79,0.08);
+      transition: background var(--transition);
+    }
+    [data-theme="dark"] header{
+      background:rgba(15,23,42,0.85);
     }
     .brand{
       display:flex;
@@ -49,8 +75,8 @@
       min-width:0;
     }
     .brand img{
-      width:40px;
-      height:40px;
+      width:44px;
+      height:44px;
       object-fit:cover;
       border-radius:8px;
       background:#fff;
@@ -58,9 +84,10 @@
       flex-shrink:0;
     }
     .brand-text h1{
-      font-size:1.3rem;
+      font-size:1.4rem;
       margin:0;
       line-height:1.1;
+      font-weight:700;
     }
     .nav{
       display:flex;
@@ -75,17 +102,110 @@
       border-radius:8px;
       background: rgba(37,99,235,0.1);
       font-weight:600;
-      font-size:.8rem;
+      font-size:.75rem;
       white-space:nowrap;
+      flex-shrink:0;
+      transition: filter .2s;
+    }
+    .nav a:hover{filter:brightness(1.1);}
+    .mode-toggle{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      font-size:.75rem;
+    }
+    .toggle-switch{
+      position:relative;
+      width:42px;
+      height:22px;
+      background:rgba(0,0,0,0.08);
+      border-radius:999px;
+      cursor:pointer;
+      flex-shrink:0;
+      transition: background .3s;
+    }
+    .toggle-switch::after{
+      content:'';
+      position:absolute;
+      top:2px;
+      left:2px;
+      width:18px;
+      height:18px;
+      background:#fff;
+      border-radius:50%;
+      box-shadow:0 6px 18px -4px rgba(31,45,79,0.2);
+      transition: transform .3s;
+    }
+    [data-theme="dark"] .toggle-switch{background:rgba(255,255,255,0.1);}
+    [data-theme="dark"] .toggle-switch::after{
+      transform:translateX(20px);
     }
     .hero{
       background: var(--card);
-      padding:1.5rem;
-      border-radius:16px;
+      padding:1.75rem 1.5rem;
+      border-radius:18px;
       box-shadow: var(--shadow);
       display:grid;
-      gap:1rem;
+      gap:1.5rem;
       grid-template-columns:1fr;
+      position:relative;
+      overflow:hidden;
+    }
+    .intro{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .headline{
+      font-size:2rem;
+      margin:0;
+      line-height:1.1;
+      font-weight:700;
+    }
+    .lead{
+      font-size:1rem;
+      margin-top:4px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:.75rem 1.25rem;
+      border-radius:999px;
+      background: var(--blue);
+      color:#fff;
+      font-weight:600;
+      margin-top:12px;
+      font-size:.9rem;
+      text-decoration:none;
+      position:relative;
+      overflow:hidden;
+      transition: filter .25s;
+    }
+    .btn:hover{filter:brightness(1.05);}
+    .socials{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:10px;
+      align-items:center;
+      font-size:.8rem;
+    }
+    .social-link{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:rgba(0,0,0,0.04);
+      padding:6px 12px;
+      border-radius:999px;
+      font-weight:600;
+      text-decoration:none;
+      transition: background .25s;
+    }
+    .social-link svg{
+      width:16px;
+      height:16px;
+      flex-shrink:0;
     }
     .badge{
       display:inline-block;
@@ -98,21 +218,13 @@
       letter-spacing:1px;
       margin-bottom:8px;
     }
-    .btn{
-      display:inline-block;
-      padding:.75rem 1.25rem;
-      border-radius:999px;
-      background: var(--blue);
-      color:#fff;
-      font-weight:600;
-      margin-top:10px;
-      font-size:.9rem;
-    }
     .section{
       background: var(--card);
       padding:1.5rem;
       border-radius:14px;
       box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
     }
     .pricelist{
       display:grid;
@@ -121,15 +233,22 @@
       margin-top:8px;
     }
     .price-card{
-      background:#fff;
-      border:1px solid #e2e8f0;
+      background:rgba(255,255,255,1);
+      border:1px solid var(--border);
       border-radius:12px;
-      padding:12px 14px;
+      padding:14px 16px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
       box-shadow:0 16px 40px -8px rgba(31,45,79,0.06);
       font-size:.9rem;
+      position:relative;
+      overflow:hidden;
+      transition: transform .4s var(--transition), box-shadow .4s;
+    }
+    .price-card.pop{
+      transform:translateY(8px);
+      box-shadow:0 30px 70px -10px rgba(31,45,79,0.2);
     }
     .price-header{
       display:flex;
@@ -147,7 +266,7 @@
     .price-value{
       font-weight:700;
       font-size:.95rem;
-      color:#111;
+      color: var(--text);
     }
     .price-items{
       margin:4px 0 0 0;
@@ -175,32 +294,88 @@
     }
     .subtle{
       color: var(--muted);
-      font-size:.8rem;
-    }
-    .legal{
-      background: #f9f9fc;
-      padding:12px 14px;
-      border-radius:12px;
-      margin-top:6px;
       font-size:.85rem;
     }
     footer{
       margin-top:2rem;
       text-align:center;
       font-size:.7rem;
-      color:#666;
+      color: var(--muted);
       padding:1rem 0;
     }
     h2{margin-top:0;font-size:1.6rem;}
-    h3{margin:0 0 6px;font-size:1.1rem;}
+    h3{margin:0 0 6px;font-size:1.2rem;}
     ul{padding-left:1rem;margin:4px 0;}
+    .map-badge{
+      display:inline-flex;
+      gap:6px;
+      padding:8px 14px;
+      background:rgba(16,185,129,0.1);
+      border-radius:999px;
+      font-weight:600;
+      font-size:.75rem;
+      align-items:center;
+      margin-top:6px;
+    }
+    .floating-sewa{
+      position:fixed;
+      bottom:16px;
+      right:16px;
+      z-index:80;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .sewa-btn{
+      background:#22c55e;
+      color:#fff;
+      padding:14px 20px;
+      border-radius:999px;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      text-decoration:none;
+      box-shadow:0 20px 60px -10px rgba(34,197,94,0.5);
+      transition: transform .2s;
+    }
+    .sewa-btn:hover{transform:scale(1.03);}
+    .reveal{
+      opacity:0;
+      transform:translateY(18px);
+      transition: opacity .6s ease-out, transform .6s ease-out;
+    }
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0);
+    }
     @media (min-width:800px){
       .hero{grid-template-columns:1fr 1fr;}
       .two-col{grid-template-columns:1fr 1fr;}
     }
+    @media (max-width:900px){
+      .headline{font-size:1.75rem;}
+    }
+    @media (max-width:600px){
+      header{flex-direction:column; align-items:flex-start;}
+      .brand{width:100%;}
+      .nav{width:100%; margin-top:6px;}
+      .hero{padding:1.25rem;}
+    }
   </style>
 </head>
-<body>
+<body data-theme="light">
+  <div class="floating-sewa">
+    <a class="sewa-btn" aria-label="Sewa Sekarang via WhatsApp" href="https://wa.me/6287770557489?text=Halo%20Apexel%20Caruban%2C%20saya%20ingin%20sewa">
+      <!-- WhatsApp SVG -->
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.868-2.03-.967-.272-.1-.47-.149-.668.149s-.766.967-.94 1.164c-.173.198-.347.223-.644.075-1.758-.868-2.908-1.54-4.072-3.49-.309-.53.309-.492.886-1.64.098-.198.05-.372-.025-.521-.075-.149-.668-1.612-.916-2.207-.242-.579-.487-.5-.668-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.064 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.693.627.712.227 1.36.195 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.413-.075-.124-.272-.198-.569-.347z" fill="currentColor"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2.002c-5.519 0-9.998 4.48-9.998 9.998 0 2.01.56 3.874 1.523 5.467L2 22l4.76-1.25a9.92 9.92 0 005.244 1.41h.001c5.52 0 9.999-4.48 9.999-9.998 0-5.52-4.48-10-9.999-10zm0 18.33c-1.71 0-3.366-.453-4.806-1.31l-.344-.19-2.828.74.756-2.754-.224-.356a8.365 8.365 0 01-1.285-4.49c0-4.63 3.764-8.396 8.405-8.396 4.64 0 8.405 3.766 8.405 8.396 0 4.63-3.765 8.396-8.405 8.396z" fill="currentColor"/>
+      </svg>
+      Sewa Sekarang
+    </a>
+  </div>
+
   <div class="container">
     <header aria-label="header">
       <div class="brand">
@@ -214,33 +389,66 @@
         <a href="#about">Tentang</a>
         <a href="#pricelist">Pricelist</a>
         <a href="#kontak">Kontak</a>
-        <a href="#verifikasi">Verifikasi</a>
       </nav>
-    </header>
-
-    <section class="hero" id="about">
-      <div>
-        <div class="badge">Proses Verifikasi</div>
-        <h2>Apexel Caruban — Penyewaan Resmi</h2>
-        <p>Kami menyediakan layanan rental & penyewaan peralatan dengan dukungan WhatsApp Business API. Semua usaha didukung dokumen legal (NIB terbit) dan komunikasi otomatis via WhatsApp.</p>
-        <a class="btn" href="https://wa.me/6289671172929?text=Halo%20Apexel%20Caruban">Hubungi via WhatsApp</a>
-        <div class="note">
-          Nomor utama usaha sesuai NIB: <strong>+62 857-3260-7746</strong>. <br>
-          Nomor layanan otomatis / API: <strong>+62 896-7117-2929</strong>.
+      <div class="mode-toggle">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <div id="theme-label" aria-live="polite">Mode: Light</div>
+          <div class="toggle-switch" id="theme-toggle" role="button" aria-label="Toggle dark/light mode" tabindex="0"></div>
         </div>
       </div>
-      <div>
-        <h3>Mengapa Memilih Kami?</h3>
-        <ul>
-          <li>Legal & tercatat: NIB terbit untuk Apexel Caruban</li>
-          <li>Verifikasi via WhatsApp Business API</li>
-          <li>Respon cepat & otomatis</li>
-          <li>Harga transparan tanpa biaya tersembunyi</li>
-        </ul>
+    </header>
+
+    <section class="hero reveal" id="about">
+      <div class="intro">
+        <div class="badge">Apexel Caruban</div>
+        <h2 class="headline">Sewa Peralatan dengan Cepat & Otomatis</h2>
+        <p class="lead">Layanan rental resmi yang mudah dihubungi lewat WhatsApp. Pilih paket, klik, dan sewa—tanpa ribet.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+          <a class="btn" href="https://wa.me/6287770557489?text=Halo%20Apexel%20Caruban%2C%20saya%20ingin%20sewa">
+            <!-- WhatsApp icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.868-2.03-.967-.272-.1-.47-.149-.668.149s-.766.967-.94 1.164c-.173.198-.347.223-.644.075-1.758-.868-2.908-1.54-4.072-3.49-.309-.53.309-.492.886-1.64.098-.198.05-.372-.025-.521-.075-.149-.668-1.612-.916-2.207-.242-.579-.487-.5-.668-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.064 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.693.627.712.227 1.36.195 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.413-.075-.124-.272-.198-.569-.347z" fill="currentColor"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2.002c-5.519 0-9.998 4.48-9.998 9.998 0 2.01.56 3.874 1.523 5.467L2 22l4.76-1.25a9.92 9.92 0 005.244 1.41h.001c5.52 0 9.999-4.48 9.999-9.998 0-5.52-4.48-10-9.999-10zm0 18.33c-1.71 0-3.366-.453-4.806-1.31l-.344-.19-2.828.74.756-2.754-.224-.356a8.365 8.365 0 01-1.285-4.49c0-4.63 3.764-8.396 8.405-8.396 4.64 0 8.405 3.766 8.405 8.396 0 4.63-3.765 8.396-8.405 8.396z" fill="currentColor"/>
+            </svg>
+            Sewa Sekarang
+          </a>
+          <div class="socials">
+            <a class="social-link" href="https://wa.me/6287770557489" aria-label="WhatsApp Apexel Caruban">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.868-2.03-.967-.272-.1-.47-.149-.668.149s-.766.967-.94 1.164c-.173.198-.347.223-.644.075-1.758-.868-2.908-1.54-4.072-3.49-.309-.53.309-.492.886-1.64.098-.198.05-.372-.025-.521-.075-.149-.668-1.612-.916-2.207-.242-.579-.487-.5-.668-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.064 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.693.627.712.227 1.36.195 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.413-.075-.124-.272-.198-.569-.347z" fill="currentColor"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2.002c-5.519 0-9.998 4.48-9.998 9.998 0 2.01.56 3.874 1.523 5.467L2 22l4.76-1.25a9.92 9.92 0 005.244 1.41h.001c5.52 0 9.999-4.48 9.999-9.998 0-5.52-4.48-10-9.999-10zm0 18.33c-1.71 0-3.366-.453-4.806-1.31l-.344-.19-2.828.74.756-2.754-.224-.356a8.365 8.365 0 01-1.285-4.49c0-4.63 3.764-8.396 8.405-8.396 4.64 0 8.405 3.766 8.405 8.396 0 4.63-3.765 8.396-8.405 8.396z" fill="currentColor"/>
+              </svg>
+              WhatsApp
+            </a>
+            <a class="social-link" href="https://instagram.com/apexel.caruban" aria-label="Instagram @apexel.caruban">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
+                <circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="2"/>
+                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+              </svg>
+              @apexel.caruban
+            </a>
+            <a class="social-link" href="https://www.google.com/maps/search/Apexel+Caruban" aria-label="Lokasi Apexel Caruban di Maps">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" fill="currentColor"/>
+              </svg>
+              Lokasi
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3>Mengapa Memilih Kami?</h3>
+          <ul>
+            <li>Proses sewa cepat via WhatsApp</li>
+            <li>Harga transparan tanpa biaya tersembunyi</li>
+            <li>Respon otomatis & dukungan real-time</li>
+            <li>Peralatan terawat & siap pakai</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="pricelist">
+    <section class="section reveal" id="pricelist">
       <h2>🛒 Pricelist Apexel Caruban</h2>
       <p class="subtle">Harga per hari. Paket bisa disesuaikan sesuai kebutuhan.</p>
       <div class="pricelist">
@@ -395,8 +603,8 @@
       </div>
     </section>
 
-    <section class="section" id="kontak">
-      <h2>Kontak & Legal</h2>
+    <section class="section reveal" id="kontak">
+      <h2>Kontak & Informasi</h2>
       <div class="two-col">
         <div>
           <h3>Informasi Kontak</h3>
@@ -410,12 +618,8 @@
               <p>Dusun Tulung, Tulung, Saradan, Kab. Madiun, Jawa Timur</p>
             </div>
             <div>
-              <strong>WA Utama (NIB):</strong>
-              <p><a href="https://wa.me/6285732607746">+62 857-3260-7746</a></p>
-            </div>
-            <div>
-              <strong>WA API:</strong>
-              <p><a href="https://wa.me/6289671172929">+62 896-7117-2929</a></p>
+              <strong>WA Sewa:</strong>
+              <p><a href="https://wa.me/6287770557489">+62 877-7055-7489</a></p>
             </div>
             <div>
               <strong>Email:</strong>
@@ -428,20 +632,17 @@
           </div>
         </div>
         <div style="margin-top:16px;">
-          <h3>Detail Legal & Verifikasi</h3>
-          <div class="legal">
-            <ul style="list-style:none; padding:0; margin:0;">
-              <li><strong>Nama usaha resmi:</strong> Apexel Caruban</li>
-              <li><strong>KBLI:</strong> 77321 - Penyewaan alat perekaman gambar & editing</li>
-              <li><strong>Alamat:</strong> Dusun Kenep, Desa Sumbersari, Saradan, Kab. Madiun, Jawa Timur</li>
-              <li><strong>Email resmi:</strong> cs@apexelcaruban.my.id</li>
-              <li><strong>Nomor WhatsApp utama:</strong> +62 857-3260-7746</li>
-              <li><strong>Nomor WhatsApp API:</strong> +62 896-7117-2929</li>
-              <li><strong>Status NIB:</strong> Terbit (valid & aktif)</li>
-            </ul>
-            <div class="note" style="margin-top:8px;">
-              Penjelasan: <br>
-              Apexel Caruban dimiliki dan dijalankan oleh Agung Bayu Santoso. Nomor +62 857-3260-7746 tercantum sebagai kontak utama di dokumen legal (NIB), sedangkan +62 896-7117-2929 digunakan untuk integrasi WhatsApp Business API & otomasi. Keduanya dikelola oleh pemilik yang sama.
+          <h3>Tentang Kami</h3>
+          <div class="note">
+            Apexel Caruban dimiliki dan dijalankan oleh Agung Bayu Santoso. Kontak sewa utama adalah +62 877-7055-7489 yang bisa dihubungi langsung lewat WhatsApp untuk pemesanan cepat.
+          </div>
+          <div class="map-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" fill="currentColor"/>
+            </svg>
+            <div style="margin-left:4px;">
+              <div><strong>Lokasi:</strong> Dusun Tulung, Saradan, Kab. Madiun</div>
+              <div style="font-size:.75rem;"><a href="https://www.google.com/maps/search/Apexel+Caruban" target="_blank" rel="noopener">Lihat di Maps</a></div>
             </div>
           </div>
         </div>
@@ -450,8 +651,64 @@
 
     <footer>
       <div>&copy; 2025 Apexel Caruban. Semua hak dilindungi.</div>
-      <div style="margin-top:4px;">Dibuat untuk keperluan verifikasi WhatsApp Business API dan membangun kepercayaan pelanggan.</div>
+      <div style="margin-top:4px;">Dibuat untuk membangun kepercayaan pelanggan dan mempermudah sewa.</div>
     </footer>
   </div>
+
+  <script>
+    // Theme toggle (default light)
+    const toggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const label = document.getElementById('theme-label');
+    function setTheme(theme){
+      if(theme === 'dark'){
+        body.setAttribute('data-theme','dark');
+        label.textContent = 'Mode: Dark';
+        localStorage.setItem('apexel-theme','dark');
+      } else {
+        body.setAttribute('data-theme','light');
+        label.textContent = 'Mode: Light';
+        localStorage.setItem('apexel-theme','light');
+      }
+    }
+    toggle.addEventListener('click',()=>{
+      const current = body.getAttribute('data-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+    toggle.addEventListener('keydown',(e)=>{
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        toggle.click();
+      }
+    });
+    // initialize from preference (light default)
+    const stored = localStorage.getItem('apexel-theme');
+    if(stored) setTheme(stored);
+    else setTheme('light');
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('active');
+          observer.unobserve(e.target);
+        }
+      });
+    }, {threshold: 0.15});
+    document.querySelectorAll('.reveal').forEach(el=>{
+      observer.observe(el);
+    });
+
+    // Pop effect for price cards
+    const cardObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('pop');
+          cardObserver.unobserve(e.target);
+        }
+      });
+    }, {threshold:0.2});
+    document.querySelectorAll('.price-card').forEach(c=>cardObserver.observe(c));
+  </script>
 </body>
 </html>
