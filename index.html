@@ -1,320 +1,474 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Apexel Caruban - Sewa lensa smartphone, tripod, quadpod, kursi lipat, kompor & perlengkapan piknik di Saradan, Madiun. Booking mudah lewat WhatsApp.">
-    <meta name="theme-color" content="#1a1a1a">
-    <title>Apexel Caruban | Profile Usaha</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Apexel Caruban — sewa tripod, lensa smartphone, kursi lipat, kompor & perlengkapan piknik di Saradan, Madiun. Booking cukup lewat chat WhatsApp.">
+<meta name="theme-color" content="#FAFAF8">
+<title>Apexel Caruban — Sewa Alat Foto & Piknik, Cukup Chat WhatsApp</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['Space Grotesk', 'system-ui', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        ::-webkit-scrollbar { display: none !important; }
-        body { background-color: #181818; color: #e5e7eb; scroll-behavior: smooth; }
-        body::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; min-height: 100vh; z-index: -1;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-        .faq-answer { transition: all 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
-        .faq-answer.active { opacity: 1; max-height: 200px; }
-    </style>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        paper: '#FAFAF8',
+        ink: '#111111',
+        muted: '#5B5B5B',
+        accent: '#0F7A5C',
+        line: '#E7E7E5',
+        mint: '#EEF4F0',
+        bubble: '#F3F4F2',
+        tang: '#E07A56'
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif']
+      },
+      boxShadow: {
+        card: '0 1px 2px rgba(17,17,17,0.04), 0 12px 32px -12px rgba(17,17,17,0.12)',
+        soft: '0 1px 2px rgba(17,17,17,0.04), 0 4px 16px -6px rgba(17,17,17,0.08)'
+      }
+    }
+  }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #FAFAF8; color: #111111; }
+  .faq-answer { transition: all .3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+  .faq-answer.active { opacity: 1; max-height: 300px; }
+  .faq-btn svg { transition: transform .3s ease; }
+  .faq-btn.open svg { transform: rotate(180deg); }
+</style>
 </head>
-<body class="antialiased">
+<body class="antialiased font-sans">
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-[#181818]/80 backdrop-blur-md border-b border-[#2E2E2E]">
-    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" class="font-bold text-white text-xl tracking-tighter">APEXEL CARUBAN</a>
-        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
-            <a href="#about" class="hover:text-white transition-colors">Tentang</a>
-            <a href="#produk" class="hover:text-white transition-colors">Produk</a>
-            <a href="#statistik" class="hover:text-white transition-colors">Pencapaian</a>
-            <a href="https://wa.me/apexelcaruban" class="px-4 py-2 bg-white text-black rounded-lg font-bold">Kontak</a>
-        </div>
+<!-- ===== HEADER ===== -->
+<header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-line">
+  <div class="max-w-[1100px] mx-auto px-6 h-16 flex items-center justify-between gap-4">
+    <a href="#" class="font-extrabold tracking-tight text-lg whitespace-nowrap">Apexel<span class="text-accent"> Caruban</span></a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-muted">
+      <a href="#katalog" class="hover:text-ink transition-colors">Katalog</a>
+      <a href="#cara-sewa" class="hover:text-ink transition-colors">Cara Sewa</a>
+      <a href="#lokasi" class="hover:text-ink transition-colors">Lokasi</a>
+      <a href="#faq" class="hover:text-ink transition-colors">FAQ</a>
+    </nav>
+    <div class="flex items-center gap-5">
+      <a href="https://instagram.com/apexel.caruban" class="hidden sm:block text-sm font-semibold hover:text-accent transition-colors">Instagram</a>
+      <a href="https://wa.me/apexelcaruban" class="bg-ink text-white text-sm font-bold px-4 py-2.5 rounded-[10px] hover:bg-black/85 transition-colors whitespace-nowrap">Sewa Sekarang</a>
     </div>
-</nav>
+  </div>
+</header>
 
-<main class="max-w-5xl mx-auto px-6 pt-32 pb-20">
-    <section class="text-center md:text-left mb-32" data-aos="fade-up">
-        <div class="flex flex-col md:flex-row items-center gap-12">
-            <div class="md:flex-1">
-                <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-bold text-gray-400 border border-[#2E2E2E] bg-[#212121] rounded-full uppercase tracking-widest">
-                    <i class="bi bi-camera-fill text-white"></i>
-                    <span>Premium Photography Gear</span>
-                </div>
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">Elevate Your Content with Apexel Caruban</h1>
-                <p class="text-lg text-gray-400 mb-10 max-w-xl leading-relaxed">
-                    Partner terpercaya untuk kebutuhan lensa smartphone, aksesori fotografi, dan perlengkapan camping di area Saradan & Caruban. Kualitas profesional untuk hasil maksimal.
-                </p>
-                <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                    <a href="#produk" class="px-8 py-3 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-all">Lihat Koleksi</a>
-                    <a href="https://instagram.com/apexel.caruban" class="px-8 py-3 bg-[#212121] border border-[#2E2E2E] text-white font-bold rounded-xl hover:bg-[#2a2a2a] transition-all flex items-center gap-2">
-                        <i class="bi bi-instagram"></i> Instagram
-                    </a>
-                </div>
-            </div>
-            <div class="hidden md:block md:w-1/3 opacity-20">
-                <i class="bi bi-camera-reels text-white" style="font-size: 15rem;"></i>
-            </div>
-        </div>
-    </section>
+<main class="max-w-[1100px] mx-auto px-6">
 
-    <section id="statistik" class="py-20 border-y border-[#2E2E2E]">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="text-center" data-aos="zoom-in">
-                <div class="text-3xl font-bold text-white mb-1">500+</div>
-                <div class="text-xs text-gray-500 uppercase tracking-widest">Pelanggan Puas</div>
-            </div>
-            <div class="text-center" data-aos="zoom-in" data-aos-delay="100">
-                <div class="text-3xl font-bold text-white mb-1">50+</div>
-                <div class="text-xs text-gray-500 uppercase tracking-widest">Unit Ready</div>
-            </div>
-            <div class="text-center" data-aos="zoom-in" data-aos-delay="200">
-                <div class="text-3xl font-bold text-white mb-1">100%</div>
-                <div class="text-xs text-gray-500 uppercase tracking-widest">Original Gear</div>
-            </div>
-            <div class="text-center" data-aos="zoom-in" data-aos-delay="300">
-                <div class="text-3xl font-bold text-white mb-1">24/7</div>
-                <div class="text-xs text-gray-500 uppercase tracking-widest">Chat Support</div>
-            </div>
-        </div>
-    </section>
+  <!-- ===== HERO ===== -->
+  <section class="pt-16 md:pt-24 pb-16 text-center">
+    <h1 class="text-[42px] leading-[1.05] md:text-7xl font-extrabold tracking-tight">
+      Sewa alat foto &amp; piknik,<br>
+      <span class="relative inline-block font-serif italic font-normal text-accent tracking-normal">cukup chat WhatsApp.
+        <svg class="absolute left-0 -bottom-2 md:-bottom-3 w-full" height="12" viewBox="0 0 300 12" preserveAspectRatio="none" fill="none" aria-hidden="true">
+          <path d="M3 4 C 60 1, 150 8, 297 3" stroke="#0F7A5C" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+          <path d="M6 9 C 80 6, 190 11, 294 7" stroke="#0F7A5C" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+        </svg>
+      </span>
+    </h1>
+    <p class="mt-7 text-muted text-base md:text-lg leading-relaxed max-w-[650px] mx-auto">
+      Tripod, lensa, kursi lipat, kompor, sampai paket lengkap buat ngonten dan piknik di Saradan, Madiun.
+      Tanya stok, booking, ambil barang — semua lewat satu chat. Nggak perlu install aplikasi, nggak perlu datang dulu.
+    </p>
+    <div class="mt-9 flex flex-wrap justify-center gap-3">
+      <a href="https://wa.me/apexelcaruban" class="bg-ink text-white font-bold px-6 py-3.5 rounded-[10px] hover:bg-black/85 transition-colors">Booking via WhatsApp</a>
+      <a href="#katalog" class="bg-white border border-line font-bold px-6 py-3.5 rounded-[10px] hover:border-ink/30 transition-colors">Lihat katalog</a>
+    </div>
 
-    <section id="produk" class="py-32">
-        <div class="text-center mb-14" data-aos="fade-up">
-            <h2 class="text-3xl font-bold text-white mb-4">Produk & Harga Sewa</h2>
-            <p class="text-gray-400 max-w-xl mx-auto">Semua unit siap pakai dan terawat. Klik tombol sewa untuk booking langsung lewat WhatsApp — tentukan tanggalnya, admin bantu cek ketersediaan.</p>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-[#212121] border border-[#2E2E2E] rounded-3xl p-6 flex flex-col" data-aos="fade-up">
-                <div class="w-12 h-12 rounded-xl bg-[#181818] border border-[#2E2E2E] flex items-center justify-center mb-5">
-                    <i class="bi bi-camera text-white text-xl"></i>
-                </div>
-                <h4 class="font-bold text-white mb-1">Lensa Apexel</h4>
-                <p class="text-sm text-gray-500 mb-5">Lensa smartphone premium, termasuk pouch.</p>
-                <div class="mt-auto">
-                    <div class="text-2xl font-bold text-white mb-4">Rp30rb<span class="text-sm text-gray-500 font-medium">/hari</span></div>
-                    <a href="https://wa.me/apexelcaruban?text=Halo%20Apexel%20Caruban,%20saya%20mau%20sewa%20Lensa%20Apexel" class="block text-center px-4 py-2.5 bg-white text-black rounded-lg font-bold text-sm hover:bg-gray-200 transition-all">Sewa Sekarang</a>
-                </div>
+    <p class="mt-12 text-xs font-semibold uppercase tracking-widest text-muted/70">Cocok buat</p>
+    <div class="mt-3 flex flex-wrap justify-center items-center gap-x-3 gap-y-1 text-sm font-semibold text-ink/80">
+      <span>Ngonten</span><span class="text-line">•</span>
+      <span>Piknik</span><span class="text-line">•</span>
+      <span>Kemah</span><span class="text-line">•</span>
+      <span>Acara keluarga</span><span class="text-line">•</span>
+      <span>Live jualan</span>
+    </div>
+
+    <!-- ===== MOCKUP: CHAT + KALENDER ===== -->
+    <div class="mt-12 bg-white border border-line rounded-[22px] shadow-card text-left overflow-hidden">
+      <div class="grid md:grid-cols-[1fr_1.9fr]">
+
+        <!-- Chat pane -->
+        <div class="p-5 md:p-6 border-b md:border-b-0 md:border-r border-line flex flex-col">
+          <div class="flex items-center gap-2 pb-4 border-b border-line">
+            <span class="w-2.5 h-2.5 rounded-full bg-accent"></span>
+            <span class="text-sm font-bold">WhatsApp</span>
+            <span class="text-xs text-muted">— Apexel Caruban</span>
+          </div>
+          <div class="pt-4 space-y-4 text-sm flex-1">
+            <img src="img/katalog-tripod.jpg" alt="Tripod Apexel Caruban" class="w-28 h-36 object-cover rounded-xl border border-line">
+            <div class="bg-bubble rounded-2xl rounded-tl-md px-4 py-3 leading-relaxed max-w-[95%]">
+              Kak, tripod 2 meter ready buat besok pagi?
             </div>
-            <div class="bg-[#212121] border border-[#2E2E2E] rounded-3xl p-6 flex flex-col" data-aos="fade-up" data-aos-delay="50">
-                <div class="w-12 h-12 rounded-xl bg-[#181818] border border-[#2E2E2E] flex items-center justify-center mb-5">
-                    <i class="bi bi-phone text-white text-xl"></i>
-                </div>
-                <h4 class="font-bold text-white mb-1">Tripod 2 Meter</h4>
-                <p class="text-sm text-gray-500 mb-5">Termasuk remote bluetooth & pouch.</p>
-                <div class="mt-auto">
-                    <div class="text-2xl font-bold text-white mb-4">Rp10rb<span class="text-sm text-gray-500 font-medium">/hari</span></div>
-                    <a href="https://wa.me/apexelcaruban?text=Halo%20Apexel%20Caruban,%20saya%20mau%20sewa%20Tripod%202%20Meter" class="block text-center px-4 py-2.5 bg-white text-black rounded-lg font-bold text-sm hover:bg-gray-200 transition-all">Sewa Sekarang</a>
-                </div>
+            <p class="leading-relaxed">Ready kak 🙌 Mau diambil jam berapa?</p>
+            <div class="bg-white border border-line rounded-xl p-3.5 shadow-soft">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold">Apexel Caruban · Booking tercatat</span>
+                <span class="w-5 h-5 rounded-full bg-accent text-white flex items-center justify-center">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </span>
+              </div>
+              <p class="mt-2 text-[13px] text-muted leading-relaxed">Tripod 2 Meter — Besok, 07.00<br>Total <span class="font-bold text-ink">Rp10.000</span> · admin konfirmasi stoknya</p>
             </div>
-            <div class="bg-[#212121] border border-[#2E2E2E] rounded-3xl p-6 flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                <div class="w-12 h-12 rounded-xl bg-[#181818] border border-[#2E2E2E] flex items-center justify-center mb-5">
-                    <i class="bi bi-phone-landscape text-white text-xl"></i>
-                </div>
-                <h4 class="font-bold text-white mb-1">Tripod Mini</h4>
-                <p class="text-sm text-gray-500 mb-5">Ringan & praktis untuk meja dan traveling.</p>
-                <div class="mt-auto">
-                    <div class="text-2xl font-bold text-white mb-4">Rp8rb<span class="text-sm text-gray-500 font-medium">/hari</span></div>
-                    <a href="https://wa.me/apexelcaruban?text=Halo%20Apexel%20Caruban,%20saya%20mau%20sewa%20Tripod%20Mini" class="block text-center px-4 py-2.5 bg-white text-black rounded-lg font-bold text-sm hover:bg-gray-200 transition-all">Sewa Sekarang</a>
-                </div>
-            </div>
-            <div class="bg-[#212121] border border-[#2E2E2E] rounded-3xl p-6 flex flex-col" data-aos="fade-up" data-aos-delay="150">
-                <div class="w-12 h-12 rounded-xl bg-[#181818] border border-[#2E2E2E] flex items-center justify-center mb-5">
-                    <i class="bi bi-broadcast text-white text-xl"></i>
-                </div>
-                <h4 class="font-bold text-white mb-1">Quadpod</h4>
-                <p class="text-sm text-gray-500 mb-5">Termasuk remote bluetooth & tas.</p>
-                <div class="mt-auto">
-                    <div class="text-2xl font-bold text-white mb-4">Rp20rb<span class="text-sm text-gray-500 font-medium">/hari</span></div>
-                    <a href="https://wa.me/apexelcaruban?text=Halo%20Apexel%20Caruban,%20saya%20mau%20sewa%20Quadpod" class="block text-center px-4 py-2.5 bg-white text-black rounded-lg font-bold text-sm hover:bg-gray-200 transition-all">Sewa Sekarang</a>
-                </div>
-            </div>
-            <div class="bg-[#212121] border border-[#2E2E2E] rounded-3xl p-6 flex flex-col" data-aos="fade-up">
-                <div class="w-12 h-12 rounded-xl bg-[#181818] border border-[#2E2E2E] flex items-center justify-center mb-5">
-                    <i class="bi bi-easel text-white text-xl"></i>
-                </div>
-                <h4 class="font-bold text-white mb-1">Kursi Lipat XL</h4>
-                <p class="text-sm text-gray-500 mb-5">Pilihan warna biru, coklat, dan krem.</p>
-                <div class="mt-auto">
-                    <div class="text-2xl font-bold text-white mb-4">Rp12rb<span class="text-sm text-gray-500 font-medium">/hari</span></div>
-                    <a href="https://wa.me/apexelcaruban?text=Halo%20Apexel%20Caruban,%20saya%20mau%20sewa%20Kursi%20Lipat%20XL" class="block text-center px-4 py-2.5 bg-white text-black rounded-lg font-bold text-sm hover:bg-gray-200 transition-all">Sewa Sekarang</a>
-                </div>
-            </div>
-            <div class="bg-[#212121] border border-[#2E2E2E] rounded-3xl p-6 flex flex-col" data-aos="fade-up" data-aos-delay="50">
-                <div class="w-12 h-12 rounded-xl bg-[#181818] border border-[#2E2E2E] flex items-center justify-center mb-5">
-                    <i class="bi bi-fire text-white text-xl"></i>
-                </div>
-                <h4 class="font-bold text-white mb-1">Kompor Grill Set</h4>
-                <p class="text-sm text-gray-500 mb-5">Buat masak seru di acara outdoor & camping.</p>
-                <div class="mt-auto">
-                    <div class="text-2xl font-bold text-white mb-4">Rp50rb<span class="text-sm text-gray-500 font-medium">/hari</span></div>
-                    <a href="https://wa.me/apexelcaruban?text=Halo%20Apexel%20Caruban,%20saya%20mau%20sewa%20Kompor%20Grill%20Set" class="block text-center px-4 py-2.5 bg-white text-black rounded-lg font-bold text-sm hover:bg-gray-200 transition-all">Sewa Sekarang</a>
-                </div>
-            </div>
-            <div class="bg-[#212121] border border-[#2E2E2E] rounded-3xl p-6 flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                <div class="w-12 h-12 rounded-xl bg-[#181818] border border-[#2E2E2E] flex items-center justify-center mb-5">
-                    <i class="bi bi-basket text-white text-xl"></i>
-                </div>
-                <h4 class="font-bold text-white mb-1">Tikar + Keranjang Piknik</h4>
-                <p class="text-sm text-gray-500 mb-5">Paket piknik estetik, tinggal gelar.</p>
-                <div class="mt-auto">
-                    <div class="text-2xl font-bold text-white mb-4">Rp15rb<span class="text-sm text-gray-500 font-medium">/hari</span></div>
-                    <a href="https://wa.me/apexelcaruban?text=Halo%20Apexel%20Caruban,%20saya%20mau%20sewa%20Tikar%20dan%20Keranjang%20Piknik" class="block text-center px-4 py-2.5 bg-white text-black rounded-lg font-bold text-sm hover:bg-gray-200 transition-all">Sewa Sekarang</a>
-                </div>
-            </div>
-            <div class="bg-white rounded-3xl p-6 flex flex-col relative" data-aos="fade-up" data-aos-delay="150">
-                <div class="absolute -top-3 right-6 px-3 py-1 bg-[#181818] text-white text-xs font-bold rounded-full uppercase tracking-widest">Paling Hemat</div>
-                <div class="w-12 h-12 rounded-xl bg-[#181818] flex items-center justify-center mb-5">
-                    <i class="bi bi-box-seam text-white text-xl"></i>
-                </div>
-                <h4 class="font-bold text-black mb-1">Paket Lengkap</h4>
-                <p class="text-sm text-gray-600 mb-5">Semua kebutuhan konten & piknik dalam satu paket.</p>
-                <div class="mt-auto">
-                    <div class="text-2xl font-bold text-black mb-4">Rp75rb<span class="text-sm text-gray-500 font-medium">/hari</span></div>
-                    <a href="https://wa.me/apexelcaruban?text=Halo%20Apexel%20Caruban,%20saya%20mau%20sewa%20Paket%20Lengkap" class="block text-center px-4 py-2.5 bg-[#181818] text-white rounded-lg font-bold text-sm hover:bg-black transition-all">Sewa Sekarang</a>
-                </div>
-            </div>
+          </div>
+          <div class="mt-5 flex items-center gap-2 border border-line rounded-full pl-4 pr-1.5 py-1.5">
+            <span class="text-muted text-lg leading-none">+</span>
+            <span class="text-sm text-muted/70 flex-1">Balas ke Apexel…</span>
+            <span class="w-8 h-8 rounded-full bg-tang text-white flex items-center justify-center">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+            </span>
+          </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
-            <div class="text-center px-4" data-aos="fade-up">
-                <div class="w-12 h-12 mx-auto rounded-full bg-white text-black font-bold flex items-center justify-center text-lg mb-4">1</div>
-                <h4 class="font-bold text-white mb-2">Pilih Unit</h4>
-                <p class="text-sm text-gray-500">Tentukan alat yang kamu butuhkan dari daftar di atas.</p>
-            </div>
-            <div class="text-center px-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="w-12 h-12 mx-auto rounded-full bg-white text-black font-bold flex items-center justify-center text-lg mb-4">2</div>
-                <h4 class="font-bold text-white mb-2">Chat WhatsApp</h4>
-                <p class="text-sm text-gray-500">Klik tombol sewa, tentukan tanggal & durasi — admin cek ketersediaan untukmu.</p>
-            </div>
-            <div class="text-center px-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="w-12 h-12 mx-auto rounded-full bg-white text-black font-bold flex items-center justify-center text-lg mb-4">3</div>
-                <h4 class="font-bold text-white mb-2">Ambil & Pakai</h4>
-                <p class="text-sm text-gray-500">Ambil unit di lokasi kami di Tulung, Saradan — atau tanya opsi antar-jemput.</p>
-            </div>
-        </div>
-    </section>
+        <!-- Calendar pane -->
+        <div class="p-5 md:p-6">
+          <div class="flex flex-wrap items-center gap-3 pb-4 border-b border-line">
+            <span class="font-bold text-sm md:text-base">Ketersediaan minggu ini</span>
+            <span class="text-xs font-semibold bg-mint text-accent px-2.5 py-1 rounded-full">Hari ini</span>
+            <span class="ml-auto flex text-xs font-semibold border border-line rounded-lg overflow-hidden">
+              <span class="px-3 py-1.5 text-muted">Daftar</span>
+              <span class="px-3 py-1.5 bg-ink text-white">Kalender</span>
+            </span>
+          </div>
+          <div class="grid grid-cols-7 gap-1.5 md:gap-2 pt-4 text-center">
+            <div class="text-[11px] font-bold text-muted pb-1">Sen</div>
+            <div class="text-[11px] font-bold text-muted pb-1">Sel</div>
+            <div class="text-[11px] font-bold text-muted pb-1">Rab</div>
+            <div class="text-[11px] font-bold text-ink pb-1">Kam</div>
+            <div class="text-[11px] font-bold text-muted pb-1">Jum</div>
+            <div class="text-[11px] font-bold text-muted pb-1">Sab</div>
+            <div class="text-[11px] font-bold text-muted pb-1">Min</div>
 
-    <section id="about" class="py-32">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-            <div data-aos="fade-right">
-                <h2 class="text-3xl font-bold text-white mb-6">Mengapa Apexel Caruban?</h2>
-                <p class="text-gray-400 mb-8 leading-relaxed">
-                    Kami memahami bahwa setiap momen berharga layak diabadikan dengan sempurna. Itulah mengapa kami menyediakan peralatan pilihan yang telah dikurasi untuk memastikan hasil konten Anda setara dengan kamera profesional.
-                </p>
-                <div class="space-y-6">
-                    <div class="flex gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-[#212121] border border-[#2E2E2E] flex items-center justify-center flex-shrink-0">
-                            <i class="bi bi-award text-white text-xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white">Kualitas Terjamin</h4>
-                            <p class="text-sm text-gray-500">Semua unit dirawat secara berkala dan dalam kondisi prima.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-[#212121] border border-[#2E2E2E] flex items-center justify-center flex-shrink-0">
-                            <i class="bi bi-wallet2 text-white text-xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white">Harga Kompetitif</h4>
-                            <p class="text-sm text-gray-500">Layanan premium dengan harga yang tetap ramah di kantong.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-[#212121] border border-[#2E2E2E] p-8 rounded-3xl" data-aos="fade-left">
-                <h3 class="text-xl font-bold text-white mb-6">Layanan Kami</h3>
-                <ul class="space-y-4 text-gray-400">
-                    <li class="flex items-center gap-3"><i class="bi bi-check2-circle text-green-500"></i> Lensa Apexel Smartphone</li>
-                    <li class="flex items-center gap-3"><i class="bi bi-check2-circle text-green-500"></i> Tripod & Quadpod Mixio</li>
-                    <li class="flex items-center gap-3"><i class="bi bi-check2-circle text-green-500"></i> Lighting & Remote Bluetooth</li>
-                    <li class="flex items-center gap-3"><i class="bi bi-check2-circle text-green-500"></i> Alat Camping (Kompor, Tikar, Meja)</li>
-                    <li class="flex items-center gap-3"><i class="bi bi-check2-circle text-green-500"></i> Tikar & Keranjang Piknik</li>
-                </ul>
-            </div>
+            <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px]"><p class="text-[11px] font-bold">09.00</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Kursi XL ×2</p></div>
+            <div class="rounded-lg p-1.5 md:p-2 text-left min-h-[64px] border border-dashed border-line"><p class="text-[10px] md:text-[11px] text-muted/70 leading-tight pt-3 text-center">ready</p></div>
+            <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px]"><p class="text-[11px] font-bold">15.00</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Paket Lengkap</p></div>
+            <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px] ring-2 ring-accent"><p class="text-[11px] font-bold text-accent">07.00</p><p class="text-[10px] md:text-[11px] leading-tight font-semibold">Tripod 2m</p><p class="text-[9px] text-accent font-semibold">booking-mu</p></div>
+            <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px]"><p class="text-[11px] font-bold">08.00</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Kompor</p></div>
+            <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px]"><p class="text-[11px] font-bold">06.30</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Kursi XL ×4</p><p class="text-[11px] font-bold mt-1.5">09.00</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Tikar Piknik</p></div>
+            <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px]"><p class="text-[11px] font-bold">07.30</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Quadpod</p></div>
+          </div>
+          <p class="mt-4 text-xs text-muted text-left">Yang dijadwalkan lewat chat langsung tercatat di sini. Admin cek stok dulu sebelum kamu datang — jadi nggak ada cerita barang kosong pas sampai lokasi.</p>
         </div>
-    </section>
 
-    <section class="py-20 bg-[#212121]/30 rounded-3xl border border-[#2E2E2E] px-8">
-        <h2 class="text-2xl font-bold text-white mb-10 text-center">Tanya Jawab</h2>
-        <div class="max-w-2xl mx-auto space-y-4">
-            <div class="border border-[#2E2E2E] rounded-xl overflow-hidden">
-                <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center hover:bg-[#2a2a2a]" onclick="toggleFaq(this)">
-                    <span class="font-medium text-sm">Dimana lokasi Apexel Caruban?</span>
-                    <i class="bi bi-chevron-down"></i>
-                </button>
-                <div class="faq-answer px-6 bg-[#1a1a1a] text-sm text-gray-400">
-                    <div class="py-4">Kami berlokasi di Tulung, Saradan, Madiun. Sangat strategis untuk Anda yang berada di area Caruban dan sekitarnya.</div>
-                </div>
-            </div>
-            <div class="border border-[#2E2E2E] rounded-xl overflow-hidden">
-                <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center hover:bg-[#2a2a2a]" onclick="toggleFaq(this)">
-                    <span class="font-medium text-sm">Bagaimana cara sewa?</span>
-                    <i class="bi bi-chevron-down"></i>
-                </button>
-                <div class="faq-answer px-6 bg-[#1a1a1a] text-sm text-gray-400">
-                    <div class="py-4">Pilih unit di daftar produk, klik tombol Sewa Sekarang, lalu tentukan tanggal dan durasi lewat WhatsApp. Admin akan membantu cek ketersediaan unit untukmu.</div>
-                </div>
-            </div>
-            <div class="border border-[#2E2E2E] rounded-xl overflow-hidden">
-                <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center hover:bg-[#2a2a2a]" onclick="toggleFaq(this)">
-                    <span class="font-medium text-sm">Apakah bisa antar-jemput barang?</span>
-                    <i class="bi bi-chevron-down"></i>
-                </button>
-                <div class="faq-answer px-6 bg-[#1a1a1a] text-sm text-gray-400">
-                    <div class="py-4">Ya, kami menyediakan layanan antar-jemput untuk wilayah tertentu dengan biaya tambahan sesuai kesepakatan.</div>
-                </div>
-            </div>
-        </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section class="pt-20 text-center">
-        <h2 class="text-2xl font-bold text-white mb-4">Kontak & Lokasi</h2>
-        <p class="text-gray-400 mb-2 flex items-center justify-center gap-2"><i class="bi bi-geo-alt text-white"></i> Tulung, Kec. Saradan, Kab. Madiun</p>
-        <p class="text-gray-500 text-sm mb-8">Buka setiap hari — chat dulu untuk cek unit ready.</p>
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="https://wa.me/apexelcaruban" class="px-8 py-3 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-all flex items-center gap-2"><i class="bi bi-whatsapp"></i> WhatsApp</a>
-            <a href="https://www.google.com/maps?q=-7.504476,111.703752" class="px-8 py-3 bg-[#212121] border border-[#2E2E2E] text-white font-bold rounded-xl hover:bg-[#2a2a2a] transition-all flex items-center gap-2"><i class="bi bi-map"></i> Google Maps</a>
+  <!-- ===== FITUR 1 ===== -->
+  <section class="py-16 md:py-24 border-t border-line">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div>
+        <h2 class="text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight">Lebih suka lihat-lihat dulu? Ada katalognya.</h2>
+        <p class="mt-4 text-muted leading-relaxed">Semua barang dan harganya terbuka di bawah — per hari, tanpa embel-embel. Klik tombol sewanya, kamu langsung diarahkan ke chat dengan barang itu sudah tertulis. Tinggal tentukan tanggalnya.</p>
+        <div class="mt-6 border-l-[3px] border-accent pl-4 py-1">
+          <p class="text-sm leading-relaxed"><span class="font-bold">Harga yang kamu lihat = harga yang kamu bayar.</span> <span class="text-muted">Nggak ada biaya siluman di akhir.</span></p>
         </div>
-    </section>
+        <ul class="mt-6 space-y-3 text-sm">
+          <li class="flex gap-3"><span class="text-accent font-bold">—</span> Tripod, quadpod &amp; lensa: sudah termasuk remote bluetooth dan pouch/tas</li>
+          <li class="flex gap-3"><span class="text-accent font-bold">—</span> Kursi Lipat XL: pilihan warna biru, coklat, dan krem</li>
+          <li class="flex gap-3"><span class="text-accent font-bold">—</span> Semua unit dirawat berkala dan siap pakai</li>
+        </ul>
+      </div>
+      <div class="bg-white border border-line rounded-[20px] shadow-card overflow-hidden">
+        <img src="img/inventory.jpg" alt="Semua unit Apexel Caruban ready di teras" class="w-full h-72 md:h-96 object-cover">
+        <div class="flex items-center justify-between px-5 py-4">
+          <span class="text-sm font-bold">Unit ready di lokasi</span>
+          <span class="text-xs font-semibold bg-mint text-accent px-2.5 py-1 rounded-full">Tulung, Saradan</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FITUR 2 ===== -->
+  <section class="py-16 md:py-24 border-t border-line">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div class="bg-white border border-line rounded-[20px] shadow-card p-6 md:p-7 order-2 md:order-1">
+        <div class="flex items-center justify-between pb-4 border-b border-line">
+          <span class="font-bold">Ringkasan booking</span>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-mint text-accent px-2.5 py-1 rounded-full">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Dikonfirmasi admin
+          </span>
+        </div>
+        <dl class="text-sm">
+          <div class="flex justify-between py-3.5 border-b border-line"><dt class="text-muted">Barang</dt><dd class="font-semibold text-right">Tripod 2 Meter</dd></div>
+          <div class="flex justify-between py-3.5 border-b border-line"><dt class="text-muted">Durasi</dt><dd class="font-semibold text-right">1 hari</dd></div>
+          <div class="flex justify-between py-3.5 border-b border-line"><dt class="text-muted">Tanggal ambil</dt><dd class="font-semibold text-right">Besok</dd></div>
+          <div class="flex justify-between py-3.5 border-b border-line"><dt class="text-muted">Jam ambil</dt><dd class="font-semibold text-right">07.00 WIB</dd></div>
+          <div class="flex justify-between py-3.5"><dt class="text-muted">Total</dt><dd class="font-extrabold text-right">Rp10.000</dd></div>
+        </dl>
+        <p class="text-xs text-muted leading-relaxed bg-paper border border-line rounded-xl px-4 py-3">Admin cek ketersediaan dulu dan kabari kamu. Jangan datang dulu sebelum ada konfirmasi, ya.</p>
+      </div>
+      <div class="order-1 md:order-2">
+        <h2 class="text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight">Booking tercatat rapi, tinggal tunggu konfirmasi.</h2>
+        <p class="mt-4 text-muted leading-relaxed">Chat kamu nggak tenggelam begitu saja. Setiap booking diringkas jelas — barang, durasi, tanggal, jam — lalu admin cek stok dan mengonfirmasi sebelum kamu berangkat.</p>
+        <ul class="mt-6 space-y-3 text-sm">
+          <li class="flex gap-3"><span class="text-accent font-bold">—</span> Ringkasan booking dikirim balik ke chat-mu</li>
+          <li class="flex gap-3"><span class="text-accent font-bold">—</span> Stok dicek admin dulu, bukan asal janji ready</li>
+          <li class="flex gap-3"><span class="text-accent font-bold">—</span> Ganti jadwal? Cukup balas di chat yang sama</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KATALOG ===== -->
+  <section id="katalog" class="py-16 md:py-24 border-t border-line">
+    <h2 class="text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight">Yang bisa kamu sewa.</h2>
+    <p class="mt-4 text-muted leading-relaxed max-w-[650px]">Harga per hari, semua unit siap pakai dan terawat. Stok berjalan terus — klik Sewa untuk cek yang ready di tanggalmu.</p>
+
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Paket Lengkap -->
+      <div class="bg-white border border-line rounded-[20px] shadow-soft overflow-hidden flex flex-col">
+        <div class="relative">
+          <img src="img/katalog-paket.jpg" alt="Paket Lengkap Apexel Caruban" class="w-full h-52 object-cover">
+          <span class="absolute top-3 right-3 text-[11px] font-bold bg-ink text-white px-2.5 py-1 rounded-full">Paling hemat</span>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <h3 class="font-bold">Paket Lengkap</h3>
+          <p class="mt-1 text-sm text-muted leading-relaxed">Semua kebutuhan konten &amp; piknik dalam satu paket.</p>
+          <div class="mt-auto pt-5 flex items-end justify-between">
+            <p class="text-xl font-extrabold">Rp75rb<span class="text-sm font-medium text-muted">/hari</span></p>
+            <a href="https://wa.me/apexelcaruban?text=Halo%20Apexel%20Caruban,%20saya%20mau%20sewa%20Paket%20Lengkap" class="bg-ink text-white text-sm font-bold px-4 py-2 rounded-[10px] hover:bg-black/85 transition-colors">Sewa</a>
+          </div>
+        </div>
+      </div>
+      <!-- Tripod 2m -->
+      <div class="bg-white border border-line rounded-[20px] shadow-soft overflow-hidden flex flex-col">
+        <img src="img/katalog-tripod.jpg" alt="Tripod 2 Meter" class="w-full h-52 object-cover">
+        <div class="p-5 flex flex-col flex-1">
+          <h3 class="font-bold">Tripod 2 Meter</h3>
+          <p class="mt-1 text-sm text-muted leading-relaxed">Termasuk remote bluetooth &amp; pouch.</p>
+          <div class="mt-auto pt-5 flex items-end justify-between">
+            <p class="text-xl font-extrabold">Rp10rb<span class="text-sm font-medium text-muted">/hari</span></p>
+            <a href="https://wa.me/apexelcaruban?text=Halo%20Apexel%20Caruban,%20saya%20mau%20sewa%20Tripod%202%20Meter" class="bg-ink text-white text-sm font-bold px-4 py-2 rounded-[10px] hover:bg-black/85 transition-colors">Sewa</a>
+          </div>
+        </div>
+      </div>
+      <!-- Kursi -->
+      <div class="bg-white border border-line rounded-[20px] shadow-soft overflow-hidden flex flex-col">
+        <img src="img/katalog-kursi.jpg" alt="Kursi Lipat XL" class="w-full h-52 object-cover">
+        <div class="p-5 flex flex-col flex-1">
+          <h3 class="font-bold">Kursi Lipat XL</h3>
+          <p class="mt-1 text-sm text-muted leading-relaxed">Pilihan warna biru, coklat, dan krem.</p>
+          <div class="mt-auto pt-5 flex items-end justify-between">
+            <p class="text-xl font-extrabold">Rp12rb<span class="text-sm font-medium text-muted">/hari</span></p>
+            <a href="https://wa.me/apexelcaruban?text=Halo%20Apexel%20Caruban,%20saya%20mau%20sewa%20Kursi%20Lipat%20XL" class="bg-ink text-white text-sm font-bold px-4 py-2 rounded-[10px] hover:bg-black/85 transition-colors">Sewa</a>
+          </div>
+        </div>
+      </div>
+      <!-- Kompor -->
+      <div class="bg-white border border-line rounded-[20px] shadow-soft overflow-hidden flex flex-col">
+        <img src="img/katalog-kompor.jpg" alt="Kompor Grill Set" class="w-full h-52 object-cover">
+        <div class="p-5 flex flex-col flex-1">
+          <h3 class="font-bold">Kompor Grill Set</h3>
+          <p class="mt-1 text-sm text-muted leading-relaxed">Buat masak seru di acara outdoor &amp; camping.</p>
+          <div class="mt-auto pt-5 flex items-end justify-between">
+            <p class="text-xl font-extrabold">Rp50rb<span class="text-sm font-medium text-muted">/hari</span></p>
+            <a href="https://wa.me/apexelcaruban?text=Halo%20Apexel%20Caruban,%20saya%20mau%20sewa%20Kompor%20Grill%20Set" class="bg-ink text-white text-sm font-bold px-4 py-2 rounded-[10px] hover:bg-black/85 transition-colors">Sewa</a>
+          </div>
+        </div>
+      </div>
+      <!-- Tripod Mini -->
+      <div class="bg-white border border-line rounded-[20px] shadow-soft overflow-hidden flex flex-col">
+        <img src="img/katalog-tongsis-grup.jpg" alt="Tripod Mini" class="w-full h-52 object-cover">
+        <div class="p-5 flex flex-col flex-1">
+          <h3 class="font-bold">Tripod Mini</h3>
+          <p class="mt-1 text-sm text-muted leading-relaxed">Ringan &amp; praktis untuk meja dan traveling.</p>
+          <div class="mt-auto pt-5 flex items-end justify-between">
+            <p class="text-xl font-extrabold">Rp8rb<span class="text-sm font-medium text-muted">/hari</span></p>
+            <a href="https://wa.me/apexelcaruban?text=Halo%20Apexel%20Caruban,%20saya%20mau%20sewa%20Tripod%20Mini" class="bg-ink text-white text-sm font-bold px-4 py-2 rounded-[10px] hover:bg-black/85 transition-colors">Sewa</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lainnya -->
+      <div class="bg-white border border-line rounded-[20px] shadow-soft p-5 flex flex-col">
+        <h3 class="font-bold">Dan lainnya</h3>
+        <dl class="text-sm mt-2">
+          <div class="flex items-baseline justify-between gap-3 py-3 border-b border-line">
+            <div><dt class="font-semibold">Lensa Apexel</dt><dd class="text-muted text-[13px]">Lensa smartphone premium, termasuk pouch</dd></div>
+            <span class="font-extrabold whitespace-nowrap">Rp30rb</span>
+          </div>
+          <div class="flex items-baseline justify-between gap-3 py-3 border-b border-line">
+            <div><dt class="font-semibold">Quadpod</dt><dd class="text-muted text-[13px]">Termasuk remote bluetooth &amp; tas</dd></div>
+            <span class="font-extrabold whitespace-nowrap">Rp20rb</span>
+          </div>
+          <div class="flex items-baseline justify-between gap-3 py-3">
+            <div><dt class="font-semibold">Tikar + Keranjang Piknik</dt><dd class="text-muted text-[13px]">Paket piknik estetik, tinggal gelar</dd></div>
+            <span class="font-extrabold whitespace-nowrap">Rp15rb</span>
+          </div>
+        </dl>
+        <a href="https://wa.me/apexelcaruban" class="mt-auto pt-4 text-sm font-bold text-accent hover:underline">Tanya stok di WhatsApp →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LOKASI ===== -->
+  <section id="lokasi" class="py-16 md:py-24 border-t border-line">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div>
+        <h2 class="text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight">Ambilnya gampang, lokasinya jelas.</h2>
+        <p class="mt-4 text-muted leading-relaxed">Kami di Tulung, Saradan — strategis buat kamu yang di area Caruban dan sekitarnya. Buka setiap hari; chat dulu untuk cek unit ready sebelum berangkat.</p>
+        <div class="mt-6 border-l-[3px] border-accent pl-4 py-1">
+          <p class="text-sm leading-relaxed"><span class="font-bold">Bisa antar-jemput juga</span> <span class="text-muted">untuk wilayah tertentu, dengan biaya tambahan sesuai kesepakatan.</span></p>
+        </div>
+      </div>
+      <div class="bg-white border border-line rounded-[20px] shadow-card p-6 md:p-7">
+        <div class="flex items-start gap-4">
+          <span class="w-11 h-11 rounded-xl bg-mint text-accent flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <div>
+            <p class="font-bold">Apexel Caruban</p>
+            <p class="mt-1 text-sm text-muted leading-relaxed">Rumah di pertigaan a/n Riska, RT.03/RW.01, Tulung,<br>Kec. Saradan, Kab. Madiun</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-3 mt-6">
+          <a href="https://www.google.com/maps?q=-7.504476,111.703752" class="text-sm font-bold text-accent hover:underline py-2">Buka di Google Maps →</a>
+          <a href="https://wa.me/apexelcaruban" class="ml-auto bg-ink text-white text-sm font-bold px-4 py-2 rounded-[10px] hover:bg-black/85 transition-colors">Chat dulu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CARA SEWA ===== -->
+  <section id="cara-sewa" class="py-16 md:py-24 border-t border-line">
+    <h2 class="text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight">Cara sewa, nggak sampai semenit.</h2>
+    <p class="mt-4 text-muted leading-relaxed max-w-[650px]">Setelah kamu klik tombol sewa, sisanya tinggal ngobrol biasa di WhatsApp — kayak chat sama teman.</p>
+    <div class="mt-10 grid md:grid-cols-3 gap-5">
+      <div class="bg-white border border-line rounded-[20px] shadow-soft p-6">
+        <p class="text-sm font-extrabold text-accent">1</p>
+        <h3 class="mt-3 font-bold text-lg">Chat WhatsApp</h3>
+        <p class="mt-2 text-sm text-muted leading-relaxed">Klik tombol Sewa di barang yang kamu mau. Bilang tanggal dan durasinya — pesannya sudah setengah tertulis buatmu.</p>
+        <a href="https://wa.me/apexelcaruban" class="inline-block mt-4 text-sm font-bold text-accent hover:underline">Mulai chat →</a>
+      </div>
+      <div class="bg-white border border-line rounded-[20px] shadow-soft p-6">
+        <p class="text-sm font-extrabold text-accent">2</p>
+        <h3 class="mt-3 font-bold text-lg">Admin cek stok</h3>
+        <p class="mt-2 text-sm text-muted leading-relaxed">Kamu terima ringkasan booking: barang, durasi, tanggal, jam, total. Admin cek ketersediaan dan mengonfirmasi — jangan datang dulu sebelum tahap ini.</p>
+        <a href="#faq" class="inline-block mt-4 text-sm font-bold text-accent hover:underline">Lihat FAQ →</a>
+      </div>
+      <div class="bg-white border border-line rounded-[20px] shadow-soft p-6">
+        <p class="text-sm font-extrabold text-accent">3</p>
+        <h3 class="mt-3 font-bold text-lg">Ambil &amp; pakai</h3>
+        <p class="mt-2 text-sm text-muted leading-relaxed">Datang ke lokasi di Tulung, Saradan sesuai jam yang disepakati — atau tanya opsi antar-jemput. Barang langsung bisa dipakai.</p>
+        <a href="#lokasi" class="inline-block mt-4 text-sm font-bold text-accent hover:underline">Lihat lokasi →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" class="py-16 md:py-24 border-t border-line">
+    <div class="max-w-[720px] mx-auto">
+      <h2 class="text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight text-center">Yang sering ditanyain</h2>
+      <div class="mt-10">
+        <div class="border-t border-line">
+          <button class="faq-btn w-full py-5 text-left flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+            <span class="font-bold">Bagaimana cara sewa?</span>
+            <svg class="flex-shrink-0 text-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer"><p class="pb-5 text-muted leading-relaxed text-[15px]">Pilih unit di katalog, klik tombol Sewa, lalu tentukan tanggal dan durasi lewat WhatsApp. Admin akan membantu cek ketersediaan unit untukmu dan mengirim ringkasan booking.</p></div>
+        </div>
+        <div class="border-t border-line">
+          <button class="faq-btn w-full py-5 text-left flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+            <span class="font-bold">Bisa langsung datang tanpa booking dulu?</span>
+            <svg class="flex-shrink-0 text-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer"><p class="pb-5 text-muted leading-relaxed text-[15px]">Sebaiknya chat dulu. Stok berjalan dan bisa saja unit yang kamu mau sedang tersewa. Setelah admin mengonfirmasi booking-mu, baru datang sesuai jam yang disepakati — jadi perjalananmu nggak sia-sia.</p></div>
+        </div>
+        <div class="border-t border-line">
+          <button class="faq-btn w-full py-5 text-left flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+            <span class="font-bold">Di mana lokasi Apexel Caruban?</span>
+            <svg class="flex-shrink-0 text-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer"><p class="pb-5 text-muted leading-relaxed text-[15px]">Kami berlokasi di Tulung, Kec. Saradan, Kab. Madiun — strategis untuk area Caruban dan sekitarnya. Alamat lengkap dan titik Google Maps ada di bagian Lokasi di atas.</p></div>
+        </div>
+        <div class="border-t border-line">
+          <button class="faq-btn w-full py-5 text-left flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+            <span class="font-bold">Apakah bisa antar-jemput barang?</span>
+            <svg class="flex-shrink-0 text-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer"><p class="pb-5 text-muted leading-relaxed text-[15px]">Ya, kami menyediakan layanan antar-jemput untuk wilayah tertentu dengan biaya tambahan sesuai kesepakatan. Tanyakan langsung lewat WhatsApp.</p></div>
+        </div>
+        <div class="border-t border-b border-line">
+          <button class="faq-btn w-full py-5 text-left flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+            <span class="font-bold">Harga sewa sudah termasuk apa saja?</span>
+            <svg class="flex-shrink-0 text-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer"><p class="pb-5 text-muted leading-relaxed text-[15px]">Harga per hari sesuai katalog, dan itu yang kamu bayar — tidak ada biaya tambahan tersembunyi. Tripod, quadpod, dan lensa sudah termasuk remote bluetooth serta pouch/tasnya.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA AKHIR ===== -->
+  <section class="py-16 md:py-20 border-t border-line">
+    <div class="flex flex-col md:flex-row md:items-center gap-6">
+      <div class="flex-1">
+        <h2 class="text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight">Butuh alat buat besok?</h2>
+        <p class="mt-3 text-muted leading-relaxed">Chat sekarang, admin cek stoknya hari ini juga. Gratis tanya-tanya dulu.</p>
+      </div>
+      <a href="https://wa.me/apexelcaruban" class="bg-ink text-white font-bold px-7 py-4 rounded-[10px] hover:bg-black/85 transition-colors text-center whitespace-nowrap">Booking via WhatsApp</a>
+    </div>
+  </section>
 </main>
 
-<footer class="border-t border-[#2E2E2E] py-12 text-center">
-    <p class="text-sm text-gray-500 mb-4 font-bold">APEXEL CARUBAN</p>
-    <div class="flex justify-center gap-6 mb-8 text-gray-400">
-        <a href="https://instagram.com/elrayyxml" class="hover:text-white"><i class="bi bi-instagram text-xl"></i></a>
-        <a href="https://wa.me/apexelcaruban" class="hover:text-white"><i class="bi bi-whatsapp text-xl"></i></a>
+<!-- ===== FOOTER ===== -->
+<footer class="border-t border-line">
+  <div class="max-w-[1100px] mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <div>
+      <p class="font-extrabold tracking-tight text-lg">Apexel<span class="text-accent"> Caruban</span></p>
+      <p class="mt-3 text-sm text-muted leading-relaxed max-w-[260px]">Sewa alat foto &amp; piknik di Tulung, Saradan, Madiun. Booking cukup lewat chat WhatsApp.</p>
+      <p class="mt-5 text-xs text-muted/70">© 2026 Apexel Caruban</p>
     </div>
-    <p class="text-xs text-gray-600">© 2026 Apexel Caruban. All rights reserved.</p>
+    <div>
+      <p class="font-bold text-sm mb-4">Katalog</p>
+      <ul class="space-y-2.5 text-sm text-muted">
+        <li><a href="#katalog" class="hover:text-ink">Paket Lengkap</a></li>
+        <li><a href="#katalog" class="hover:text-ink">Tripod 2 Meter</a></li>
+        <li><a href="#katalog" class="hover:text-ink">Kursi Lipat XL</a></li>
+        <li><a href="#katalog" class="hover:text-ink">Kompor Grill Set</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-bold text-sm mb-4">Bantuan</p>
+      <ul class="space-y-2.5 text-sm text-muted">
+        <li><a href="#cara-sewa" class="hover:text-ink">Cara Sewa</a></li>
+        <li><a href="#faq" class="hover:text-ink">FAQ</a></li>
+        <li><a href="#lokasi" class="hover:text-ink">Lokasi</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-bold text-sm mb-4">Kontak</p>
+      <ul class="space-y-2.5 text-sm text-muted">
+        <li><a href="https://wa.me/apexelcaruban" class="hover:text-ink">WhatsApp</a></li>
+        <li><a href="https://instagram.com/apexel.caruban" class="hover:text-ink">Instagram @apexel.caruban</a></li>
+        <li><a href="https://www.google.com/maps?q=-7.504476,111.703752" class="hover:text-ink">Google Maps</a></li>
+      </ul>
+    </div>
+  </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
-    AOS.init({ duration: 1000, once: true });
-
-    function toggleFaq(btn) {
-        const answer = btn.nextElementSibling;
-        const icon = btn.querySelector('i');
-        answer.classList.toggle('active');
-        icon.style.transform = answer.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
-    }
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('active');
+    document.querySelectorAll('.faq-answer.active').forEach(a => a.classList.remove('active'));
+    document.querySelectorAll('.faq-btn.open').forEach(b => b.classList.remove('open'));
+    if (!isOpen) { answer.classList.add('active'); btn.classList.add('open'); }
+  }
 </script>
 </body>
 </html>
