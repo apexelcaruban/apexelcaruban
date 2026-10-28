@@ -45,12 +45,35 @@ tailwind.config = {
   .faq-answer.active { opacity: 1; max-height: 300px; }
   .faq-btn svg { transition: transform .3s ease; }
   .faq-btn.open svg { transform: rotate(180deg); }
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .chat-step { opacity: 0; transform: translateY(10px) scale(.98); transition: opacity .45s ease, transform .45s cubic-bezier(.22,.61,.36,1); }
+  .chat-step.in { opacity: 1; transform: none; }
+  .typing-dot { width: 6px; height: 6px; border-radius: 9999px; background: #9a9a97; display: inline-block; animation: tblink 1s infinite; }
+  .typing-dot:nth-child(2) { animation-delay: .15s; }
+  .typing-dot:nth-child(3) { animation-delay: .3s; }
+  @keyframes tblink { 0%,60%,100% { transform: translateY(0); opacity: .4; } 30% { transform: translateY(-3px); opacity: 1; } }
+  .cal-pulse { animation: calpulse 2.6s ease-in-out infinite; }
+  @keyframes calpulse { 0%,100% { box-shadow: 0 0 0 0 rgba(15,122,92,0); } 50% { box-shadow: 0 0 0 5px rgba(15,122,92,.16); } }
+  #katalog .grid > div, #cara-sewa .grid > div { transition: transform .35s ease, box-shadow .35s ease; }
+  #katalog .grid > div:hover, #cara-sewa .grid > div:hover { transform: translateY(-4px); box-shadow: 0 1px 2px rgba(17,17,17,.04), 0 16px 36px -12px rgba(17,17,17,.16); }
+  #site-header { transition: box-shadow .3s ease; }
+  #site-header.scrolled { box-shadow: 0 8px 28px -14px rgba(17,17,17,.25); }
+  .u-draw path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .u-draw.go path { animation: drawline 1s .35s ease forwards; }
+  .u-draw.go path:last-child { animation-delay: .65s; }
+  @keyframes drawline { to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .chat-step { opacity: 1 !important; transform: none !important; transition: none; }
+    .cal-pulse, .typing-dot { animation: none; }
+    .u-draw path { stroke-dashoffset: 0; animation: none; }
+  }
 </style>
 </head>
 <body class="antialiased font-sans">
 
 <!-- ===== HEADER ===== -->
-<header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-line">
+<header id="site-header" class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-line">
   <div class="max-w-[1100px] mx-auto px-6 h-16 flex items-center justify-between gap-4">
     <a href="#" class="font-extrabold tracking-tight text-lg whitespace-nowrap">Apexel<span class="text-accent"> Caruban</span></a>
     <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-muted">
@@ -73,9 +96,9 @@ tailwind.config = {
     <h1 class="text-[42px] leading-[1.05] md:text-7xl font-extrabold tracking-tight">
       Sewa alat foto &amp; piknik,<br>
       <span class="relative inline-block font-serif italic font-normal text-accent tracking-normal">cukup chat WhatsApp.
-        <svg class="absolute left-0 -bottom-2 md:-bottom-3 w-full" height="12" viewBox="0 0 300 12" preserveAspectRatio="none" fill="none" aria-hidden="true">
-          <path d="M3 4 C 60 1, 150 8, 297 3" stroke="#0F7A5C" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
-          <path d="M6 9 C 80 6, 190 11, 294 7" stroke="#0F7A5C" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+        <svg id="hero-underline" class="u-draw absolute left-0 -bottom-2 md:-bottom-3 w-full" height="12" viewBox="0 0 300 12" preserveAspectRatio="none" fill="none" aria-hidden="true">
+          <path pathLength="1" d="M3 4 C 60 1, 150 8, 297 3" stroke="#0F7A5C" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+          <path pathLength="1" d="M6 9 C 80 6, 190 11, 294 7" stroke="#0F7A5C" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
         </svg>
       </span>
     </h1>
@@ -98,7 +121,7 @@ tailwind.config = {
     </div>
 
     <!-- ===== MOCKUP: CHAT + KALENDER ===== -->
-    <div class="mt-12 bg-white border border-line rounded-[22px] shadow-card text-left overflow-hidden">
+    <div class="reveal mt-12 bg-white border border-line rounded-[22px] shadow-card text-left overflow-hidden">
       <div class="grid md:grid-cols-[1fr_1.9fr]">
 
         <!-- Chat pane -->
@@ -109,12 +132,13 @@ tailwind.config = {
             <span class="text-xs text-muted">— Apexel Caruban</span>
           </div>
           <div class="pt-4 space-y-4 text-sm flex-1">
-            <img src="img/katalog-tripod.jpg" alt="Tripod Apexel Caruban" class="w-28 h-36 object-cover rounded-xl border border-line">
-            <div class="bg-bubble rounded-2xl rounded-tl-md px-4 py-3 leading-relaxed max-w-[95%]">
+            <img id="cs1" src="img/katalog-tripod.jpg" alt="Tripod Apexel Caruban" class="chat-step w-28 h-36 object-cover rounded-xl border border-line">
+            <div id="cs2" class="chat-step bg-bubble rounded-2xl rounded-tl-md px-4 py-3 leading-relaxed max-w-[95%]">
               Kak, tripod 2 meter ready buat besok pagi?
             </div>
-            <p class="leading-relaxed">Ready kak 🙌 Mau diambil jam berapa?</p>
-            <div class="bg-white border border-line rounded-xl p-3.5 shadow-soft">
+            <div id="typing" class="chat-step items-center gap-1.5 bg-bubble rounded-2xl rounded-tl-md px-4 py-3.5 w-fit" style="display:none"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>
+            <p id="cs3" class="chat-step leading-relaxed">Ready kak 🙌 Mau diambil jam berapa?</p>
+            <div id="cs4" class="chat-step bg-white border border-line rounded-xl p-3.5 shadow-soft">
               <div class="flex items-center justify-between">
                 <span class="text-xs font-bold">Apexel Caruban · Booking tercatat</span>
                 <span class="w-5 h-5 rounded-full bg-accent text-white flex items-center justify-center">
@@ -155,7 +179,7 @@ tailwind.config = {
             <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px]"><p class="text-[11px] font-bold">09.00</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Kursi XL ×2</p></div>
             <div class="rounded-lg p-1.5 md:p-2 text-left min-h-[64px] border border-dashed border-line"><p class="text-[10px] md:text-[11px] text-muted/70 leading-tight pt-3 text-center">ready</p></div>
             <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px]"><p class="text-[11px] font-bold">15.00</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Paket Lengkap</p></div>
-            <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px] ring-2 ring-accent"><p class="text-[11px] font-bold text-accent">07.00</p><p class="text-[10px] md:text-[11px] leading-tight font-semibold">Tripod 2m</p><p class="text-[9px] text-accent font-semibold">booking-mu</p></div>
+            <div id="cal-hl" class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px] ring-2 ring-accent"><p class="text-[11px] font-bold text-accent">07.00</p><p class="text-[10px] md:text-[11px] leading-tight font-semibold">Tripod 2m</p><p class="text-[9px] text-accent font-semibold">booking-mu</p></div>
             <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px]"><p class="text-[11px] font-bold">08.00</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Kompor</p></div>
             <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px]"><p class="text-[11px] font-bold">06.30</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Kursi XL ×4</p><p class="text-[11px] font-bold mt-1.5">09.00</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Tikar Piknik</p></div>
             <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px]"><p class="text-[11px] font-bold">07.30</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Quadpod</p></div>
@@ -169,7 +193,7 @@ tailwind.config = {
 
   <!-- ===== FITUR 1 ===== -->
   <section class="py-16 md:py-24 border-t border-line">
-    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+    <div class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center">
       <div>
         <h2 class="text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight">Lebih suka lihat-lihat dulu? Ada katalognya.</h2>
         <p class="mt-4 text-muted leading-relaxed">Semua barang dan harganya terbuka di bawah — per hari, tanpa embel-embel. Klik tombol sewanya, kamu langsung diarahkan ke chat dengan barang itu sudah tertulis. Tinggal tentukan tanggalnya.</p>
@@ -195,7 +219,7 @@ tailwind.config = {
   <!-- ===== FITUR 2 ===== -->
   <section class="py-16 md:py-24 border-t border-line">
     <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-      <div class="bg-white border border-line rounded-[20px] shadow-card p-6 md:p-7 order-2 md:order-1">
+      <div class="reveal bg-white border border-line rounded-[20px] shadow-card p-6 md:p-7 order-2 md:order-1">
         <div class="flex items-center justify-between pb-4 border-b border-line">
           <span class="font-bold">Ringkasan booking</span>
           <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-mint text-accent px-2.5 py-1 rounded-full">
@@ -212,7 +236,7 @@ tailwind.config = {
         </dl>
         <p class="text-xs text-muted leading-relaxed bg-paper border border-line rounded-xl px-4 py-3">Admin cek ketersediaan dulu dan kabari kamu. Jangan datang dulu sebelum ada konfirmasi, ya.</p>
       </div>
-      <div class="order-1 md:order-2">
+      <div class="reveal order-1 md:order-2">
         <h2 class="text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight">Booking tercatat rapi, tinggal tunggu konfirmasi.</h2>
         <p class="mt-4 text-muted leading-relaxed">Chat kamu nggak tenggelam begitu saja. Setiap booking diringkas jelas — barang, durasi, tanggal, jam — lalu admin cek stok dan mengonfirmasi sebelum kamu berangkat.</p>
         <ul class="mt-6 space-y-3 text-sm">
@@ -226,10 +250,10 @@ tailwind.config = {
 
   <!-- ===== KATALOG ===== -->
   <section id="katalog" class="py-16 md:py-24 border-t border-line">
-    <h2 class="text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight">Yang bisa kamu sewa.</h2>
+    <h2 class="reveal text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight">Yang bisa kamu sewa.</h2>
     <p class="mt-4 text-muted leading-relaxed max-w-[650px]">Harga per hari, semua unit siap pakai dan terawat. Stok berjalan terus — klik Sewa untuk cek yang ready di tanggalmu.</p>
 
-    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="reveal mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
       <!-- Paket Lengkap -->
       <div class="bg-white border border-line rounded-[20px] shadow-soft overflow-hidden flex flex-col">
         <div class="relative">
@@ -317,7 +341,7 @@ tailwind.config = {
 
   <!-- ===== LOKASI ===== -->
   <section id="lokasi" class="py-16 md:py-24 border-t border-line">
-    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+    <div class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center">
       <div>
         <h2 class="text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight">Ambilnya gampang, lokasinya jelas.</h2>
         <p class="mt-4 text-muted leading-relaxed">Kami di Tulung, Saradan — strategis buat kamu yang di area Caruban dan sekitarnya. Buka setiap hari; chat dulu untuk cek unit ready sebelum berangkat.</p>
@@ -345,9 +369,9 @@ tailwind.config = {
 
   <!-- ===== CARA SEWA ===== -->
   <section id="cara-sewa" class="py-16 md:py-24 border-t border-line">
-    <h2 class="text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight">Cara sewa, nggak sampai semenit.</h2>
+    <h2 class="reveal text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight">Cara sewa, nggak sampai semenit.</h2>
     <p class="mt-4 text-muted leading-relaxed max-w-[650px]">Setelah kamu klik tombol sewa, sisanya tinggal ngobrol biasa di WhatsApp — kayak chat sama teman.</p>
-    <div class="mt-10 grid md:grid-cols-3 gap-5">
+    <div class="reveal mt-10 grid md:grid-cols-3 gap-5">
       <div class="bg-white border border-line rounded-[20px] shadow-soft p-6">
         <p class="text-sm font-extrabold text-accent">1</p>
         <h3 class="mt-3 font-bold text-lg">Chat WhatsApp</h3>
@@ -371,7 +395,7 @@ tailwind.config = {
 
   <!-- ===== FAQ ===== -->
   <section id="faq" class="py-16 md:py-24 border-t border-line">
-    <div class="max-w-[720px] mx-auto">
+    <div class="reveal max-w-[720px] mx-auto">
       <h2 class="text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight text-center">Yang sering ditanyain</h2>
       <div class="mt-10">
         <div class="border-t border-line">
@@ -415,7 +439,7 @@ tailwind.config = {
 
   <!-- ===== CTA AKHIR ===== -->
   <section class="py-16 md:py-20 border-t border-line">
-    <div class="flex flex-col md:flex-row md:items-center gap-6">
+    <div class="reveal flex flex-col md:flex-row md:items-center gap-6">
       <div class="flex-1">
         <h2 class="text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight">Butuh alat buat besok?</h2>
         <p class="mt-3 text-muted leading-relaxed">Chat sekarang, admin cek stoknya hari ini juga. Gratis tanya-tanya dulu.</p>
@@ -462,6 +486,32 @@ tailwind.config = {
 </footer>
 
 <script>
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Header shadow on scroll
+  const hdr = document.getElementById('site-header');
+  addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 8), { passive: true });
+
+  // Hero: underline draw + chat plays like a real conversation
+  const show = id => { const el = document.getElementById(id); if (el) el.classList.add('in'); };
+  addEventListener('load', () => {
+    const u = document.getElementById('hero-underline'); if (u) u.classList.add('go');
+    const typing = document.getElementById('typing');
+    const steps = [
+      [350,  () => show('cs1')],
+      [950,  () => show('cs2')],
+      [1650, () => { typing.style.display = 'flex'; show('typing'); }],
+      [2500, () => { typing.style.display = 'none'; show('cs3'); }],
+      [3150, () => show('cs4')],
+      [3500, () => { const c = document.getElementById('cal-hl'); if (c) c.classList.add('cal-pulse'); }]
+    ];
+    steps.forEach(([t, fn]) => setTimeout(fn, t));
+  });
+
   function toggleFaq(btn) {
     const answer = btn.nextElementSibling;
     const isOpen = answer.classList.contains('active');
