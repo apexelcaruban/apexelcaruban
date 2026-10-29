@@ -113,8 +113,7 @@ tailwind.config = {
       Tanya stok, booking, ambil barang — semua lewat satu chat. Nggak perlu install aplikasi, nggak perlu datang dulu.
     </p>
     <div class="mt-9 flex flex-wrap justify-center gap-3">
-      <a href="https://wa.me/apexelcaruban" class="bg-ink text-white font-bold px-6 py-3.5 rounded-[10px] hover:bg-black/85 transition-colors">Booking via WhatsApp</a>
-      <a href="#katalog" class="bg-white border border-line font-bold px-6 py-3.5 rounded-[10px] hover:border-ink/30 transition-colors">Lihat katalog</a>
+      <a href="#katalog" class="bg-ink text-white font-bold px-6 py-3.5 rounded-[10px] hover:bg-black/85 transition-colors">Lihat katalog</a>
     </div>
 
     <p class="mt-12 text-xs font-semibold uppercase tracking-widest text-muted/70">Cocok buat</p>
@@ -127,11 +126,10 @@ tailwind.config = {
     </div>
 
     <!-- ===== MOCKUP: CHAT + KALENDER ===== -->
-    <div class="reveal mt-12 bg-white border border-line rounded-[22px] shadow-card text-left overflow-hidden">
-      <div class="grid md:grid-cols-[1fr_1.9fr]">
+    <div class="reveal mt-12 max-w-[560px] mx-auto bg-white border border-line rounded-[22px] shadow-card text-left overflow-hidden">
 
         <!-- Chat pane -->
-        <div class="p-5 md:p-6 border-b md:border-b-0 md:border-r border-line flex flex-col">
+        <div class="p-5 md:p-6 flex flex-col">
           <div class="flex items-center gap-2 pb-4 border-b border-line">
             <span class="w-2.5 h-2.5 rounded-full bg-accent"></span>
             <span class="text-sm font-bold">WhatsApp</span>
@@ -163,37 +161,7 @@ tailwind.config = {
           </div>
         </div>
 
-        <!-- Calendar pane -->
-        <div class="p-5 md:p-6">
-          <div class="flex flex-wrap items-center gap-3 pb-4 border-b border-line">
-            <span class="font-bold text-sm md:text-base">Ketersediaan minggu ini</span>
-            <span class="text-xs font-semibold bg-mint text-accent px-2.5 py-1 rounded-full">Hari ini</span>
-            <span class="ml-auto flex text-xs font-semibold border border-line rounded-lg overflow-hidden">
-              <span class="px-3 py-1.5 text-muted">Daftar</span>
-              <span class="px-3 py-1.5 bg-ink text-white">Kalender</span>
-            </span>
-          </div>
-          <div class="grid grid-cols-7 gap-1.5 md:gap-2 pt-4 text-center">
-            <div class="text-[11px] font-bold text-muted pb-1">Sen</div>
-            <div class="text-[11px] font-bold text-muted pb-1">Sel</div>
-            <div class="text-[11px] font-bold text-muted pb-1">Rab</div>
-            <div class="text-[11px] font-bold text-ink pb-1">Kam</div>
-            <div class="text-[11px] font-bold text-muted pb-1">Jum</div>
-            <div class="text-[11px] font-bold text-muted pb-1">Sab</div>
-            <div class="text-[11px] font-bold text-muted pb-1">Min</div>
 
-            <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px]"><p class="text-[11px] font-bold">09.00</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Kursi XL ×2</p></div>
-            <div class="rounded-lg p-1.5 md:p-2 text-left min-h-[64px] border border-dashed border-line"><p class="text-[10px] md:text-[11px] text-muted/70 leading-tight pt-3 text-center">ready</p></div>
-            <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px]"><p class="text-[11px] font-bold">15.00</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Paket Lengkap</p></div>
-            <div id="cal-hl" class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px] ring-2 ring-accent"><p class="text-[11px] font-bold text-accent">07.00</p><p class="text-[10px] md:text-[11px] leading-tight font-semibold">Tripod 2m</p><p class="text-[9px] text-accent font-semibold">booking-mu</p></div>
-            <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px]"><p class="text-[11px] font-bold">08.00</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Kompor</p></div>
-            <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px]"><p class="text-[11px] font-bold">06.30</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Kursi XL ×4</p><p class="text-[11px] font-bold mt-1.5">09.00</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Tikar Piknik</p></div>
-            <div class="bg-mint rounded-lg p-1.5 md:p-2 text-left min-h-[64px]"><p class="text-[11px] font-bold">07.30</p><p class="text-[10px] md:text-[11px] leading-tight text-ink/80">Quadpod</p></div>
-          </div>
-          <p class="mt-4 text-xs text-muted text-left">Yang dijadwalkan lewat chat langsung tercatat di sini. Admin cek stok dulu sebelum kamu datang — jadi nggak ada cerita barang kosong pas sampai lokasi.</p>
-        </div>
-
-      </div>
     </div>
   </section>
 
@@ -448,9 +416,8 @@ tailwind.config = {
     <div class="reveal flex flex-col md:flex-row md:items-center gap-6">
       <div class="flex-1">
         <h2 class="text-3xl md:text-[40px] leading-tight font-extrabold tracking-tight">Butuh alat buat besok?</h2>
-        <p class="mt-3 text-muted leading-relaxed">Chat sekarang, admin cek stoknya hari ini juga. Gratis tanya-tanya dulu.</p>
+        <p class="mt-3 text-muted leading-relaxed">Klik tombol Chat WhatsApp di pojok kanan bawah — admin cek stoknya hari ini juga. Gratis tanya-tanya dulu.</p>
       </div>
-      <a href="https://wa.me/apexelcaruban" class="bg-ink text-white font-bold px-7 py-4 rounded-[10px] hover:bg-black/85 transition-colors text-center whitespace-nowrap">Booking via WhatsApp</a>
     </div>
   </section>
 </main>
@@ -519,8 +486,7 @@ tailwind.config = {
       [950,  () => show('cs2')],
       [1650, () => { typing.style.display = 'flex'; show('typing'); }],
       [2500, () => { typing.style.display = 'none'; show('cs3'); }],
-      [3150, () => show('cs4')],
-      [3500, () => { const c = document.getElementById('cal-hl'); if (c) c.classList.add('cal-pulse'); }]
+      [3150, () => show('cs4')]
     ];
     steps.forEach(([t, fn]) => setTimeout(fn, t));
   });
