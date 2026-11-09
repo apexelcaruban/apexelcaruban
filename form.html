@@ -88,7 +88,7 @@ tailwind.config = {
 
     <div>
       <p class="mb-2 text-sm font-semibold">Durasi</p>
-      <div id="grupDurasi" class="flex flex-wrap gap-2"></div>
+      <div id="grupDurasi" class="grid grid-cols-4 gap-2"></div>
     </div>
 
     <div>
@@ -155,7 +155,8 @@ tailwind.config = {
   const DURASI = [
     { v: '1 Hari', hari: 1 }, { v: '2 Hari', hari: 2 },
     { v: '3 Hari', hari: 3 }, { v: '4 Hari', hari: 4 },
-    { v: 'Lainnya', hari: 0 }
+    { v: '5 Hari', hari: 5 }, { v: '6 Hari', hari: 6 },
+    { v: '7 Hari', hari: 7 }, { v: 'Lainnya', hari: 0 }
   ]
   const JAM = Array.from({ length: 14 }, (_, i) => String(i + 7).padStart(2, '0') + '.00')
 
