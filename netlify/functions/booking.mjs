@@ -10,6 +10,13 @@
 //
 // Kiriman disimpan di Netlify Blobs; bot di VM mengambilnya dengan
 // polling keluar lalu membalas pelanggan via WhatsApp.
+//
+// Pembaruan push (2026-11-09 malam): sebelum antre di Blobs, fungsi ini
+// mencoba mendorong kiriman langsung ke bot lewat Cloudflare Tunnel
+// (POST https://api.apexelcaruban.my.id/form/submit) supaya balasan
+// terkirim seketika. id dipakai bersama oleh kedua jalur dan bot
+// menolak duplikat — push yang gagal/ragu selalu jatuh ke antrean
+// Blobs + poller sebagai jaring pengaman.
 
 import { getStore } from '@netlify/blobs'
 import crypto from 'node:crypto'
@@ -103,6 +110,22 @@ export default async (req) => {
       }
 
       const id = `sub-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+
+      // Jalur cepat: dorong ke bot via Cloudflare Tunnel.
+      try {
+         const push = await fetch('https://api.apexelcaruban.my.id/form/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token: body.token, id, data }),
+            signal: AbortSignal.timeout(7000)
+         })
+         if (push.ok) {
+            const pj = await push.json().catch(() => ({}))
+            if (pj.ok) return json({ ok: true, id, pushed: true })
+         }
+      } catch {}
+
+      // Jaring pengaman: antre di Blobs untuk poller bot.
       await store.setJSON(id, {
          id,
          jid: String(payload.j),
