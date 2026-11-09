@@ -89,6 +89,9 @@ export default async (req) => {
       const data = {
          nama: clean(body.nama, 60),
          barang: clean(body.barang, 140),
+         barangNama: clean(body.barangNama, 80),
+         barangIsi: clean(body.barangIsi, 120),
+         harga: clean(body.harga, 30),
          durasi: clean(body.durasi, 20),
          tanggal: clean(body.tanggal, 40),
          jam: clean(body.jam, 20),
