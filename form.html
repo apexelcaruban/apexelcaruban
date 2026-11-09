@@ -116,7 +116,7 @@ tailwind.config = {
 
     <p id="errorText" class="hidden text-sm font-medium text-red-600">Masih ada yang kosong — cek nama, paket/barang, durasi, tanggal, dan jam ambil ya.</p>
 
-    <button type="submit"
+    <button type="submit" id="submitBtn"
       class="w-full rounded-xl bg-brand px-4 py-3.5 text-base font-bold text-white shadow-sm transition active:scale-[.99]">
       Kirim via WhatsApp
     </button>
@@ -125,10 +125,25 @@ tailwind.config = {
       Apexel Caruban • Tulung, Saradan, Kab. Madiun<br>Buka setiap hari 07.00–21.00 WIB
     </p>
   </form>
+
+  <div id="suksesBox" class="hidden py-10 text-center">
+    <div class="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-full bg-tint">
+      <span class="text-3xl font-bold text-brand">✓</span>
+    </div>
+    <h2 class="text-lg font-extrabold">Booking Terkirim!</h2>
+    <p class="mt-2 text-sm leading-relaxed text-neutral-600">Terima kasih kak. Admin akan menghubungimu lewat WhatsApp untuk konfirmasi ketersediaan barang.</p>
+    <p class="mt-3 text-sm font-semibold">Jangan datang dulu sebelum ada konfirmasi ya kak.</p>
+    <p class="mt-4 text-xs text-neutral-400">Kamu boleh menutup halaman ini.</p>
+  </div>
 </main>
 
 <script>
   const rp = n => 'Rp' + n.toLocaleString('id-ID')
+
+  // Tautan dari bot membawa token (?t=...) → kirim via webhook dan bot
+  // membalas otomatis. Tautan umum tanpa token → cara lama (wa.me).
+  const formToken = new URLSearchParams(location.search).get('t')
+  if (formToken) document.getElementById('submitBtn').textContent = 'Kirim Booking'
 
   const PAKET = [
     { nama: 'Paket A', isi: 'Lensa Apexel + Remote Bluetooth', harga: 30000 },
@@ -222,7 +237,7 @@ tailwind.config = {
     }
   }
 
-  document.getElementById('bookingForm').addEventListener('submit', e => {
+  document.getElementById('bookingForm').addEventListener('submit', async e => {
     e.preventDefault()
     const nama = document.getElementById('nama').value.trim()
     const tanggalVal = tanggalEl.value
@@ -241,19 +256,53 @@ tailwind.config = {
       weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
     }).format(new Date(y, m - 1, dd))
 
-    const lines = [
-      'Halo Apexel Caruban, saya mau booking:',
-      '',
-      `Nama: ${nama}`,
-      `Paket/Barang: ${sel.barang.nama}${sel.barang.isi ? ` — ${sel.barang.isi}` : ''} (${rp(sel.barang.harga)}/hari)`,
-      `Durasi: ${sel.durasi.v}`,
-      `Tanggal: ${tglText}`,
-      `Jam ambil: ${sel.jam}`
-    ]
-    if (sel.durasi.hari > 0) lines.push(`Estimasi: ${rp(sel.barang.harga * sel.durasi.hari)}`)
-    if (catatan) lines.push(`Catatan: ${catatan}`)
+    const barangText = `${sel.barang.nama}${sel.barang.isi ? ` — ${sel.barang.isi}` : ''} (${rp(sel.barang.harga)}/hari)`
+    const estimasiText = sel.durasi.hari > 0 ? rp(sel.barang.harga * sel.durasi.hari) : ''
 
-    window.location.href = 'https://wa.me/6289671172929?text=' + encodeURIComponent(lines.join('\n'))
+    const kirimWaMe = () => {
+      const lines = [
+        'Halo Apexel Caruban, saya mau booking:',
+        '',
+        `Nama: ${nama}`,
+        `Paket/Barang: ${barangText}`,
+        `Durasi: ${sel.durasi.v}`,
+        `Tanggal: ${tglText}`,
+        `Jam ambil: ${sel.jam}`
+      ]
+      if (estimasiText) lines.push(`Estimasi: ${estimasiText}`)
+      if (catatan) lines.push(`Catatan: ${catatan}`)
+      window.location.href = 'https://wa.me/6289671172929?text=' + encodeURIComponent(lines.join('\n'))
+    }
+
+    if (formToken) {
+      const btn = document.getElementById('submitBtn')
+      btn.disabled = true
+      btn.textContent = 'Mengirim…'
+      try {
+        const res = await fetch('/api/booking', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            token: formToken, nama, barang: barangText,
+            durasi: sel.durasi.v, tanggal: tglText, jam: sel.jam,
+            catatan, estimasi: estimasiText
+          })
+        })
+        if (!res.ok) throw new Error('webhook ' + res.status)
+        document.getElementById('bookingForm').classList.add('hidden')
+        document.getElementById('suksesBox').classList.remove('hidden')
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        return
+      } catch {
+        // Webhook gagal — jangan sampai booking hilang, pakai wa.me.
+        btn.disabled = false
+        btn.textContent = 'Kirim Booking'
+        kirimWaMe()
+        return
+      }
+    }
+
+    kirimWaMe()
   })
 </script>
 </body>
