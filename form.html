@@ -25,7 +25,7 @@
 tailwind.config = {
   theme: {
     extend: {
-      colors: { paper: '#FAFAF8', brand: '#0F7A5C', ink: '#111111', soft: '#F3F4F2', line: '#E7E7E5' },
+      colors: { paper: '#FAFAF8', brand: '#0F7A5C', ink: '#111111', soft: '#F3F4F2', tint: '#EEF4F0', line: '#E7E7E5' },
       fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['"Instrument Serif"', 'serif'] }
     }
   }
@@ -33,7 +33,31 @@ tailwind.config = {
 </script>
 <style>
   body { background: #FAFAF8; }
-  input, select, textarea { font-size: 16px; } /* cegah zoom otomatis di iOS */
+  input, textarea { font-size: 16px; } /* cegah zoom otomatis di iOS */
+
+  .item-row {
+    display: flex; align-items: center; gap: 12px; width: 100%;
+    text-align: left; background: #fff; border: 1px solid #E7E7E5;
+    border-radius: 14px; padding: 12px 14px; transition: border-color .15s, background .15s;
+  }
+  .item-row .radio {
+    flex: none; width: 22px; height: 22px; border-radius: 9999px;
+    border: 2px solid #C9C9C6; display: grid; place-items: center;
+  }
+  .item-row .radio::after {
+    content: ''; width: 11px; height: 11px; border-radius: 9999px;
+    background: transparent;
+  }
+  .item-row.selected { border-color: #0F7A5C; background: #EEF4F0; }
+  .item-row.selected .radio { border-color: #0F7A5C; }
+  .item-row.selected .radio::after { background: #0F7A5C; }
+
+  .chip {
+    border: 1px solid #E7E7E5; background: #fff; border-radius: 9999px;
+    padding: 9px 16px; font-weight: 600; font-size: 14px;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .chip.selected { background: #0F7A5C; border-color: #0F7A5C; color: #fff; }
 </style>
 </head>
 <body class="font-sans text-ink antialiased">
@@ -42,11 +66,11 @@ tailwind.config = {
 
   <header class="mb-7 text-center">
     <p class="font-serif text-3xl italic">Apexel Caruban</p>
-    <h1 class="mt-2 text-xl font-800 font-extrabold tracking-tight">Form Booking</h1>
+    <h1 class="mt-2 text-xl font-extrabold tracking-tight">Form Sewa</h1>
     <p class="mt-2 text-sm leading-relaxed text-neutral-600">Isi form ini sebentar, lalu pencet tombol Kirim. Kamu akan diarahkan kembali ke WhatsApp dengan pesan booking yang sudah terisi rapi.</p>
   </header>
 
-  <form id="bookingForm" class="space-y-5" novalidate>
+  <form id="bookingForm" class="space-y-6" novalidate>
 
     <div>
       <label for="nama" class="mb-1.5 block text-sm font-semibold">Nama</label>
@@ -55,67 +79,27 @@ tailwind.config = {
     </div>
 
     <div>
-      <label for="barang" class="mb-1.5 block text-sm font-semibold">Paket / Barang</label>
-      <select id="barang" name="barang" required
-        class="w-full rounded-xl border border-line bg-white px-4 py-3 outline-none focus:border-brand">
-        <option value="" disabled selected>Pilih paket atau barang</option>
-        <optgroup label="Paket">
-          <option value="Paket A" data-harga="30000">Paket A — Lensa + Remote Bluetooth (Rp30.000/hari)</option>
-          <option value="Paket B" data-harga="50000">Paket B — Lensa + Remote + Tripod 2 Meter (Rp50.000/hari)</option>
-          <option value="Paket C" data-harga="70000">Paket C — Paket B + Kursi Lipat 2 pcs (Rp70.000/hari)</option>
-          <option value="Paket Lengkap" data-harga="75000">Paket Lengkap — Paket C + Meja Lipat (Rp75.000/hari)</option>
-          <option value="Paket 1" data-harga="20000">Paket 1 — Kursi Lipat 2 pcs (Rp20.000/hari)</option>
-          <option value="Paket 2" data-harga="25000">Paket 2 — Kursi Lipat 2 pcs + Meja Lipat (Rp25.000/hari)</option>
-          <option value="Paket 3" data-harga="30000">Paket 3 — Paket 2 + Tripod 2 Meter (Rp30.000/hari)</option>
-        </optgroup>
-        <optgroup label="Satuan">
-          <option value="Lensa Apexel" data-harga="30000">Lensa Apexel (Rp30.000/hari)</option>
-          <option value="Kompor Portable" data-harga="50000">Kompor Portable + Gas (Rp50.000/hari)</option>
-          <option value="Quadpod Mixio" data-harga="20000">Quadpod Mixio (Rp20.000/hari)</option>
-          <option value="Tikar Piknik" data-harga="15000">Tikar Piknik 200x200 (Rp15.000/hari)</option>
-          <option value="Kursi Lipat XL" data-harga="12000">Kursi Lipat XL (Rp12.000/hari)</option>
-          <option value="Tripod 2 Meter" data-harga="10000">Tripod 2 Meter (Rp10.000/hari)</option>
-          <option value="Keranjang Piknik" data-harga="10000">Keranjang Piknik (Rp10.000/hari)</option>
-          <option value="Tripod Mini" data-harga="8000">Tripod Mini (Rp8.000/hari)</option>
-          <option value="Meja Lipat" data-harga="8000">Meja Lipat (Rp8.000/hari)</option>
-          <option value="Kacamata" data-harga="5000">Kacamata (Rp5.000/hari)</option>
-          <option value="Topi Bucket" data-harga="5000">Topi Bucket (Rp5.000/hari)</option>
-        </optgroup>
-      </select>
+      <p class="mb-2 text-sm font-semibold">Paket / Barang</p>
+      <p class="mb-2 mt-4 text-xs font-bold uppercase tracking-wider text-neutral-400">Paket</p>
+      <div id="grupPaket" class="space-y-2"></div>
+      <p class="mb-2 mt-5 text-xs font-bold uppercase tracking-wider text-neutral-400">Satuan</p>
+      <div id="grupSatuan" class="space-y-2"></div>
     </div>
 
-    <div class="grid grid-cols-2 gap-3">
-      <div>
-        <label for="durasi" class="mb-1.5 block text-sm font-semibold">Durasi</label>
-        <select id="durasi" name="durasi" required
-          class="w-full rounded-xl border border-line bg-white px-4 py-3 outline-none focus:border-brand">
-          <option value="" disabled selected>Pilih durasi</option>
-          <option value="1 Hari" data-hari="1">1 Hari</option>
-          <option value="2 Hari" data-hari="2">2 Hari</option>
-          <option value="3 Hari" data-hari="3">3 Hari</option>
-          <option value="4 Hari" data-hari="4">4 Hari</option>
-          <option value="Lainnya">Lainnya (tulis di catatan)</option>
-        </select>
-      </div>
-      <div>
-        <label for="jam" class="mb-1.5 block text-sm font-semibold">Jam Ambil</label>
-        <select id="jam" name="jam" required
-          class="w-full rounded-xl border border-line bg-white px-4 py-3 outline-none focus:border-brand">
-          <option value="" disabled selected>Pilih jam</option>
-          <option>07.00</option>
-          <option>09.00</option>
-          <option>12.00</option>
-          <option>15.00</option>
-          <option>18.00</option>
-          <option>Lainnya (tulis di catatan)</option>
-        </select>
-      </div>
+    <div>
+      <p class="mb-2 text-sm font-semibold">Durasi</p>
+      <div id="grupDurasi" class="flex flex-wrap gap-2"></div>
     </div>
 
     <div>
       <label for="tanggal" class="mb-1.5 block text-sm font-semibold">Tanggal Mulai Sewa</label>
       <input id="tanggal" name="tanggal" type="date" required
         class="w-full rounded-xl border border-line bg-white px-4 py-3 outline-none focus:border-brand">
+    </div>
+
+    <div>
+      <p class="mb-2 text-sm font-semibold">Jam Ambil</p>
+      <div id="grupJam" class="flex flex-wrap gap-2"></div>
     </div>
 
     <div>
@@ -130,7 +114,7 @@ tailwind.config = {
       <p class="mt-1 text-xs text-neutral-500">Harga final dikonfirmasi admin di WhatsApp.</p>
     </div>
 
-    <p id="errorText" class="hidden text-sm font-medium text-red-600">Masih ada kolom wajib yang kosong — cek nama, paket/barang, durasi, jam, dan tanggal ya.</p>
+    <p id="errorText" class="hidden text-sm font-medium text-red-600">Masih ada yang kosong — cek nama, paket/barang, durasi, tanggal, dan jam ambil ya.</p>
 
     <button type="submit"
       class="w-full rounded-xl bg-brand px-4 py-3.5 text-base font-bold text-white shadow-sm transition active:scale-[.99]">
@@ -145,44 +129,106 @@ tailwind.config = {
 
 <script>
   const rp = n => 'Rp' + n.toLocaleString('id-ID')
-  const barangEl = document.getElementById('barang')
-  const durasiEl = document.getElementById('durasi')
-  const tanggalEl = document.getElementById('tanggal')
 
-  // Tanggal paling awal = hari ini (WIB)
+  const PAKET = [
+    { nama: 'Paket A', isi: 'Lensa Apexel + Remote Bluetooth', harga: 30000 },
+    { nama: 'Paket B', isi: 'Lensa + Remote + Tripod 2 Meter', harga: 50000 },
+    { nama: 'Paket C', isi: 'Paket B + Kursi Lipat 2 pcs', harga: 70000 },
+    { nama: 'Paket Lengkap', isi: 'Paket C + Meja Lipat', harga: 75000 },
+    { nama: 'Paket 1', isi: 'Kursi Lipat 2 pcs', harga: 20000 },
+    { nama: 'Paket 2', isi: 'Kursi Lipat 2 pcs + Meja Lipat', harga: 25000 },
+    { nama: 'Paket 3', isi: 'Paket 2 + Tripod 2 Meter', harga: 30000 }
+  ]
+  const SATUAN = [
+    { nama: 'Lensa Apexel', isi: 'Termasuk pouch/tas', harga: 30000 },
+    { nama: 'Kompor Portable', isi: 'Include gas, koper, wajan, capit & sumpit', harga: 50000 },
+    { nama: 'Quadpod Mixio', isi: 'Kaki 4 + remote bluetooth & tas', harga: 20000 },
+    { nama: 'Tikar Piknik', isi: 'Ukuran 200x200 cm, muat 6–8 orang', harga: 15000 },
+    { nama: 'Kursi Lipat XL', isi: 'Warna Biru / Coklat / Krem', harga: 12000 },
+    { nama: 'Tripod 2 Meter', isi: 'Holder HP + remote bluetooth & pouch', harga: 10000 },
+    { nama: 'Keranjang Piknik', isi: '', harga: 10000 },
+    { nama: 'Tripod Mini', isi: 'Warna Hitam dan Pink', harga: 8000 },
+    { nama: 'Meja Lipat', isi: '', harga: 8000 },
+    { nama: 'Kacamata', isi: '', harga: 5000 },
+    { nama: 'Topi Bucket', isi: '', harga: 5000 }
+  ]
+  const DURASI = [
+    { v: '1 Hari', hari: 1 }, { v: '2 Hari', hari: 2 },
+    { v: '3 Hari', hari: 3 }, { v: '4 Hari', hari: 4 },
+    { v: 'Lainnya', hari: 0 }
+  ]
+  const JAM = ['07.00', '09.00', '12.00', '15.00', '18.00', 'Lainnya']
+
+  const sel = { barang: null, durasi: null, jam: null }
+
+  function rowEl(item) {
+    const b = document.createElement('button')
+    b.type = 'button'
+    b.className = 'item-row'
+    b.innerHTML = `
+      <span class="radio"></span>
+      <span class="min-w-0 flex-1">
+        <span class="block font-semibold leading-snug">${item.nama}</span>
+        ${item.isi ? `<span class="mt-0.5 block text-sm leading-snug text-neutral-500">${item.isi}</span>` : ''}
+      </span>
+      <span class="flex-none text-right">
+        <span class="block font-bold text-brand">${rp(item.harga)}</span>
+        <span class="block text-xs text-neutral-400">per hari</span>
+      </span>`
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.item-row').forEach(el => el.classList.remove('selected'))
+      b.classList.add('selected')
+      sel.barang = item
+      updateEstimasi()
+    })
+    return b
+  }
+  PAKET.forEach(i => document.getElementById('grupPaket').appendChild(rowEl(i)))
+  SATUAN.forEach(i => document.getElementById('grupSatuan').appendChild(rowEl(i)))
+
+  function chipGroup(elId, values, key, labelFn) {
+    const wrap = document.getElementById(elId)
+    values.forEach(v => {
+      const c = document.createElement('button')
+      c.type = 'button'
+      c.className = 'chip'
+      c.textContent = labelFn(v)
+      c.addEventListener('click', () => {
+        wrap.querySelectorAll('.chip').forEach(el => el.classList.remove('selected'))
+        c.classList.add('selected')
+        sel[key] = v
+        updateEstimasi()
+      })
+      wrap.appendChild(c)
+    })
+  }
+  chipGroup('grupDurasi', DURASI, 'durasi', d => d.v)
+  chipGroup('grupJam', JAM, 'jam', j => j)
+
+  const tanggalEl = document.getElementById('tanggal')
   const nowWib = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }))
   const pad = n => String(n).padStart(2, '0')
   tanggalEl.min = `${nowWib.getFullYear()}-${pad(nowWib.getMonth() + 1)}-${pad(nowWib.getDate())}`
 
   function updateEstimasi() {
-    const b = barangEl.selectedOptions[0]
-    const d = durasiEl.selectedOptions[0]
     const box = document.getElementById('estimasiBox')
-    const harga = b && b.dataset.harga ? parseInt(b.dataset.harga, 10) : 0
-    const hari = d && d.dataset.hari ? parseInt(d.dataset.hari, 10) : 0
-    if (harga && hari) {
+    if (sel.barang && sel.durasi && sel.durasi.hari > 0) {
       document.getElementById('estimasiText').textContent =
-        `${rp(harga * hari)} (${hari} hari x ${rp(harga)})`
+        `${rp(sel.barang.harga * sel.durasi.hari)} (${sel.durasi.hari} hari x ${rp(sel.barang.harga)})`
       box.classList.remove('hidden')
     } else {
       box.classList.add('hidden')
     }
   }
-  barangEl.addEventListener('change', updateEstimasi)
-  durasiEl.addEventListener('change', updateEstimasi)
 
   document.getElementById('bookingForm').addEventListener('submit', e => {
     e.preventDefault()
     const nama = document.getElementById('nama').value.trim()
-    const barang = barangEl.value
-    const harga = barangEl.selectedOptions[0]?.dataset.harga
-    const durasi = durasiEl.value
-    const jam = document.getElementById('jam').value
     const tanggalVal = tanggalEl.value
     const catatan = document.getElementById('catatan').value.trim()
     const err = document.getElementById('errorText')
 
-    if (!nama || !barang || !durasi || !jam || !tanggalVal) {
+    if (!nama || !sel.barang || !sel.durasi || !sel.jam || !tanggalVal) {
       err.classList.remove('hidden')
       err.scrollIntoView({ behavior: 'smooth', block: 'center' })
       return
@@ -190,22 +236,20 @@ tailwind.config = {
     err.classList.add('hidden')
 
     const [y, m, dd] = tanggalVal.split('-').map(Number)
-    const tgl = new Date(y, m - 1, dd)
     const tglText = new Intl.DateTimeFormat('id-ID', {
       weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
-    }).format(tgl)
+    }).format(new Date(y, m - 1, dd))
 
-    const hari = durasiEl.selectedOptions[0]?.dataset.hari
     const lines = [
       'Halo Apexel Caruban, saya mau booking:',
       '',
       `Nama: ${nama}`,
-      `Paket/Barang: ${barang}${harga ? ` (${rp(parseInt(harga, 10))}/hari)` : ''}`,
-      `Durasi: ${durasi}`,
+      `Paket/Barang: ${sel.barang.nama}${sel.barang.isi ? ` — ${sel.barang.isi}` : ''} (${rp(sel.barang.harga)}/hari)`,
+      `Durasi: ${sel.durasi.v}`,
       `Tanggal: ${tglText}`,
-      `Jam ambil: ${jam}`
+      `Jam ambil: ${sel.jam}`
     ]
-    if (harga && hari) lines.push(`Estimasi: ${rp(parseInt(harga, 10) * parseInt(hari, 10))}`)
+    if (sel.durasi.hari > 0) lines.push(`Estimasi: ${rp(sel.barang.harga * sel.durasi.hari)}`)
     if (catatan) lines.push(`Catatan: ${catatan}`)
 
     window.location.href = 'https://wa.me/6289671172929?text=' + encodeURIComponent(lines.join('\n'))
